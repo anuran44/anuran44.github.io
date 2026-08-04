@@ -62,7 +62,6 @@
             color: white;
         }
 
-        /* Special Styling for the CV PDF Link in Nav */
         nav ul li a.cv-link {
             background-color: transparent;
             border: 2px solid var(--accent-color);
@@ -78,6 +77,23 @@
             max-width: 1100px;
             margin: 2rem auto;
             padding: 0 2rem;
+        }
+
+        /* Profile Image Styling */
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
         }
 
         /* Sections */
@@ -183,7 +199,6 @@
             <li><a onclick="showSection('home')" id="nav-home" class="active">Home</a></li>
             <li><a onclick="showSection('projects')" id="nav-projects">Projects</a></li>
             <li><a onclick="showSection('publications')" id="nav-publications">Publications</a></li>
-            <!-- This link directly opens the PDF in a new tab -->
             <li><a href="CV-anuran.pdf" target="_blank" class="cv-link">Open CV</a></li>
         </ul>
     </nav>
@@ -192,6 +207,10 @@
         
         <!-- HOME / BIO SECTION -->
         <section id="home" class="section active">
+            
+            <!-- Added Profile Image Here -->
+            <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img">
+            
             <h1 class="header-title">Anuran Bhattacharya</h1>
             <p class="contact-info">
                 Kolkata, West Bengal, India | bhattacharyaanuran45@gmail.com | github.com/anuran44
