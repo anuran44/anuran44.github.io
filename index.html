@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuran Bhattacharya - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styling - Colorful, Attractive, and Advanced */
+        :root {
+            --primary-color: #2b5876;
+            --secondary-color: #4e4376;
+            --accent-color: #ff6b6b;
+            --text-dark: #333;
+            --text-light: #f4f4f9;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Special Styling for the CV PDF Link in Nav */
+        nav ul li a.cv-link {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+        }
+
+        nav ul li a.cv-link:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cards for Projects & Pubs */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Links and Buttons */
+        a.custom-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        a.custom-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #e55a5a;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a onclick="showSection('home')" id="nav-home" class="active">Home</a></li>
+            <li><a onclick="showSection('projects')" id="nav-projects">Projects</a></li>
+            <li><a onclick="showSection('publications')" id="nav-publications">Publications</a></li>
+            <!-- This link directly opens the PDF in a new tab -->
+            <li><a href="CV-anuran.pdf" target="_blank" class="cv-link">Open CV</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <!-- HOME / BIO SECTION -->
+        <section id="home" class="section active">
+            <h1 class="header-title">Anuran Bhattacharya</h1>
+            <p class="contact-info">
+                Kolkata, West Bengal, India | bhattacharyaanuran45@gmail.com | github.com/anuran44
+            </p>
+            
+            <div class="card" style="border-top: 4px solid var(--primary-color); text-align: center;">
+                <h2>About Me</h2>
+                <p style="text-align: left;">I am a Computer Science researcher specializing in representation learning, verifiable natural language processing, and imitation learning. I have a proven capability in engineering deterministic, physically-grounded algorithmic architectures and bypassing heavy framework abstractions to design custom neural typologies from scratch.</p>
+                <p style="text-align: left;">My research is deeply focused on advancing scalable, trustworthy AI systems that bridge theoretical mathematical foundations with high-stakes, real-world deployment, directly aligning with decision-making and imitation paradigms in modern machine learning.</p>
+                <p style="text-align: left;">During my academic journey at the University of Calcutta, I have had the privilege of collaborating with esteemed researchers. My thesis work was conducted under the supervision of <a href="https://scholar.google.com/" target="_blank" class="custom-link">Prof. S. K. Setua</a> <em>(Click to view research profile)</em>.</p>
+                
+                <a href="CV-anuran.pdf" target="_blank" class="btn">View / Download Full CV</a>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section">
+            <h1 class="header-title">Advanced Research & Projects</h1>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>PHORENSICS: Physics Forensics Engine</h3>
+                    <span class="tag">Python</span> <span class="tag">Docker</span> <span class="tag">PySpark</span>
+                    <p>Published the core algorithmic framework to PyPI to ensure deterministic, reproducible computational outcomes. Architected pure Python routines for Global Spectral Analysis to mathematically isolate Generative AI origins beyond standard semantic AI limits. Engineered dynamic VRAM tracking and automatic CPU/GPU hot-swapping to prevent OOM tensor crashes within a distributed PySpark Docker cluster.</p>
+                </div>
+
+                <div class="card">
+                    <h3>AI-Powered Fact Verification System</h3>
+                    <span class="tag">Python</span> <span class="tag">LLMs</span> <span class="tag">Sentence Transformers</span>
+                    <p>Developed a hybrid verification framework combining local Gemma3 LLM reasoning, semantic tracking, and iterative self-improvement loops to validate factual claims. Implemented an adaptive patience-based convergence mechanism. Achieved state-of-the-art performance against the FEVER baseline, improving Precision by +8% and F1-Score by +10%.</p>
+                </div>
+
+                <div class="card">
+                    <h3>TxtVis: Multimodal Latent Space Representation</h3>
+                    <span class="tag">PyTorch</span> <span class="tag">Metric Learning</span> <span class="tag">Streamlit</span>
+                    <p>Engineered a "Tabula Rasa" dual-path PyTorch research pipeline for extracting and visualizing high-dimensional embeddings. Designed a custom Convolutional Siamese Network utilizing Contrastive Loss to force topological embedding separation. Hooked asynchronous UI rendering directly into the PyTorch epoch loop for live telemetry updates.</p>
+                </div>
+
+                <div class="card">
+                    <h3>End-to-End Autonomous Vehicle Navigation</h3>
+                    <span class="tag">Python</span> <span class="tag">OpenCV</span> <span class="tag">Flask</span>
+                    <p>Engineered an end-to-end behavioral cloning architecture based on the NVIDIA DAVE-2 CNN to learn complex perception-to-control mapping. Developed robust data preprocessing and augmentation engines. Architected a bidirectional closed-loop client-server environment to stream concurrent real-time telemetry and execute predictive steering control.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Accommodation Rent Prediction</h3>
+                    <span class="tag">CatBoost</span> <span class="tag">Scikit-Learn</span>
+                    <p>Modeled highly nonlinear relationships within structured real-estate datasets using specialized CatBoost regression, mitigating overfitting through ordered boosting. Trained computationally efficient, independent localized regression models to preserve regional micro-economic variance.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PUBLICATIONS SECTION -->
+        <section id="publications" class="section">
+            <h1 class="header-title">Peer-Reviewed Publications</h1>
+            <div class="grid">
+                <div class="card">
+                    <h3>BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
+                    <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
+                    <p><strong>Published in:</strong> Applied Computing for Software and Smart Systems (Proceedings of ACSS 2024). Springer LNNS.</p>
+                    <p><strong>Description:</strong> Engineered a Resource-Scarce Artificial Neural Network (RS-ANN) featuring a novel deterministic mathematical approach for optimal hidden-layer configuration in low-resource computational linguistic environments.</p>
+                </div>
+
+                <div class="card">
+                    <h3>A User Independent Recommendation System for Web Series</h3>
+                    <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
+                    <p><strong>Published in:</strong> Emerging Technologies in Data Mining and Information Security (Proceedings of IEMIS 2022). Springer LNNS.</p>
+                    <p><strong>Description:</strong> Proposed a personalized recommendation engine that localizes similarity within user-set parameters, programmatically isolating and removing the influence of external user bias.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript for Tab Navigation -->
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('nav ul li a:not(.cv-link)');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected section and activate its nav link
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('nav-' + sectionId).classList.add('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
