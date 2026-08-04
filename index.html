@@ -18,6 +18,9 @@
             --text-light: #f4f4f9;
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
+            --chat-bg: #ffffff;
+            --chat-user: #e3f2fd;
+            --chat-bot: #f1f3f4;
         }
 
         body {
@@ -79,7 +82,7 @@
         .container {
             max-width: 1100px;
             margin: 2rem auto;
-            padding: 0 2rem;
+            padding: 0 2rem 2rem 2rem;
         }
 
         /* Profile Image Styling */
@@ -116,6 +119,7 @@
 
         h1, h2, h3 {
             color: var(--primary-color);
+            margin-top: 0;
         }
 
         .header-title {
@@ -205,6 +209,161 @@
         .btn:hover {
             background: #e55a5a;
         }
+
+        /* ================= CHATBOT STYLES ================= */
+        .chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-window {
+            display: none;
+            width: 330px;
+            height: 450px;
+            background-color: var(--chat-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .chat-window.open {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 0.6rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .bot-msg {
+            background-color: var(--chat-bot);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .user-msg {
+            background-color: var(--chat-user);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        /* Quick Reply Buttons inside Chat */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .quick-replies button {
+            background: #fff;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+
+        .quick-replies button:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid #eee;
+            padding: 0.5rem;
+            background: #fff;
+        }
+
+        .chat-input {
+            flex: 1;
+            border: none;
+            padding: 0.5rem;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .chat-send {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .chat-send:hover {
+            background: #e55a5a;
+        }
     </style>
 </head>
 <body>
@@ -232,7 +391,6 @@
             <div class="social-icons">
                 <a href="mailto:bhattacharyaanuran45@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://github.com/anuran44" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <!-- Updated LinkedIn Link -->
                 <a href="https://www.linkedin.com/in/anuran-bhattacharya-6641b7275" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://orcid.org/0009-0000-6533-6574" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
             </div>
@@ -255,37 +413,35 @@
         <section id="projects" class="section">
             <h1 class="header-title">Advanced Research & Projects</h1>
             <div class="grid">
-                
                 <div class="card">
                     <h3>PHORENSICS: Physics Forensics Engine</h3>
                     <span class="tag">Python</span> <span class="tag">Docker</span> <span class="tag">PySpark</span>
-                    <p>Published the core algorithmic framework to PyPI to ensure deterministic, reproducible computational outcomes. Architected pure Python routines for Global Spectral Analysis to mathematically isolate Generative AI origins beyond standard semantic AI limits. Engineered dynamic VRAM tracking and automatic CPU/GPU hot-swapping to prevent OOM tensor crashes within a distributed PySpark Docker cluster.</p>
+                    <p>Published the core algorithmic framework to PyPI to ensure deterministic, reproducible computational outcomes. Architected pure Python routines for Global Spectral Analysis to mathematically isolate Generative AI origins beyond standard semantic AI limits.</p>
                 </div>
 
                 <div class="card">
                     <h3>AI-Powered Fact Verification System</h3>
                     <span class="tag">Python</span> <span class="tag">LLMs</span> <span class="tag">Sentence Transformers</span>
-                    <p>Developed a hybrid verification framework combining local Gemma3 LLM reasoning, semantic tracking, and iterative self-improvement loops to validate factual claims. Implemented an adaptive patience-based convergence mechanism. Achieved state-of-the-art performance against the FEVER baseline, improving Precision by +8% and F1-Score by +10%.</p>
+                    <p>Developed a hybrid verification framework combining local Gemma3 LLM reasoning, semantic tracking, and iterative self-improvement loops to validate factual claims.</p>
                 </div>
 
                 <div class="card">
                     <h3>TxtVis: Multimodal Latent Space Representation</h3>
                     <span class="tag">PyTorch</span> <span class="tag">Metric Learning</span> <span class="tag">Streamlit</span>
-                    <p>Engineered a "Tabula Rasa" dual-path PyTorch research pipeline for extracting and visualizing high-dimensional embeddings. Designed a custom Convolutional Siamese Network utilizing Contrastive Loss to force topological embedding separation. Hooked asynchronous UI rendering directly into the PyTorch epoch loop for live telemetry updates.</p>
+                    <p>Engineered a "Tabula Rasa" dual-path PyTorch research pipeline for extracting and visualizing high-dimensional embeddings. Designed a custom Convolutional Siamese Network utilizing Contrastive Loss.</p>
                 </div>
 
                 <div class="card">
                     <h3>End-to-End Autonomous Vehicle Navigation</h3>
                     <span class="tag">Python</span> <span class="tag">OpenCV</span> <span class="tag">Flask</span>
-                    <p>Engineered an end-to-end behavioral cloning architecture based on the NVIDIA DAVE-2 CNN to learn complex perception-to-control mapping. Developed robust data preprocessing and augmentation engines. Architected a bidirectional closed-loop client-server environment to stream concurrent real-time telemetry and execute predictive steering control.</p>
+                    <p>Engineered an end-to-end behavioral cloning architecture based on the NVIDIA DAVE-2 CNN to learn complex perception-to-control mapping. Developed robust data preprocessing and augmentation engines.</p>
                 </div>
                 
                 <div class="card">
                     <h3>Accommodation Rent Prediction</h3>
                     <span class="tag">CatBoost</span> <span class="tag">Scikit-Learn</span>
-                    <p>Modeled highly nonlinear relationships within structured real-estate datasets using specialized CatBoost regression, mitigating overfitting through ordered boosting. Trained computationally efficient, independent localized regression models to preserve regional micro-economic variance.</p>
+                    <p>Modeled highly nonlinear relationships within structured real-estate datasets using specialized CatBoost regression, mitigating overfitting through ordered boosting.</p>
                 </div>
-
             </div>
         </section>
 
@@ -297,41 +453,134 @@
                     <h3>BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
                     <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
                     <p><strong>Published in:</strong> Applied Computing for Software and Smart Systems (Proceedings of ACSS 2024). Springer LNNS.</p>
-                    <p><strong>Description:</strong> Engineered a Resource-Scarce Artificial Neural Network (RS-ANN) featuring a novel deterministic mathematical approach for optimal hidden-layer configuration in low-resource computational linguistic environments.</p>
                 </div>
 
                 <div class="card">
                     <h3>A User Independent Recommendation System for Web Series</h3>
                     <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
                     <p><strong>Published in:</strong> Emerging Technologies in Data Mining and Information Security (Proceedings of IEMIS 2022). Springer LNNS.</p>
-                    <p><strong>Description:</strong> Proposed a personalized recommendation engine that localizes similarity within user-set parameters, programmatically isolating and removing the influence of external user bias.</p>
                 </div>
             </div>
         </section>
 
     </div>
 
-    <!-- JavaScript for Tab Navigation -->
+    <!-- ================= CHATBOT WIDGET ================= -->
+    <div class="chat-widget">
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <span>🤖 AB.jr</span>
+                <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-msg">Hi there! My name is AB.jr... how may I help you today?</div>
+                
+                <!-- Quick Reply Buttons -->
+                <div class="quick-replies" id="quick-replies-box">
+                    <button onclick="sendQuickReply('Education')">🎓 Education</button>
+                    <button onclick="sendQuickReply('Projects')">🚀 Projects</button>
+                    <button onclick="sendQuickReply('Skills')">💻 Skills</button>
+                    <button onclick="sendQuickReply('Contact')">📫 Contact</button>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Type a question..." onkeypress="handleEnter(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        
+        <!-- Floating Chat Icon is now a Robot -->
+        <button class="chat-button" onclick="toggleChat()">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
+    <!-- JavaScript -->
     <script>
+        // Section Navigation Logic
         function showSection(sectionId) {
-            // Hide all sections
             const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+            sections.forEach(section => section.classList.remove('active'));
 
-            // Remove active class from all nav links
             const navLinks = document.querySelectorAll('nav ul li a:not(.cv-link)');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
+            navLinks.forEach(link => link.classList.remove('active'));
 
-            // Show selected section and activate its nav link
             document.getElementById(sectionId).classList.add('active');
             document.getElementById('nav-' + sectionId).classList.add('active');
-            
-            // Scroll to top smoothly
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ================= CHATBOT LOGIC =================
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.classList.toggle('open');
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Function for the clickable quick reply buttons
+        function sendQuickReply(text) {
+            const inputField = document.getElementById('chat-input');
+            inputField.value = text;
+            
+            // Hide the buttons after the first click to keep chat clean
+            const quickRepliesBox = document.getElementById('quick-replies-box');
+            if (quickRepliesBox) {
+                quickRepliesBox.style.display = 'none';
+            }
+            
+            sendMessage();
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('chat-input');
+            const userText = inputField.value.trim();
+            if (userText === "") return;
+
+            addMessage(userText, 'user-msg');
+            inputField.value = '';
+
+            // Simulate slight delay before bot responds
+            setTimeout(() => {
+                const botResponse = generateBotResponse(userText.toLowerCase());
+                addMessage(botResponse, 'bot-msg');
+            }, 500);
+        }
+
+        function addMessage(text, className) {
+            const chatBox = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${className}`;
+            msgDiv.innerText = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+        }
+
+        // Basic AI Logic for the FAQ Chatbot
+        function generateBotResponse(text) {
+            if (text.includes('education') || text.includes('degree') || text.includes('university') || text.includes('college')) {
+                return "Anuran holds a Master of Technology (M.Tech) and Master of Science (M.Sc) in Computer Science from the University of Calcutta, and a B.Sc from The Bhawanipur Education Society College.";
+            } 
+            else if (text.includes('skill') || text.includes('tech') || text.includes('programming') || text.includes('languages')) {
+                return "His core skills include Python, C++, SQL, PyTorch, TensorFlow, OpenCV, Docker, and PySpark. He specializes in Machine Learning and NLP.";
+            } 
+            else if (text.includes('project') || text.includes('research') || text.includes('work')) {
+                return "Anuran has worked on amazing projects like PHORENSICS (Deepfake Detection), an AI Fact Verification System using LLMs, and End-to-End Autonomous Vehicle Navigation. You can view them in the 'Projects' tab!";
+            } 
+            else if (text.includes('contact') || text.includes('email') || text.includes('reach') || text.includes('hire')) {
+                return "You can reach Anuran directly via email at bhattacharyaanuran45@gmail.com, or click the email/LinkedIn icons at the top of the Home page!";
+            } 
+            else if (text.includes('hi') || text.includes('hello') || text.includes('hey')) {
+                return "Hello! Feel free to ask me about Anuran's skills, projects, or education background.";
+            }
+            else {
+                return "I'm just a simple mini-bot, so I might not understand that! You can ask me things like 'What are your skills?', 'Tell me about your education', or 'How can I contact you?'.";
+            }
         }
     </script>
 </body>
