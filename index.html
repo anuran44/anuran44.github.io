@@ -183,6 +183,32 @@
             margin-bottom: 10px;
         }
 
+        .research-interests {
+            background: #f4f7f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .research-interests ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .research-interests ul li {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            color: var(--primary-color);
+        }
+
         /* Links and Buttons */
         a.custom-link {
             color: var(--accent-color);
@@ -397,8 +423,19 @@
             
             <div class="card" style="border-top: 4px solid var(--primary-color);">
                 <h2>About Me</h2>
-                <p>Hi, I am Anuran! I am an M.Tech. student in Computer Science & Engineering at the University of Calcutta, where I am advised by <a href="https://caluniv.irins.org/profile/122113" target="_blank" class="custom-link">Dr. Sanjit Kumar Setua</a>. I am currently seeking Ph.D. opportunities in the United States and Canada, aiming to collaborate with principal investigators who are deeply interested in <strong>Physics-based AI</strong>, <strong>Verifiable Machine Learning</strong>, and <strong>Representation Learning</strong>.</p>
+                <p>Hi, I am Anuran! I am an M.Tech. student in Computer Science & Engineering at the University of Calcutta, where I am advised by <a href="https://caluniv.irins.org/profile/122113" target="_blank" class="custom-link">Dr. Sanjit Kumar Setua</a>. I am currently seeking rigorous Ph.D. opportunities globally (particularly in the US, Canada, Sweden, and Switzerland), aiming to collaborate with principal investigators advancing fundamental and applied research.</p>
                 
+                <div class="research-interests">
+                    <h3 style="margin-top: 0; font-size: 1.2rem;">Core Research Interests</h3>
+                    <ul>
+                        <li><i class="fas fa-brain"></i> Computer Vision</li>
+                        <li><i class="fas fa-language"></i> Natural Language Processing (NLP)</li>
+                        <li><i class="fas fa-atom"></i> Physics-based AI</li>
+                        <li><i class="fas fa-shield-alt"></i> Verifiable Machine Learning</li>
+                        <li><i class="fas fa-project-diagram"></i> Representation Learning</li>
+                    </ul>
+                </div>
+
                 <p>My research bridges theoretical mathematical foundations with high-stakes, real-world AI deployment. I am particularly passionate about engineering deterministic, physically-grounded algorithmic architectures—such as integrating Partial Differential Equations (PDEs) into neural topologies—and bypassing heavy framework abstractions to build robust, trustworthy systems. For my M.Tech. dissertation, I developed <strong>PHORENSICS</strong>, a physics-informed computational forensics framework designed for synthetic media detection and Generative AI security.</p>
                 
                 <p>Previously, I earned my M.Sc. in Computer Science from the University of Calcutta, advised by <a href="https://caluniv.irins.org/profile/122069" target="_blank" class="custom-link">Dr. Rajat Kumar Pal</a>, where I focused on engineering resource-scarce neural networks for computational linguistics.</p>
@@ -416,11 +453,23 @@
             <h1 class="header-title">Advanced Research & Projects</h1>
             <div class="grid">
                 
+                <!-- NEW PROJECT: LLM ODE Solver -->
+                <div class="card">
+                    <h3>Axiom Engine: LLM-Powered ODE Solver</h3>
+                    <span class="tag">Large Language Models</span> <span class="tag">Mathematical Modeling</span> <span class="tag">NLP</span>
+                    <p>Engineered an advanced framework leveraging Large Language Models to parse, interpret, and solve complex Ordinary Differential Equations (ODEs). The system effectively bridges the gap between natural language prompts and rigorous numerical/symbolic computation, providing step-by-step verifiable derivations for complex dynamical systems.</p>
+                    <p style="margin-top: 15px;">
+                        <a href="https://axiom-engine-1d445f.gitlab.io/" target="_blank" class="custom-link">
+                            <i class="fas fa-external-link-alt"></i> Check live working here
+                        </a>
+                    </p>
+                </div>
+
                 <!-- Updated PHORENSICS Card for Ph.D. Applications -->
                 <div class="card">
                     <h3>PHORENSICS: Physics Forensics Engine (M.Tech Dissertation)</h3>
-                    <span class="tag">Physics-Informed AI</span> <span class="tag">PDEs</span> <span class="tag">Python</span>
-                    <p>Engineered a robust, physically-grounded computational framework for Generative AI security and synthetic media detection. Successfully integrated Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published the core framework to PyPI, architecting pure Python routines to guarantee deterministic, reproducible computational outcomes without relying on heavy framework abstractions.</p>
+                    <span class="tag">Physics-Informed AI</span> <span class="tag">PDEs</span> <span class="tag">Computer Vision</span>
+                    <p>Engineered a robust, physically-grounded computational framework for Generative AI security and synthetic media detection. Successfully integrated Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published the core framework to PyPI, architecting pure Python routines to guarantee deterministic, reproducible computational outcomes.</p>
                 </div>
 
                 <div class="card">
@@ -431,7 +480,7 @@
 
                 <div class="card">
                     <h3>TxtVis: Multimodal Latent Space Representation</h3>
-                    <span class="tag">PyTorch</span> <span class="tag">Metric Learning</span> <span class="tag">Streamlit</span>
+                    <span class="tag">PyTorch</span> <span class="tag">Metric Learning</span> <span class="tag">Computer Vision</span>
                     <p>Engineered a "Tabula Rasa" dual-path PyTorch research pipeline for extracting and visualizing high-dimensional embeddings. Designed a custom Convolutional Siamese Network utilizing Contrastive Loss.</p>
                 </div>
 
@@ -482,9 +531,9 @@
                 <!-- Quick Reply Buttons -->
                 <div class="quick-replies" id="quick-replies-box">
                     <button onclick="sendQuickReply('Education')">🎓 Education</button>
-                    <button onclick="sendQuickReply('Projects')">🚀 Projects</button>
-                    <button onclick="sendQuickReply('Skills')">💻 Skills</button>
-                    <button onclick="sendQuickReply('Contact')">📫 Contact</button>
+                    <button onclick="sendQuickReply('Projects')">💼 Projects</button>
+                    <button onclick="sendQuickReply('Skills')">🛠️ Skills</button>
+                    <button onclick="sendQuickReply('Contact')">📬 Contact</button>
                 </div>
             </div>
             
@@ -494,7 +543,7 @@
             </div>
         </div>
         
-        <!-- Floating Chat Icon is now a Robot -->
+        <!-- Floating Chat Icon -->
         <button class="chat-button" onclick="toggleChat()">
             <i class="fas fa-robot"></i>
         </button>
@@ -570,20 +619,20 @@
             if (text.includes('education') || text.includes('degree') || text.includes('university') || text.includes('college')) {
                 return "Anuran holds a Master of Technology (M.Tech) and Master of Science (M.Sc) in Computer Science from the University of Calcutta, and a B.Sc from The Bhawanipur Education Society College.";
             } 
-            else if (text.includes('skill') || text.includes('tech') || text.includes('programming') || text.includes('languages')) {
-                return "His core skills include Python, C++, SQL, PyTorch, TensorFlow, OpenCV, Docker, and PySpark. He specializes in Machine Learning and Physics-Informed AI.";
+            else if (text.includes('skill') || text.includes('tech') || text.includes('programming') || text.includes('languages') || text.includes('nlp') || text.includes('vision')) {
+                return "His core research interests include Computer Vision, NLP, and Physics-Informed AI. He is highly proficient in Python, C++, PyTorch, TensorFlow, OpenCV, and large-scale mathematical modeling.";
             } 
-            else if (text.includes('project') || text.includes('research') || text.includes('work') || text.includes('phorensics')) {
-                return "Anuran has worked on amazing projects like his M.Tech Dissertation PHORENSICS (PDE-based Deepfake Detection), an AI Fact Verification System using LLMs, and End-to-End Autonomous Vehicle Navigation. You can view them in the 'Projects' tab!";
+            else if (text.includes('project') || text.includes('research') || text.includes('work') || text.includes('phorensics') || text.includes('ode')) {
+                return "Anuran has worked on cutting-edge projects like Axiom Engine (an LLM-powered ODE Solver), PHORENSICS (PDE-based Deepfake Detection), and Multimodal Latent Space Representation. You can view them in the 'Projects' tab!";
             } 
             else if (text.includes('contact') || text.includes('email') || text.includes('reach') || text.includes('hire') || text.includes('phd')) {
-                return "You can reach Anuran directly via email at bhattacharyaanuran45@gmail.com, or click the email/LinkedIn icons at the top of the Home page. He is actively seeking Ph.D. opportunities!";
+                return "You can reach Anuran directly via email at bhattacharyaanuran45@gmail.com, or click the email/LinkedIn icons at the top of the Home page. He is actively seeking rigorous Ph.D. opportunities globally!";
             } 
             else if (text.includes('hi') || text.includes('hello') || text.includes('hey')) {
-                return "Hello! Feel free to ask me about Anuran's skills, projects, or education background.";
+                return "Hello! Feel free to ask me about Anuran's skills, projects, or academic background.";
             }
             else {
-                return "I'm just a simple mini-bot, so I might not understand that! You can ask me things like 'What are your skills?', 'Tell me about your research', or 'How can I contact you?'.";
+                return "I'm just a simple mini-bot, so I might not understand that! You can ask me things like 'What are your research interests?', 'Tell me about your projects', or 'How can I contact you?'.";
             }
         }
     </script>
