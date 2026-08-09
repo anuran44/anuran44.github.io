@@ -423,7 +423,7 @@
             
             <div class="card" style="border-top: 4px solid var(--primary-color);">
                 <h2>About Me</h2>
-                <p>Hi, I am Anuran! I am an M.Tech. student in Computer Science & Engineering at the University of Calcutta, where I am advised by <a href="https://caluniv.irins.org/profile/122113" target="_blank" class="custom-link">Dr. Sanjit Kumar Setua</a>. I am currently seeking rigorous Ph.D. opportunities globally (particularly in the US, Canada, Sweden, and Switzerland), aiming to collaborate with principal investigators advancing fundamental and applied research.</p>
+                <p>Hi, I am Anuran! I am an M.Tech. student in Computer Science & Engineering at the University of Calcutta, where I am advised by <a href="https://caluniv.irins.org/profile/122113" target="_blank" class="custom-link">Dr. Sanjit Kumar Setua</a>. My academic journey is driven by a deep commitment to advancing the frontiers of artificial intelligence. I am passionate about pioneering fundamental and applied research, transforming complex theoretical mathematics into robust, trustworthy computational systems.</p>
                 
                 <div class="research-interests">
                     <h3 style="margin-top: 0; font-size: 1.2rem;">Core Research Interests</h3>
@@ -453,11 +453,11 @@
             <h1 class="header-title">Advanced Research & Projects</h1>
             <div class="grid">
                 
-                <!-- NEW PROJECT: LLM ODE Solver -->
+                <!-- UPGRADED PROJECT: Axiom Engine -> Neuro-Symbolic Mini-LLM -->
                 <div class="card">
-                    <h3>Axiom Engine: LLM-Powered ODE Solver</h3>
-                    <span class="tag">Large Language Models</span> <span class="tag">Mathematical Modeling</span> <span class="tag">NLP</span>
-                    <p>Engineered an advanced framework leveraging Large Language Models to parse, interpret, and solve complex Ordinary Differential Equations (ODEs). The system effectively bridges the gap between natural language prompts and rigorous numerical/symbolic computation, providing step-by-step verifiable derivations for complex dynamical systems.</p>
+                    <h3>Axiom Engine: Neuro-Symbolic Mini-LLM</h3>
+                    <span class="tag">PyTorch</span> <span class="tag">Transformers</span> <span class="tag">Neuro-Symbolic AI</span>
+                    <p>Engineered a "Tabula Rasa" custom Sequence-to-Sequence (Seq2Seq) Transformer from scratch in PyTorch to parse and resolve complex Ordinary Differential Equations (ODEs). Designed a dual-system neuro-symbolic architecture that routes neural structural pattern recognition directly into a deterministic algebraic kernel (SymPy) for hallucination-free, mathematically verified step-by-step integration.</p>
                     <p style="margin-top: 15px;">
                         <a href="https://axiom-engine-1d445f.gitlab.io/" target="_blank" class="custom-link">
                             <i class="fas fa-external-link-alt"></i> Check live working here
@@ -465,7 +465,6 @@
                     </p>
                 </div>
 
-                <!-- Updated PHORENSICS Card for Ph.D. Applications -->
                 <div class="card">
                     <h3>PHORENSICS: Physics Forensics Engine (M.Tech Dissertation)</h3>
                     <span class="tag">Physics-Informed AI</span> <span class="tag">PDEs</span> <span class="tag">Computer Vision</span>
@@ -620,13 +619,13 @@
                 return "Anuran holds a Master of Technology (M.Tech) and Master of Science (M.Sc) in Computer Science from the University of Calcutta, and a B.Sc from The Bhawanipur Education Society College.";
             } 
             else if (text.includes('skill') || text.includes('tech') || text.includes('programming') || text.includes('languages') || text.includes('nlp') || text.includes('vision')) {
-                return "His core research interests include Computer Vision, NLP, and Physics-Informed AI. He is highly proficient in Python, C++, PyTorch, TensorFlow, OpenCV, and large-scale mathematical modeling.";
+                return "His core research interests include Computer Vision, NLP, and Physics-Informed AI. He is highly proficient in Python, C++, PyTorch, TensorFlow, OpenCV, and custom neural architectures.";
             } 
-            else if (text.includes('project') || text.includes('research') || text.includes('work') || text.includes('phorensics') || text.includes('ode')) {
-                return "Anuran has worked on cutting-edge projects like Axiom Engine (an LLM-powered ODE Solver), PHORENSICS (PDE-based Deepfake Detection), and Multimodal Latent Space Representation. You can view them in the 'Projects' tab!";
+            else if (text.includes('project') || text.includes('research') || text.includes('work') || text.includes('phorensics') || text.includes('ode') || text.includes('axiom')) {
+                return "Anuran has engineered advanced systems like Axiom Engine (a custom-built Neuro-Symbolic Mini-LLM in PyTorch), PHORENSICS (PDE-based Deepfake Detection), and Multimodal Latent Space representations. You can view them in the 'Projects' tab!";
             } 
-            else if (text.includes('contact') || text.includes('email') || text.includes('reach') || text.includes('hire') || text.includes('phd')) {
-                return "You can reach Anuran directly via email at bhattacharyaanuran45@gmail.com, or click the email/LinkedIn icons at the top of the Home page. He is actively seeking rigorous Ph.D. opportunities globally!";
+            else if (text.includes('contact') || text.includes('email') || text.includes('reach') || text.includes('hire') || text.includes('collaborate')) {
+                return "You can reach Anuran directly via email at bhattacharyaanuran45@gmail.com, or click the email/LinkedIn icons at the top of the Home page. He is always open to discussing innovative research and collaborations!";
             } 
             else if (text.includes('hi') || text.includes('hello') || text.includes('hey')) {
                 return "Hello! Feel free to ask me about Anuran's skills, projects, or academic background.";
