@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anuran Bhattacharya | Research Portfolio</title>
-    <!-- Avant-garde typography suitable for MIT/Research -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -14,7 +13,7 @@
            ========================================================= */
         :root {
             --bg-base: #050505;
-            --bg-surface: rgba(20, 20, 22, 0.7);
+            --bg-surface: rgba(10, 10, 12, 0.85); /* Darkened for better contrast over animation */
             --text-main: #f8f9fa;
             --text-muted: #a0a0a5;
             --mit-red: #A31F34;
@@ -30,11 +29,19 @@
             background-color: var(--bg-base);
             color: var(--text-main);
             line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(255, 20, 147, 0.05), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0, 191, 255, 0.05), transparent 25%);
-            background-attachment: fixed;
             overflow-x: hidden;
+        }
+
+        /* NEURAL NETWORK CANVAS BACKGROUND 
+        */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
         }
 
         h1, h2, h3, h4 {
@@ -92,6 +99,8 @@
             max-width: 1200px;
             margin: 8rem auto 4rem auto;
             padding: 0 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Hero / Bio Section */
@@ -100,6 +109,11 @@
             align-items: center;
             gap: 4rem;
             animation: fadeUp 0.8s ease-out;
+            background: var(--bg-surface);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
         }
 
         @keyframes fadeUp {
@@ -285,6 +299,7 @@
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--glass-border);
             padding-bottom: 1rem;
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
         }
 
         /* =========================================================
@@ -310,6 +325,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            backdrop-filter: blur(5px);
         }
 
         .tab-btn.active, .tab-btn:hover {
@@ -327,6 +343,7 @@
             border-radius: 16px;
             padding: 2.5rem;
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .tab-panel.active {
@@ -393,6 +410,7 @@
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .card:hover {
@@ -700,7 +718,8 @@
 </head>
 <body>
 
-    <!-- Floating Glass Navigation -->
+    <canvas id="bg-canvas"></canvas>
+
     <nav>
         <ul>
             <li><a onclick="showSection('home')" id="nav-home" class="active">Bio</a></li>
@@ -712,11 +731,9 @@
 
     <div class="container">
         
-        <!-- HOME / BIO SECTION -->
         <section id="home" class="section active">
             <div class="hero-section">
                 <div class="profile-img-wrapper">
-                    <!-- Ensure 'self-img.jpeg' is in the same folder as this HTML file -->
                     <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'">
                 </div>
                 
@@ -734,15 +751,14 @@
                         <span><i class="fas fa-shield-alt"></i> Verifiable ML</span>
                     </div>
 
-                    <!-- CV Button & Webinar Thumbnail Link -->
                     <div class="action-row">
                         <a href="CV-ANURAN.pdf" target="_blank" class="cv-btn">
                             <i class="fas fa-file-pdf"></i> View Full CV
                         </a>
                         <a href="https://youtu.be/dhIYjBsI0-g?si=LhLzNTrRnIeEQ-pv&t=569" target="_blank" class="talk-card">
-                            <img src="Screenshot 2026-09-25 020750.png" alt="Computer Vision Webinar Thumbnail" class="talk-thumb">
+                            <img src="image_8f8a61.jpg" alt="Computer Vision Webinar Thumbnail" class="talk-thumb">
                             <div class="talk-info">
-                                <div class="talk-title">Computer Vision Webinar[cite: 2]</div>
+                                <div class="talk-title">Computer Vision Webinar</div>
                                 <div class="talk-subtitle"><i class="fab fa-youtube" style="color: #FF0000;"></i> Guest Talk (YouTube)</div>
                             </div>
                         </a>
@@ -758,7 +774,6 @@
             </div>
         </section>
 
-        <!-- EXPERIENCE SECTION -->
         <section id="experience" class="section">
             <h2 class="section-title">Research Experience</h2>
             
@@ -768,43 +783,40 @@
                 <button class="tab-btn" onclick="switchTab('tab-bsc')">Undergraduate Research</button>
             </div>
 
-            <!-- M.Tech Panel -->
             <div class="tab-panel active" id="tab-mtech">
                 <div class="timeline-item">
                     <div class="timeline-date">Aug 2025 – Feb 2026</div>
                     <h3>Research Intern (Media Forensics)</h3>
                     <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Sanjit Kumar Setua</p>
                     <ul>
-                        <li>Worked on a research project in Media Forensics, focusing on the analysis and verification of digital media to identify potential manipulation, tampering, and authenticity-related issues.[cite: 1]</li>
-                        <li>Contributed to research involving image/video analysis, computer vision techniques, and machine learning-based approaches for detecting manipulated media.[cite: 1]</li>
-                        <li>Designed a fault-tolerant execution pipeline that dynamically switches between GPU and CPU computation, ensuring reliable execution under memory constraints.[cite: 1]</li>
+                        <li>Worked on a research project in Media Forensics, focusing on the analysis and verification of digital media to identify potential manipulation, tampering, and authenticity-related issues.</li>
+                        <li>Contributed to research involving image/video analysis, computer vision techniques, and machine learning-based approaches for detecting manipulated media.</li>
+                        <li>Designed a fault-tolerant execution pipeline that dynamically switches between GPU and CPU computation, ensuring reliable execution under memory constraints.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- M.Sc Panel -->
             <div class="tab-panel" id="tab-msc">
                 <div class="timeline-item">
                     <div class="timeline-date">Sep 2023 – Jul 2024</div>
                     <h3>Research Intern (Academic)</h3>
                     <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Rajat Kumar Pal</p>
                     <ul>
-                        <li>Developed a Bengali NLP project for emotion detection with polysemy resolution, addressing the challenge of identifying the intended meaning and emotional context of words with multiple senses in a resource-scarce Bengali language environment.[cite: 1]</li>
-                        <li>The project involved dataset creation, contextual feature selection, TF-IDF feature extraction, and development of the BEN-RS-ANN (Resource-Scarce Artificial Neural Network) model.[cite: 1]</li>
-                        <li>Evaluated using 10-fold cross-validation, the proposed approach achieved 90.08% accuracy, outperforming the other evaluated classifiers.[cite: 1]</li>
+                        <li>Developed a Bengali NLP project for emotion detection with polysemy resolution, addressing the challenge of identifying the intended meaning and emotional context of words with multiple senses in a resource-scarce Bengali language environment.</li>
+                        <li>The project involved dataset creation, contextual feature selection, TF-IDF feature extraction, and development of the BEN-RS-ANN (Resource-Scarce Artificial Neural Network) model.</li>
+                        <li>Evaluated using 10-fold cross-validation, the proposed approach achieved 90.08% accuracy, outperforming the other evaluated classifiers.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Undergrad Panel -->
             <div class="tab-panel" id="tab-bsc">
                 <div class="timeline-item">
                     <div class="timeline-date">Sep 2021 – Jan 2022</div>
                     <h3>Research Collaborator</h3>
                     <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">The Bhawanipur Education Society College & Indian Statistical Institute (ISI)</p>
                     <ul>
-                        <li>Collaborated on interdisciplinary research on a machine-learning-based user-independent recommendation system for web series.[cite: 1]</li>
-                        <li>Developed a recommendation approach capable of generating personalized web-series recommendations using user-defined and localized parameters without requiring extensive user-history data.[cite: 1]</li>
+                        <li>Collaborated on interdisciplinary research on a machine-learning-based user-independent recommendation system for web series.</li>
+                        <li>Developed a recommendation approach capable of generating personalized web-series recommendations using user-defined and localized parameters without requiring extensive user-history data.</li>
                     </ul>
                 </div>
                 
@@ -813,22 +825,19 @@
                     <h3>Undergraduate Research Intern</h3>
                     <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">The Bhawanipur Education Society College</p>
                     <ul>
-                        <li>Conducted research and development in Machine Learning, Computer Vision, and COVID-19 data analytics under faculty mentorship.[cite: 1]</li>
-                        <li>Worked on a polynomial regression-based model for forecasting gender-wise COVID-19 infection trends using population-density data, and statistical analysis to quantify the effectiveness of India's lockdown.[cite: 1]</li>
-                        <li>Developed a computer-vision-based face-mask detection project aimed at identifying mask compliance during the pandemic.[cite: 1]</li>
+                        <li>Conducted research and development in Machine Learning, Computer Vision, and COVID-19 data analytics under faculty mentorship.</li>
+                        <li>Worked on a polynomial regression-based model for forecasting gender-wise COVID-19 infection trends using population-density data, and statistical analysis to quantify the effectiveness of India's lockdown.</li>
+                        <li>Developed a computer-vision-based face-mask detection project aimed at identifying mask compliance during the pandemic.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- RESEARCH / PROJECTS SECTION -->
         <section id="projects" class="section">
             <h2 class="section-title">Selected Research & Systems</h2>
             <div class="grid">
                 
-                <!-- PROJECT 1: PHORENSICS (WITH LIVE ANIMATED SCANNER) -->
                 <div class="card">
-                    <!-- The Animated Deepfake Scanner HTML -->
                     <div class="scanner-container">
                         <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80" class="base-target" alt="Detection Target">
                         <div class="grid-overlay"></div>
@@ -847,11 +856,10 @@
                             <span class="tag">Physics-Informed AI</span>
                             <span class="tag">Synthetic Media</span>
                         </div>
-                        <p>A physically-grounded computational framework for Generative AI security. Integrates Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published to PyPI with pure Python routines for deterministic execution.[cite: 1]</p>
+                        <p>A physically-grounded computational framework for Generative AI security. Integrates Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published to PyPI with pure Python routines for deterministic execution.</p>
                     </div>
                 </div>
 
-                <!-- PROJECT 2: Axiom Engine -->
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="Axiom Engine Logic" class="card-img">
                     <div class="card-content">
@@ -868,7 +876,6 @@
                     </div>
                 </div>
 
-                <!-- PROJECT 3: Fact Verification -->
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1557053964-937650b63311?auto=format&fit=crop&w=800&q=80" alt="Fact Verification on Newspaper" class="card-img">
                     <div class="card-content">
@@ -878,11 +885,10 @@
                             <span class="tag">Gemma 3 LLM</span>
                             <span class="tag">RAG</span>
                         </div>
-                        <p>Developed a retrieval-augmented fact verification framework combining LLM reasoning with semantic document retrieval for evidence-based claim verification. Improved the FEVER benchmark by 8% Precision and 10% F1-score through cross-document evidence aggregation.[cite: 1]</p>
+                        <p>Developed a retrieval-augmented fact verification framework combining LLM reasoning with semantic document retrieval for evidence-based claim verification. Improved the FEVER benchmark by 8% Precision and 10% F1-score through cross-document evidence aggregation.</p>
                     </div>
                 </div>
 
-                <!-- PROJECT 4: TxtVis -->
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="TxtVis Embeddings" class="card-img">
                     <div class="card-content">
@@ -892,30 +898,29 @@
                             <span class="tag">Siamese Nets</span>
                             <span class="tag">UX Design</span>
                         </div>
-                        <p>Developed a from-scratch PyTorch framework for learning and visualizing latent representations across NLP and Computer Vision. Built an interactive visualization interface for monitoring PCA projections, emphasizing intuitive visual feedback for UX.[cite: 1]</p>
+                        <p>Developed a from-scratch PyTorch framework for learning and visualizing latent representations across NLP and Computer Vision. Built an interactive visualization interface for monitoring PCA projections, emphasizing intuitive visual feedback for UX.</p>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- PUBLICATIONS SECTION -->
         <section id="publications" class="section">
             <h2 class="section-title">Peer-Reviewed Publications</h2>
             <div class="grid">
                 <div class="card">
                     <div class="card-content">
                         <h3>BEN-RS-ANN: Revealing Emotion from Bengali Text</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (ACSS 2024). Springer LNNS. [Scopus Indexed][cite: 1]</p>
-                        <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.[cite: 1]</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (ACSS 2024). Springer LNNS. [Scopus Indexed]</p>
+                        <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-content">
                         <h3>User Independent Recommendation System for Web Series</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (IEMIS 2022). Springer LNNS. [Scopus Indexed][cite: 1]</p>
-                        <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.[cite: 1]</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (IEMIS 2022). Springer LNNS. [Scopus Indexed]</p>
+                        <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
                     </div>
                 </div>
             </div>
@@ -923,7 +928,6 @@
 
     </div>
 
-    <!-- AI TERMINAL / CHATBOT WIDGET -->
     <div class="chat-widget">
         <div class="chat-window" id="chat-window">
             <div class="chat-header">
@@ -951,8 +955,88 @@
         </button>
     </div>
 
-    <!-- JavaScript -->
     <script>
+        /* =========================================================
+           BACKGROUND CANVAS NEURAL NETWORK ANIMATION
+           ========================================================= */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function initCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.radius = Math.random() * 1.5 + 0.5;
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 191, 255, 0.7)'; // Cyan dots
+                ctx.fill();
+            }
+        }
+
+        // Initialize particles
+        for (let i = 0; i < 90; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Connect particles if they are close enough
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 130) {
+                        ctx.beginPath();
+                        // Neural network pink connections fading out by distance
+                        ctx.strokeStyle = `rgba(255, 20, 147, ${1 - distance / 130})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        animate(); // Start the background animation
+
+        /* =========================================================
+           UI & CHATBOT LOGIC
+           ========================================================= */
+           
         // Smooth Section Navigation
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section');
@@ -968,14 +1052,12 @@
 
         // Tabs Logic for Experience Section
         function switchTab(tabId) {
-            // Remove active class from all buttons and panels
             const buttons = document.querySelectorAll('.tab-btn');
             const panels = document.querySelectorAll('.tab-panel');
             
             buttons.forEach(btn => btn.classList.remove('active'));
             panels.forEach(panel => panel.classList.remove('active'));
 
-            // Add active class to clicked button and target panel
             event.target.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
