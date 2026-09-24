@@ -3,54 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuran Bhattacharya | Research Portfolio</title>
-    <!-- Avant-garde typography suitable for MIT/Research -->
+    <title>Anuran Bhattacharya | HCI & AI Researcher</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* =========================================================
-           RESEARCH DESIGN SYSTEM (MIT Media Lab / Academic Hybrid)
+           macOS VIBRANT GLASSMORPHISM DESIGN SYSTEM
            ========================================================= */
         :root {
-            --bg-base: #050505;
-            --bg-surface: rgba(10, 10, 12, 0.85);
-            --bg-card: rgba(15, 15, 18, 0.9);
-            --text-main: #f8f9fa;
-            --text-muted: #a0a0a5;
-            --mit-red: #A31F34;
-            --accent-primary: #00BFFF;
-            --accent-secondary: #FF1493;
-            --accent-gradient: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glow: 0 0 20px rgba(0, 191, 255, 0.15);
+            --text-main: #ffffff;
+            --text-muted: #e2e8f0;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #f472b6;
+            --accent-gradient: linear-gradient(135deg, #38bdf8, #c084fc);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --panel-blur: blur(24px);
         }
 
+        /* Dynamic Animated Mesh Gradient Background */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-base);
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
+            background: linear-gradient(-45deg, #0f172a, #2e1065, #082f49, #171131);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
         }
 
-        /* NEURAL NETWORK CANVAS BACKGROUND */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* LIVE INTERACTIVE CANVAS BACKGROUND */
         #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            z-index: 0;
+            pointer-events: none; /* Let clicks pass through to the UI */
         }
 
         h1, h2, h3, h4, h5 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             margin-top: 0;
+            letter-spacing: -0.5px;
+        }
+
+        /* Reusable macOS Transparent Window Panel */
+        .mac-panel {
+            background: var(--glass-bg);
+            backdrop-filter: var(--panel-blur);
+            -webkit-backdrop-filter: var(--panel-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--glass-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
         /* Glassmorphism Navigation */
@@ -59,14 +78,14 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            padding: 0.8rem 2rem;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.2);
         }
 
         nav ul {
@@ -87,14 +106,13 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.7;
+            opacity: 0.8;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         nav ul li a:hover, nav ul li a.active {
             opacity: 1;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-primary);
         }
 
         /* Main Container */
@@ -111,12 +129,8 @@
             display: flex;
             align-items: center;
             gap: 3rem;
-            animation: fadeUp 0.8s ease-out;
-            background: var(--bg-surface);
             padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
+            animation: fadeUp 0.8s ease-out;
         }
 
         @keyframes fadeUp {
@@ -127,11 +141,10 @@
         .profile-img {
             width: 220px;
             height: 220px;
-            border-radius: 12px;
+            border-radius: 50%;
             object-fit: cover;
-            filter: grayscale(10%) contrast(110%);
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             flex-shrink: 0;
         }
 
@@ -142,35 +155,24 @@
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .identity-subtitle {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.1rem;
             font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 1rem;
+            color: var(--accent-primary);
+            margin-bottom: 1.2rem;
             letter-spacing: 0.5px;
         }
 
         .hero-text p {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             margin-bottom: 1.2rem;
             line-height: 1.8;
-        }
-
-        .status-badge {
-            display: inline-block;
-            background: rgba(0, 191, 255, 0.1);
-            color: var(--accent-primary);
-            border: 1px solid rgba(0, 191, 255, 0.3);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-family: 'Space Grotesk', sans-serif;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
         /* Action Row: Buttons & Socials */
@@ -186,23 +188,23 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-main);
             padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            border-radius: 8px;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
             font-size: 0.9rem;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .primary-btn:hover {
-            background: rgba(0, 191, 255, 0.15);
-            border-color: var(--accent-primary);
-            color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
         /* Sections Toggle */
@@ -216,42 +218,38 @@
         .section-title {
             font-size: 2rem;
             margin-bottom: 2rem;
-            border-bottom: 1px solid var(--glass-border);
             padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: inline-block;
         }
 
         /* =========================================================
            VISION & SKILLS 
            ========================================================= */
         .vision-box {
-            background: rgba(0, 191, 255, 0.05);
-            border-left: 3px solid var(--accent-primary);
-            padding: 1.5rem 2rem;
-            border-radius: 0 8px 8px 0;
+            padding: 2rem;
             margin-bottom: 3rem;
-            font-size: 1.05rem;
-            color: #dbeafe;
+            font-size: 1.1rem;
+            color: #f1f5f9;
+            border-left: 4px solid var(--accent-secondary);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
         .skill-category {
-            background: var(--bg-surface);
-            border: 1px solid var(--glass-border);
             padding: 1.5rem;
-            border-radius: 12px;
         }
 
         .skill-category h4 {
             color: var(--accent-primary);
             margin-bottom: 1rem;
             font-size: 1.1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 0.5rem;
         }
 
@@ -262,12 +260,12 @@
         }
 
         .skill-tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #e2e8f0;
         }
 
         /* =========================================================
@@ -282,7 +280,7 @@
 
         .tab-btn {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-main);
             padding: 0.8rem 1.5rem;
             border-radius: 30px;
@@ -293,30 +291,22 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            backdrop-filter: blur(5px);
         }
 
         .tab-btn.active, .tab-btn:hover {
-            background: rgba(0, 191, 255, 0.15);
+            background: rgba(255, 255, 255, 0.15);
             border-color: var(--accent-primary);
-            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
             color: var(--accent-primary);
         }
 
         .tab-panel {
             display: none;
             animation: fadeUp 0.4s ease-out;
-            background: var(--bg-surface);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
             padding: 2.5rem;
-            position: relative;
-            backdrop-filter: blur(10px);
         }
 
-        .tab-panel.active {
-            display: block;
-        }
+        .tab-panel.active { display: block; }
 
         .timeline-item {
             border-left: 2px solid var(--accent-secondary);
@@ -325,9 +315,7 @@
             position: relative;
         }
         
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
+        .timeline-item:last-child { margin-bottom: 0; }
 
         .timeline-item::before {
             content: '';
@@ -360,12 +348,10 @@
             color: var(--text-muted);
         }
         
-        .timeline-item ul li {
-            margin-bottom: 0.5rem;
-        }
+        .timeline-item ul li { margin-bottom: 0.5rem; }
 
         /* =========================================================
-           RIGOROUS ACADEMIC PROJECT CARDS
+           RIGOROUS ACADEMIC PROJECT CARDS (HCI & NLP FOCUS)
            ========================================================= */
         .research-grid {
             display: flex;
@@ -374,9 +360,6 @@
         }
 
         .research-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -384,19 +367,19 @@
 
         .research-card-header {
             padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--glass-border);
-            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.15);
         }
 
         .research-card-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
             color: var(--text-main);
         }
 
         .research-question {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--accent-primary);
             font-weight: 500;
             font-style: italic;
@@ -410,22 +393,23 @@
         }
 
         .research-section h5 {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-muted);
+            color: var(--accent-secondary);
             margin-bottom: 0.5rem;
         }
 
         .research-section p, .research-section ul {
-            font-size: 0.95rem;
-            color: #d1d5db;
+            font-size: 1rem;
+            color: var(--text-muted);
             margin: 0;
-            padding-left: 1rem;
+            line-height: 1.6;
         }
 
         .research-section ul {
             list-style-type: square;
+            padding-left: 1.2rem;
         }
 
         .research-section ul li {
@@ -434,24 +418,93 @@
 
         .card-actions {
             padding: 1rem 2rem;
-            border-top: 1px solid var(--glass-border);
-            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
         /* =========================================================
-           CSS SCANNER ANIMATION (For PHORENSICS pipeline visual)
+           TALKS SECTION (YouTube Embed styling)
+           ========================================================= */
+        .talks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+            background: rgba(255, 0, 0, 0.8);
+            border-color: #ff0000;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* =========================================================
+           CSS SCANNER ANIMATION (For PHORENSICS visual)
            ========================================================= */
         .scanner-visual {
             position: relative;
             width: 100%;
-            height: 180px;
-            background: #050505;
+            height: 220px;
+            background: #000;
             overflow: hidden;
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
             margin-bottom: 1.5rem;
             font-family: 'Space Grotesk', monospace;
         }
@@ -460,8 +513,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.4;
-            filter: grayscale(100%) contrast(120%);
+            opacity: 0.5;
+            filter: grayscale(80%) contrast(120%);
         }
 
         .scan-line {
@@ -470,8 +523,8 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: var(--accent-secondary);
-            box-shadow: 0 0 10px var(--accent-secondary), 0 0 20px rgba(255, 20, 147, 0.4);
+            background: var(--accent-primary);
+            box-shadow: 0 0 15px var(--accent-primary), 0 0 30px rgba(56, 189, 248, 0.6);
             animation: scan 3s ease-in-out infinite;
             z-index: 10;
         }
@@ -486,26 +539,27 @@
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: 
-                linear-gradient(rgba(0,191,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,191,255,0.1) 1px, transparent 1px);
-            background-size: 15px 15px;
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
             z-index: 5;
         }
 
         .hud-text {
             position: absolute;
-            bottom: 10px;
-            left: 15px;
-            color: var(--accent-primary);
-            font-size: 0.7rem;
+            bottom: 15px;
+            left: 20px;
+            color: var(--text-main);
+            font-size: 0.8rem;
             z-index: 20;
             font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         /* Media Queries */
         @media(max-width: 768px) {
-            .hero-section { flex-direction: column; text-align: left; }
-            .header-title { font-size: 2.5rem; }
+            .hero-section { flex-direction: column; text-align: left; padding: 2rem; }
+            .header-title { font-size: 2.8rem; }
             nav { width: 95%; padding: 0.6rem; }
             nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
             .research-card-body { grid-template-columns: 1fr; }
@@ -514,35 +568,32 @@
 </head>
 <body>
 
-    <!-- LIVE CS ANIMATED BACKGROUND -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Navigation -->
     <nav>
         <ul>
             <li><a onclick="showSection('home')" id="nav-home" class="active">Bio & Vision</a></li>
+            <li><a onclick="showSection('research')" id="nav-research">Research</a></li>
             <li><a onclick="showSection('experience')" id="nav-experience">Experience</a></li>
-            <li><a onclick="showSection('research')" id="nav-research">Selected Research</a></li>
-            <li><a onclick="showSection('publications')" id="nav-publications">Publications</a></li>
+            <li><a onclick="showSection('talks')" id="nav-talks">Talks</a></li>
+            <li><a onclick="showSection('publications')" id="nav-publications">Papers</a></li>
             <li><a href="CV-ANURAN.pdf" target="_blank" class="cv-link"><i class="fas fa-file-pdf"></i> CV</a></li>
         </ul>
     </nav>
 
     <div class="container">
         
-        <!-- =========================================================
-             BIO & VISION SECTION
-             ========================================================= -->
         <section id="home" class="section active">
-            <div class="hero-section">
+            <div class="mac-panel hero-section">
                 <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'">
                 
                 <div class="hero-text">
-                    <div class="status-badge">Open to PhD opportunities for Fall 2027</div>
                     <h1 class="header-title">Anuran Bhattacharya</h1>
-                    <div class="identity-subtitle">Computer Vision · Trustworthy AI · Human-Centered AI · Multimodal Learning</div>
+                    <div class="identity-subtitle">Human-Centered AI · NLP · UX Design · Verifiable Systems</div>
                     
-                    <p>I am an M.Tech. graduate in Computer Science & Engineering from the University of Calcutta[cite: 1]. My research focuses on building trustworthy and human-centered AI systems for understanding, verifying, and interacting with multimodal information[cite: 1]. By bridging data-driven learning with insights from physics and computational priors, I develop principled AI tools that improve interpretability and reliability in high-stakes environments[cite: 1].</p>
+                    <p>I am an M.Tech. graduate in Computer Science & Engineering whose research sits at the intersection of <strong>Human-Computer Interaction (HCI)</strong> and <strong>Natural Language Processing (NLP)</strong>. My core objective is to build human-friendly AI systems that empower users rather than obscure information. </p>
+                    
+                    <p>By combining rigorous language reasoning with intuitive <strong>UX/UI front-end design</strong>, I develop transparent, verifiable tools—bridging the gap between complex multimodal models and the people who rely on them to read, write, and verify truth in high-stakes digital environments.</p>
 
                     <div class="action-row">
                         <a href="mailto:bhattacharyaanuran45@gmail.com" class="primary-btn"><i class="fas fa-envelope"></i> Email</a>
@@ -553,197 +604,117 @@
             </div>
 
             <h2 class="section-title">Research Vision</h2>
-            <div class="vision-box">
-                Moving forward into a PhD, I aim to investigate how we can design AI systems that are inherently verifiable and interact seamlessly with human reasoning. My future work will focus on the intersection of human-AI collaboration and multimodal forensics—creating interactive, physically grounded computational tools that empower users to interrogate, trust, and co-reason with the generative AI systems they interact with daily.
+            <div class="mac-panel vision-box">
+                In my future PhD research, I aim to investigate how we can design AI systems that are inherently verifiable and interact seamlessly with human reasoning. I focus on evaluating AI systems empirically with users—designing interactive front-ends and personalized workflows that empower humans to interrogate, trust, and co-reason alongside generative language models.
             </div>
 
             <h2 class="section-title">Research Skills</h2>
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Computer Vision[cite: 1]</h4>
+                <div class="mac-panel skill-category">
+                    <h4>HCI & Front-End UX</h4>
                     <div class="skill-list">
-                        <span class="skill-tag">Image Processing[cite: 1]</span>
-                        <span class="skill-tag">Pattern Recognition[cite: 1]</span>
-                        <span class="skill-tag">Sensor Pattern Noise (PRNU)[cite: 1]</span>
-                        <span class="skill-tag">Siamese CNNs[cite: 1]</span>
+                        <span class="skill-tag">UX/UI Design</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Human-AI Interaction</span>
+                        <span class="skill-tag">System Evaluation</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h4>NLP & Fact Verification[cite: 1]</h4>
+                <div class="mac-panel skill-category">
+                    <h4>NLP & LLM Reasoning</h4>
                     <div class="skill-list">
-                        <span class="skill-tag">Retrieval-Augmented Generation (RAG)[cite: 1]</span>
-                        <span class="skill-tag">Gemma 3[cite: 1]</span>
-                        <span class="skill-tag">SentenceTransformers[cite: 1]</span>
-                        <span class="skill-tag">Polysemy Resolution[cite: 1]</span>
+                        <span class="skill-tag">Retrieval-Augmented Generation</span>
+                        <span class="skill-tag">Gemma 3</span>
+                        <span class="skill-tag">SentenceTransformers</span>
+                        <span class="skill-tag">Polysemy Resolution</span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h4>Signal Processing[cite: 1]</h4>
+                <div class="mac-panel skill-category">
+                    <h4>Computer Vision & Physics</h4>
                     <div class="skill-list">
-                        <span class="skill-tag">Fast Fourier Transform (FFT)[cite: 1]</span>
-                        <span class="skill-tag">Error Level Analysis (ELA)[cite: 1]</span>
-                        <span class="skill-tag">Spectral Analysis[cite: 1]</span>
-                        <span class="skill-tag">Statistical Modeling[cite: 1]</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h4>Engineering & Tools[cite: 1]</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Python[cite: 1]</span>
-                        <span class="skill-tag">PyTorch[cite: 1]</span>
-                        <span class="skill-tag">Docker[cite: 1]</span>
-                        <span class="skill-tag">Apache Spark[cite: 1]</span>
-                        <span class="skill-tag">C++[cite: 1]</span>
-                        <span class="skill-tag">Streamlit[cite: 1]</span>
+                        <span class="skill-tag">Multimodal Latent Spaces</span>
+                        <span class="skill-tag">Frequency Domain (FFT)</span>
+                        <span class="skill-tag">Sensor Pattern Noise</span>
+                        <span class="skill-tag">Siamese CNNs</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- =========================================================
-             EXPERIENCE SECTION (Integrated Timeline Tabs)
-             ========================================================= -->
-        <section id="experience" class="section">
-            <h2 class="section-title">Research Experience</h2>
-            
-            <div class="tab-container">
-                <button class="tab-btn active" onclick="switchTab('tab-mtech')">M.Tech Research</button>
-                <button class="tab-btn" onclick="switchTab('tab-msc')">M.Sc Research</button>
-                <button class="tab-btn" onclick="switchTab('tab-bsc')">Undergraduate Research</button>
-            </div>
-
-            <!-- M.Tech Panel -->
-            <div class="tab-panel active" id="tab-mtech">
-                <div class="timeline-item">
-                    <div class="timeline-date">Aug 2025 – Feb 2026[cite: 1]</div>
-                    <h3>Research Intern (Media Forensics)[cite: 1]</h3>
-                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Sanjit Kumar Setua[cite: 1]</p>
-                    <ul>
-                        <li>Worked on a research project in Media Forensics, focusing on the analysis and verification of digital media to identify potential manipulation, tampering, and authenticity-related issues[cite: 1].</li>
-                        <li>Contributed to research involving image/video analysis, computer vision techniques, and machine learning-based approaches for detecting manipulated media[cite: 1].</li>
-                        <li>Designed a fault-tolerant execution pipeline that dynamically switches between GPU and CPU computation, ensuring reliable execution under memory constraints[cite: 1].</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- M.Sc Panel -->
-            <div class="tab-panel" id="tab-msc">
-                <div class="timeline-item">
-                    <div class="timeline-date">Sep 2023 – Jul 2024[cite: 1]</div>
-                    <h3>Research Intern (Academic)[cite: 1]</h3>
-                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Rajat Kumar Pal[cite: 1]</p>
-                    <ul>
-                        <li>Developed a Bengali NLP project for emotion detection with polysemy resolution, addressing the challenge of identifying the intended meaning and emotional context of words with multiple senses in a resource-scarce Bengali language environment[cite: 1].</li>
-                        <li>The project involved dataset creation, contextual feature selection, TF-IDF feature extraction, and development of the BEN-RS-ANN (Resource-Scarce Artificial Neural Network) model[cite: 1].</li>
-                        <li>Evaluated using 10-fold cross-validation, the proposed approach achieved 90.08% accuracy, outperforming the other evaluated classifiers[cite: 1].</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Undergrad Panel -->
-            <div class="tab-panel" id="tab-bsc">
-                <div class="timeline-item">
-                    <div class="timeline-date">Sep 2021 – Jan 2022[cite: 1]</div>
-                    <h3>Research Collaborator[cite: 1]</h3>
-                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">The Bhawanipur Education Society College & Indian Statistical Institute (ISI)[cite: 1]</p>
-                    <ul>
-                        <li>Collaborated on interdisciplinary research on a machine-learning-based user-independent recommendation system for web series[cite: 1].</li>
-                        <li>Developed a recommendation approach capable of generating personalized web-series recommendations using user-defined and localized parameters without requiring extensive user-history data[cite: 1].</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">May 2020 – Sep 2020[cite: 1]</div>
-                    <h3>Undergraduate Research Intern[cite: 1]</h3>
-                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">The Bhawanipur Education Society College[cite: 1]</p>
-                    <ul>
-                        <li>Conducted research and development in Machine Learning, Computer Vision, and COVID-19 data analytics under faculty mentorship[cite: 1].</li>
-                        <li>Worked on a polynomial regression-based model for forecasting gender-wise COVID-19 infection trends using population-density data, and statistical analysis to quantify the effectiveness of India's lockdown[cite: 1].</li>
-                        <li>Developed a computer-vision-based face-mask detection project aimed at identifying mask compliance during the pandemic[cite: 1].</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================================
-             SELECTED RESEARCH SECTION (Structured Academic Format)
-             ========================================================= -->
         <section id="research" class="section">
             <h2 class="section-title">Selected Research</h2>
             <div class="research-grid">
                 
-                <!-- RESEARCH 1: FACT VERIFICATION (Brought to top for NLP/Human-AI focus) -->
-                <div class="research-card">
+                <div class="mac-panel research-card">
                     <div class="research-card-header">
-                        <h3>AI-Powered Fact Verification System[cite: 1]</h3>
-                        <div class="research-question">RQ: How can adaptive retrieval strategies reduce inference costs while maintaining high factual accuracy in language reasoning models?</div>
+                        <h3>AI-Powered Fact Verification System</h3>
+                        <div class="research-question">RQ: How can we design adaptive, retrieval-augmented NLP systems that support human fact-checkers without causing cognitive overload?</div>
                     </div>
                     <div class="research-card-body">
                         <div class="research-section">
-                            <h5>Problem</h5>
-                            <p>Static Retrieval-Augmented Generation (RAG) pipelines often waste computational resources on redundant document retrieval during evidence-based claim verification, limiting the scalability of human-centered fact-checking tools.</p>
+                            <h5>The HCI & NLP Intersection</h5>
+                            <p>Static RAG pipelines often overwhelm users with redundant documents or obscure their reasoning. My research addresses the critical human-AI interaction bottleneck in misinformation moderation by optimizing how language models retrieve and present evidence to human readers.</p>
                         </div>
                         <div class="research-section">
-                            <h5>Method</h5>
-                            <p>Developed a retrieval-augmented fact verification framework combining Gemma 3 LLM reasoning with semantic document retrieval (SentenceTransformers, FAISS)[cite: 1]. Proposed an adaptive convergence strategy that mathematically terminates iterative retrieval once semantic similarity stabilizes[cite: 1].</p>
+                            <h5>Method & UX Design</h5>
+                            <p>I developed a framework combining Gemma 3 LLM reasoning with an adaptive semantic retrieval algorithm. Crucially, I designed the system's workflow to prioritize human readability—mathematically terminating iterative retrieval once semantic similarity stabilizes to present users with concise, verifiable claim-evidence pairs.</p>
                         </div>
                         <div class="research-section">
                             <h5>Quantitative Results</h5>
                             <ul>
-                                <li>Improved the FEVER benchmark by 8% Precision and 10% F1-score through optimized cross-document evidence aggregation[cite: 1].</li>
-                                <li>Successfully reduced unnecessary inference steps while preserving prediction quality[cite: 1].</li>
+                                <li>Improved the FEVER benchmark by 8% Precision and 10% F1-score through optimized cross-document evidence aggregation.</li>
+                                <li>Successfully reduced unnecessary inference steps, speeding up the verification workflow for end-users.</li>
                             </ul>
-                        </div>
-                        <div class="research-section">
-                            <h5>My Contribution</h5>
-                            <p>Solely designed and implemented the adaptive convergence algorithm and semantic similarity scoring pipeline.</p>
-                        </div>
-                        <div class="research-section">
-                            <h5>Limitations & Future Work</h5>
-                            <p>Currently constrained to textual evidence. Future iterations will investigate multimodal claim verification (e.g., verifying text claims against retrieved images).</p>
                         </div>
                     </div>
                     <div class="card-actions">
-                        <a href="https://github.com/anuran44" target="_blank" class="primary-btn"><i class="fab fa-github"></i> View Code</a>
+                        <a href="https://github.com/anuran44" target="_blank" class="primary-btn"><i class="fab fa-github"></i> View Code & Architecture</a>
                     </div>
                 </div>
 
-                <!-- RESEARCH 2: PHORENSICS -->
-                <div class="research-card">
+                <div class="mac-panel research-card">
                     <div class="research-card-header">
-                        <h3>PHORENSICS: Physics-Based Deepfake Detection[cite: 1]</h3>
-                        <div class="research-question">RQ: Can we mathematically isolate generative AI synthesis artifacts using physics-based signal processing priors rather than purely semantic models?</div>
+                        <h3>TxtVis: Visualizing Multimodal Latent Spaces</h3>
+                        <div class="research-question">RQ: How do we build visual, interactive front-ends that help non-expert users intuitively interpret complex multimodal embeddings?</div>
                     </div>
                     <div class="research-card-body">
-                        <!-- Abstract Visual representation of the pipeline -->
+                        <div class="research-section">
+                            <h5>Problem & Motivation</h5>
+                            <p>The optimization dynamics of multimodal representations (text and image) are mathematically dense. Without human-friendly visualization tools, evaluating model bias and geometric separation remains a black box for researchers and users alike.</p>
+                        </div>
+                        <div class="research-section">
+                            <h5>Method & Front-End Engineering</h5>
+                            <p>I built a PyTorch backend utilizing Skip-Gram embeddings and Siamese CNNs, and explicitly coupled it with a highly interactive <strong>Streamlit UX front-end</strong>. This UI allows users to dynamically monitor PCA projections and visually track embedding evolution in real-time during training.</p>
+                        </div>
+                        <div class="research-section">
+                            <h5>My Contribution</h5>
+                            <p>Designed the end-to-end user experience, prioritizing cognitive clarity and human-centered interpretability for complex metric learning tasks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mac-panel research-card">
+                    <div class="research-card-header">
+                        <h3>PHORENSICS: Physics-Based Deepfake Detection</h3>
+                        <div class="research-question">RQ: Can we protect users from synthetic media through transparent, physics-grounded visual forensics instead of opaque semantic classifiers?</div>
+                    </div>
+                    <div class="research-card-body">
                         <div class="scanner-visual">
                             <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80" class="base-target" alt="Detection Target">
                             <div class="grid-overlay"></div>
                             <div class="scan-line"></div>
                             <div class="hud-text">
-                                <div>[PIPELINE] FFT -> ELA -> PRNU ANALYSIS</div>
-                                <div>[KERNEL] EXTRACTING SENSOR PATTERN NOISE</div>
+                                <div>> PROTECTING HUMAN USERS: ANALYZING SENSOR NOISE</div>
+                                <div style="color: var(--accent-secondary);">> [!] SYNTHETIC MEDIA DETECTED</div>
                             </div>
                         </div>
 
                         <div class="research-section">
                             <h5>Problem</h5>
-                            <p>Existing deepfake detectors overfit to semantic biases in training data and lack interpretability, making them untrustworthy for high-stakes forensic analysis.</p>
+                            <p>Standard deepfake detectors act as black boxes, providing human moderators with a "fake/real" label but no interpretable rationale, severely limiting trust in the AI system.</p>
                         </div>
                         <div class="research-section">
                             <h5>Method</h5>
-                            <p>Developed an open-source Python framework integrating frequency-domain analysis via Fast Fourier Transforms (FFT), Error Level Analysis (ELA), and sensor pattern noise (PRNU) to identify generative synthesis artifacts[cite: 1].</p>
-                        </div>
-                        <div class="research-section">
-                            <h5>Results</h5>
-                            <ul>
-                                <li>Achieved a perfect 10/10 grade as my M.Tech Dissertation[cite: 1].</li>
-                                <li>Demonstrated high interpretability by surfacing mathematical anomalies rather than relying on black-box neural classifications.</li>
-                            </ul>
-                        </div>
-                        <div class="research-section">
-                            <h5>My Contribution</h5>
-                            <p>Sole architect. Built a distributed processing framework using Docker and PySpark for scalable analysis, and engineered a fault-tolerant pipeline that dynamically switches between GPU and CPU computation[cite: 1]. Published to PyPI.</p>
+                            <p>Developed an open-source Python framework that surfaces mathematical anomalies (FFT, Error Level Analysis, PRNU) directly to the user, providing a verifiable, physics-based "why" behind the detection of generative AI artifacts.</p>
                         </div>
                     </div>
                     <div class="card-actions">
@@ -752,56 +723,95 @@
                     </div>
                 </div>
 
-                <!-- RESEARCH 3: TxtVis -->
-                <div class="research-card">
-                    <div class="research-card-header">
-                        <h3>TxtVis: Multimodal Representation Geometry[cite: 1]</h3>
-                        <div class="research-question">RQ: How can interactive visualization tools assist researchers in understanding the latent geometric evolution of multimodal embeddings during training?</div>
-                    </div>
-                    <div class="research-card-body">
-                        <div class="research-section">
-                            <h5>Problem</h5>
-                            <p>The optimization dynamics and geometric separation of latent representations in multimodal spaces are difficult to track interactively, hindering model interpretability.</p>
-                        </div>
-                        <div class="research-section">
-                            <h5>Method</h5>
-                            <p>Implemented Skip-Gram embeddings and a custom Siamese Convolutional Neural Network trained with Contrastive Loss[cite: 1]. Engineered a from-scratch PyTorch backend connected to an interactive Streamlit UI[cite: 1].</p>
-                        </div>
-                        <div class="research-section">
-                            <h5>Contribution & Results</h5>
-                            <p>Designed the UI/UX to prioritize human-centered interpretability, allowing researchers to monitor PCA projections and embedding evolution dynamically during active optimization[cite: 1].</p>
-                        </div>
-                    </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2 class="section-title">Research Experience</h2>
+            
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="switchTab('tab-mtech')">M.Tech Research</button>
+                <button class="tab-btn" onclick="switchTab('tab-msc')">M.Sc Research</button>
+                <button class="tab-btn" onclick="switchTab('tab-bsc')">Undergrad Research</button>
+            </div>
+
+            <div class="mac-panel tab-panel active" id="tab-mtech">
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2025 – Feb 2026</div>
+                    <h3>Research Intern (Media Forensics)</h3>
+                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Sanjit Kumar Setua</p>
+                    <ul>
+                        <li>Worked on verifiable media forensics to protect users from manipulated digital media and synthetic content.</li>
+                        <li>Designed a fault-tolerant execution pipeline dynamically switching between GPU and CPU to ensure system accessibility across varying hardware capabilities.</li>
+                    </ul>
                 </div>
+            </div>
+
+            <div class="mac-panel tab-panel" id="tab-msc">
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2023 – Jul 2024</div>
+                    <h3>Research Intern (Academic)</h3>
+                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Rajat Kumar Pal</p>
+                    <ul>
+                        <li>Developed a Bengali NLP project for emotion detection, focusing on polysemy resolution in resource-scarce environments to improve human-language understanding.</li>
+                        <li>Achieved 90.08% accuracy under 10-fold cross-validation using a custom Resource-Scarce Artificial Neural Network (RS-ANN) model.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mac-panel tab-panel" id="tab-bsc">
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2021 – Jan 2022</div>
+                    <h3>Research Collaborator</h3>
+                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">Indian Statistical Institute (ISI) & The Bhawanipur Education Society College</p>
+                    <ul>
+                        <li>Collaborated on a machine-learning recommendation system built to respect user localization parameters without aggressively mining user-history data.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="talks" class="section">
+            <h2 class="section-title">Invited Talks & Webinars</h2>
+            <div class="talks-grid">
+                
+                <a href="https://youtu.be/dhIYjBsI0-g?si=LhLzNTrRnIeEQ-pv&t=569" target="_blank" class="mac-panel video-card">
+                    <div class="video-thumbnail-container">
+                        <img src="image_8f8a61.jpg" alt="Computer Vision Webinar Thumbnail" class="video-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80'">
+                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Computer Vision & AI Applications</div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0;">Guest Speaker · The Bhawanipur Education Society College</p>
+                        <p style="color: var(--accent-secondary); font-size: 0.85rem; margin-top: 5px; font-weight: 600;">Watch on YouTube <i class="fas fa-external-link-alt" style="font-size: 0.75rem;"></i></p>
+                    </div>
+                </a>
 
             </div>
         </section>
 
-        <!-- =========================================================
-             PUBLICATIONS / MANUSCRIPTS SECTION
-             ========================================================= -->
         <section id="publications" class="section">
             <h2 class="section-title">Peer-Reviewed Publications</h2>
             <div class="research-grid">
                 
-                <div class="research-card">
+                <div class="mac-panel research-card">
                     <div class="research-card-body">
                         <div class="research-section">
-                            <h3 style="margin-bottom: 5px; color: var(--accent-primary);">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text[cite: 1]</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (Proceedings of ACSS 2024). Springer LNNS. [Scopus Indexed][cite: 1]</p>
-                            <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.[cite: 1]</p>
-                            <p style="margin-top: 10px;"><strong>Contribution:</strong> Co-authored the proposal of a Resource-Scarce Artificial Neural Network (RS-ANN) architecture[cite: 1]. Contributed directly to the mathematical resolution of polysemous word ambiguity, achieving 90.08% accuracy under 10-fold cross-validation[cite: 1].</p>
+                            <h3 style="margin-bottom: 5px; color: var(--text-main);">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (Proceedings of ACSS 2024). Springer LNNS. [Scopus Indexed]</p>
+                            <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
+                            <p style="margin-top: 10px;"><strong>Contribution:</strong> Co-authored the proposal of an RS-ANN architecture contributing directly to mathematical polysemy resolution.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="research-card">
+                <div class="mac-panel research-card">
                     <div class="research-card-body">
                         <div class="research-section">
-                            <h3 style="margin-bottom: 5px; color: var(--accent-primary);">A User Independent Recommendation System for Web Series[cite: 1]</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (Proceedings of IEMIS 2022). Springer LNNS. [Scopus Indexed][cite: 1]</p>
-                            <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.[cite: 1]</p>
-                            <p style="margin-top: 10px;"><strong>Contribution:</strong> Co-developed a personalized recommendation engine that localizes similarity clustering strictly within user-defined parameters, effectively mitigating the influence of external dataset bias[cite: 1].</p>
+                            <h3 style="margin-bottom: 5px; color: var(--text-main);">A User Independent Recommendation System for Web Series</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (IEMIS 2022). Springer LNNS. [Scopus Indexed]</p>
+                            <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
+                            <p style="margin-top: 10px;"><strong>Contribution:</strong> Co-developed a personalized recommendation engine mitigating external dataset bias.</p>
                         </div>
                     </div>
                 </div>
@@ -811,10 +821,10 @@
 
     </div>
 
-    <!-- JavaScript -->
     <script>
         /* =========================================================
            BACKGROUND CANVAS NEURAL NETWORK ANIMATION
+           Tuned for a softer, more vibrant aesthetic
            ========================================================= */
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -835,9 +845,9 @@
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 1.2 + 0.5;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 1.5 + 0.5;
             }
             
             update() {
@@ -850,12 +860,13 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 191, 255, 0.5)';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
                 ctx.fill();
             }
         }
 
-        for (let i = 0; i < 70; i++) {
+        // Reduced particle count for cleaner UX
+        for (let i = 0; i < 50; i++) {
             particles.push(new Particle());
         }
 
@@ -871,10 +882,11 @@
                     let dy = particles[i].y - particles[j].y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 150) {
+                    if (distance < 160) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 20, 147, ${(1 - distance / 150) * 0.5})`;
-                        ctx.lineWidth = 0.5;
+                        // Vibrant glowing lines
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - distance / 160) * 0.4})`;
+                        ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
