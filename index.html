@@ -87,20 +87,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        nav ul li a.cv-link {
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-            opacity: 1;
-            -webkit-text-fill-color: initial;
-            background: transparent;
-        }
-
-        nav ul li a.cv-link:hover {
-            background: var(--text-main);
-            color: var(--bg-base);
-        }
-
         /* Main Container */
         .container {
             max-width: 1200px;
@@ -168,11 +154,91 @@
             margin-bottom: 1.5rem;
         }
 
+        /* Action Row: CV & Webinar Card */
+        .action-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 191, 255, 0.05);
+            border: 1px solid rgba(0, 191, 255, 0.4);
+            color: #00BFFF;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .cv-btn:hover {
+            background: rgba(0, 191, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .talk-card {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            gap: 1rem;
+            min-width: 250px;
+        }
+
+        .talk-card:hover {
+            border-color: rgba(255, 20, 147, 0.5);
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.2);
+            transform: translateY(-2px);
+            background: rgba(255, 20, 147, 0.05);
+        }
+
+        .talk-thumb {
+            width: 100px;
+            height: 56px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid var(--glass-border);
+        }
+
+        .talk-info {
+            color: var(--text-main);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .talk-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .talk-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
         /* Social Icons */
         .social-icons {
             display: flex;
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         .social-icons a {
@@ -221,6 +287,98 @@
             padding-bottom: 1rem;
         }
 
+        /* =========================================================
+           INTERACTIVE EXPERIENCE TABS
+           ========================================================= */
+        .tab-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: rgba(0, 191, 255, 0.15);
+            border-color: #00BFFF;
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+            color: #00BFFF;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeUp 0.4s ease-out;
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .timeline-item {
+            border-left: 2px solid rgba(255, 20, 147, 0.5);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: #FF1493;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #FF1493;
+        }
+
+        .timeline-date {
+            color: #00BFFF;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .timeline-item ul {
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+        }
+        
+        .timeline-item ul li {
+            margin-bottom: 0.5rem;
+        }
+
         /* Projects Grid - Lab Style */
         .grid {
             display: grid;
@@ -243,7 +401,6 @@
             box-shadow: var(--glow);
         }
 
-        /* Project Live Image Styling */
         .card-img {
             width: 100%;
             height: 220px;
@@ -297,9 +454,7 @@
         }
         a.custom-link:hover { text-decoration: underline; }
 
-        /* =========================================================
-           CSS SCANNER ANIMATION (FOR PHORENSICS)
-           ========================================================= */
+        /* CSS SCANNER ANIMATION */
         .scanner-container {
             position: relative;
             width: 100%;
@@ -374,9 +529,7 @@
             50% { opacity: 0.4; }
         }
 
-        /* =========================================================
-           AI TERMINAL / CHATBOT WIDGET
-           ========================================================= */
+        /* AI TERMINAL / CHATBOT WIDGET */
         .chat-widget {
             position: fixed;
             bottom: 30px;
@@ -538,6 +691,7 @@
             .header-title { font-size: 2.8rem; }
             .social-icons { justify-content: center; }
             .research-interests { justify-content: center; }
+            .action-row { justify-content: center; }
             nav { width: 90%; padding: 0.8rem 1rem; }
             nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
             .chat-window { width: 300px; height: 400px; }
@@ -550,9 +704,9 @@
     <nav>
         <ul>
             <li><a onclick="showSection('home')" id="nav-home" class="active">Bio</a></li>
+            <li><a onclick="showSection('experience')" id="nav-experience">Experience</a></li>
             <li><a onclick="showSection('projects')" id="nav-projects">Research</a></li>
             <li><a onclick="showSection('publications')" id="nav-publications">Papers</a></li>
-            <li><a href="CV-anuran.pdf" target="_blank" class="cv-link">View CV</a></li>
         </ul>
     </nav>
 
@@ -580,12 +734,89 @@
                         <span><i class="fas fa-shield-alt"></i> Verifiable ML</span>
                     </div>
 
+                    <!-- CV Button & Webinar Thumbnail Link -->
+                    <div class="action-row">
+                        <a href="CV-ANURAN.pdf" target="_blank" class="cv-btn">
+                            <i class="fas fa-file-pdf"></i> View Full CV
+                        </a>
+                        <a href="https://youtu.be/dhIYjBsI0-g?si=LhLzNTrRnIeEQ-pv&t=569" target="_blank" class="talk-card">
+                            <img src="Screenshot 2026-09-25 020750.png" alt="Computer Vision Webinar Thumbnail" class="talk-thumb">
+                            <div class="talk-info">
+                                <div class="talk-title">Computer Vision Webinar[cite: 2]</div>
+                                <div class="talk-subtitle"><i class="fab fa-youtube" style="color: #FF0000;"></i> Guest Talk (YouTube)</div>
+                            </div>
+                        </a>
+                    </div>
+
                     <div class="social-icons">
                         <a href="mailto:bhattacharyaanuran45@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
                         <a href="https://github.com/anuran44" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/anuran-bhattacharya-6641b7275" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="https://orcid.org/0009-0000-6533-6574" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Research Experience</h2>
+            
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="switchTab('tab-mtech')">M.Tech Research</button>
+                <button class="tab-btn" onclick="switchTab('tab-msc')">M.Sc Research</button>
+                <button class="tab-btn" onclick="switchTab('tab-bsc')">Undergraduate Research</button>
+            </div>
+
+            <!-- M.Tech Panel -->
+            <div class="tab-panel active" id="tab-mtech">
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2025 – Feb 2026</div>
+                    <h3>Research Intern (Media Forensics)</h3>
+                    <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Sanjit Kumar Setua</p>
+                    <ul>
+                        <li>Worked on a research project in Media Forensics, focusing on the analysis and verification of digital media to identify potential manipulation, tampering, and authenticity-related issues.[cite: 1]</li>
+                        <li>Contributed to research involving image/video analysis, computer vision techniques, and machine learning-based approaches for detecting manipulated media.[cite: 1]</li>
+                        <li>Designed a fault-tolerant execution pipeline that dynamically switches between GPU and CPU computation, ensuring reliable execution under memory constraints.[cite: 1]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- M.Sc Panel -->
+            <div class="tab-panel" id="tab-msc">
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2023 – Jul 2024</div>
+                    <h3>Research Intern (Academic)</h3>
+                    <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Rajat Kumar Pal</p>
+                    <ul>
+                        <li>Developed a Bengali NLP project for emotion detection with polysemy resolution, addressing the challenge of identifying the intended meaning and emotional context of words with multiple senses in a resource-scarce Bengali language environment.[cite: 1]</li>
+                        <li>The project involved dataset creation, contextual feature selection, TF-IDF feature extraction, and development of the BEN-RS-ANN (Resource-Scarce Artificial Neural Network) model.[cite: 1]</li>
+                        <li>Evaluated using 10-fold cross-validation, the proposed approach achieved 90.08% accuracy, outperforming the other evaluated classifiers.[cite: 1]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Undergrad Panel -->
+            <div class="tab-panel" id="tab-bsc">
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2021 – Jan 2022</div>
+                    <h3>Research Collaborator</h3>
+                    <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">The Bhawanipur Education Society College & Indian Statistical Institute (ISI)</p>
+                    <ul>
+                        <li>Collaborated on interdisciplinary research on a machine-learning-based user-independent recommendation system for web series.[cite: 1]</li>
+                        <li>Developed a recommendation approach capable of generating personalized web-series recommendations using user-defined and localized parameters without requiring extensive user-history data.[cite: 1]</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2020 – Sep 2020</div>
+                    <h3>Undergraduate Research Intern</h3>
+                    <p style="color: #00BFFF; margin-top: -5px; margin-bottom: 15px;">The Bhawanipur Education Society College</p>
+                    <ul>
+                        <li>Conducted research and development in Machine Learning, Computer Vision, and COVID-19 data analytics under faculty mentorship.[cite: 1]</li>
+                        <li>Worked on a polynomial regression-based model for forecasting gender-wise COVID-19 infection trends using population-density data, and statistical analysis to quantify the effectiveness of India's lockdown.[cite: 1]</li>
+                        <li>Developed a computer-vision-based face-mask detection project aimed at identifying mask compliance during the pandemic.[cite: 1]</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -599,7 +830,6 @@
                 <div class="card">
                     <!-- The Animated Deepfake Scanner HTML -->
                     <div class="scanner-container">
-                        <!-- Target Image for the scanner -->
                         <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80" class="base-target" alt="Detection Target">
                         <div class="grid-overlay"></div>
                         <div class="scan-line"></div>
@@ -609,7 +839,6 @@
                             <div class="hud-alert">[!] SYNTHETIC MEDIA DETECTED: 98.7%</div>
                         </div>
                     </div>
-                    <!-- End Animated Scanner -->
                     
                     <div class="card-content">
                         <h3>PHORENSICS Engine</h3>
@@ -618,13 +847,12 @@
                             <span class="tag">Physics-Informed AI</span>
                             <span class="tag">Synthetic Media</span>
                         </div>
-                        <p>A physically-grounded computational framework for Generative AI security. Integrates Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published to PyPI with pure Python routines for deterministic execution.</p>
+                        <p>A physically-grounded computational framework for Generative AI security. Integrates Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published to PyPI with pure Python routines for deterministic execution.[cite: 1]</p>
                     </div>
                 </div>
 
                 <!-- PROJECT 2: Axiom Engine -->
                 <div class="card">
-                    <!-- Standard Image Placeholder for Axiom Engine -->
                     <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="Axiom Engine Logic" class="card-img">
                     <div class="card-content">
                         <h3>Axiom: Neuro-Symbolic Mini-LLM</h3>
@@ -642,16 +870,15 @@
 
                 <!-- PROJECT 3: Fact Verification -->
                 <div class="card">
-                    <!-- Updated with a Newspaper / Magnifying Glass styled image -->
                     <img src="https://images.unsplash.com/photo-1557053964-937650b63311?auto=format&fit=crop&w=800&q=80" alt="Fact Verification on Newspaper" class="card-img">
                     <div class="card-content">
                         <h3>Fact Verification Framework</h3>
                         <div class="tag-group">
                             <span class="tag">Social AI</span>
-                            <span class="tag">Gemma3 LLM</span>
+                            <span class="tag">Gemma 3 LLM</span>
                             <span class="tag">RAG</span>
                         </div>
-                        <p>Developed a hybrid verification framework combining local Gemma3 LLM reasoning, semantic tracking, and iterative self-improvement loops to validate factual claims against dynamically retrieved documents, addressing the core challenges of misinformation in Social AI.</p>
+                        <p>Developed a retrieval-augmented fact verification framework combining LLM reasoning with semantic document retrieval for evidence-based claim verification. Improved the FEVER benchmark by 8% Precision and 10% F1-score through cross-document evidence aggregation.[cite: 1]</p>
                     </div>
                 </div>
 
@@ -665,7 +892,7 @@
                             <span class="tag">Siamese Nets</span>
                             <span class="tag">UX Design</span>
                         </div>
-                        <p>Engineered a dual-path PyTorch research pipeline for extracting and visualizing high-dimensional embeddings. Designed a custom Convolutional Siamese Network utilizing Contrastive Loss to analyze representation geometry, prioritizing intuitive visual feedback for UX.</p>
+                        <p>Developed a from-scratch PyTorch framework for learning and visualizing latent representations across NLP and Computer Vision. Built an interactive visualization interface for monitoring PCA projections, emphasizing intuitive visual feedback for UX.[cite: 1]</p>
                     </div>
                 </div>
 
@@ -679,16 +906,16 @@
                 <div class="card">
                     <div class="card-content">
                         <h3>BEN-RS-ANN: Revealing Emotion from Bengali Text</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (ACSS 2024). Springer LNNS.</p>
-                        <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (ACSS 2024). Springer LNNS. [Scopus Indexed][cite: 1]</p>
+                        <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.[cite: 1]</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-content">
                         <h3>User Independent Recommendation System for Web Series</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (IEMIS 2022). Springer LNNS.</p>
-                        <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (IEMIS 2022). Springer LNNS. [Scopus Indexed][cite: 1]</p>
+                        <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.[cite: 1]</p>
                     </div>
                 </div>
             </div>
@@ -708,7 +935,7 @@
                 
                 <div class="quick-replies" id="quick-replies-box">
                     <button onclick="sendQuickReply('Explain PHORENSICS')">/explain_phorensics</button>
-                    <button onclick="sendQuickReply('Tech Stack')">/tech_stack</button>
+                    <button onclick="sendQuickReply('Experience')">/experience</button>
                     <button onclick="sendQuickReply('Contact')">/contact_info</button>
                 </div>
             </div>
@@ -737,6 +964,20 @@
             document.getElementById(sectionId).classList.add('active');
             document.getElementById('nav-' + sectionId).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Tabs Logic for Experience Section
+        function switchTab(tabId) {
+            // Remove active class from all buttons and panels
+            const buttons = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.tab-panel');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            panels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active class to clicked button and target panel
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
         }
 
         // Chatbot / Interactive Terminal Logic
@@ -786,6 +1027,9 @@
             if (text.includes('phorensics') || text.includes('pde')) {
                 return "PHORENSICS is Anuran's M.Tech dissertation. It maps Partial Differential Equations (PDEs) and spectral anomalies to detect Generative AI synthetics deterministically. No black-box hallucination, pure math.";
             } 
+            else if (text.includes('experience') || text.includes('intern')) {
+                return "Anuran has served as a Research Intern at Calcutta University focusing on Media Forensics (M.Tech) and NLP polysemy resolution (M.Sc), and was a Research Collaborator with the Indian Statistical Institute during his B.Sc.";
+            }
             else if (text.includes('stack') || text.includes('tech') || text.includes('skills')) {
                 return "Core architecture: PyTorch, TensorFlow, OpenCV, C++, Python. Specialty: Building neuro-symbolic logic gates, integrating HCI with Social AI, and designing verifiable UX structures.";
             } 
