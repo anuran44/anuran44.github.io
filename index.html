@@ -3,404 +3,556 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuran Bhattacharya - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for the Icons -->
+    <title>Anuran Bhattacharya | Research Portfolio</title>
+    <!-- Avant-garde typography suitable for MIT/Research -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* CSS Styling - Colorful, Attractive, and Advanced */
+        /* =========================================================
+           MIT MEDIA LAB INSPIRED DESIGN SYSTEM 
+           ========================================================= */
         :root {
-            --primary-color: #2b5876;
-            --secondary-color: #4e4376;
-            --accent-color: #ff6b6b;
-            --text-dark: #333;
-            --text-light: #f4f4f9;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --chat-bg: #ffffff;
-            --chat-user: #e3f2fd;
-            --chat-bot: #f1f3f4;
+            --bg-base: #050505;
+            --bg-surface: rgba(20, 20, 22, 0.7);
+            --text-main: #f8f9fa;
+            --text-muted: #a0a0a5;
+            --mit-red: #A31F34;
+            --accent-gradient: linear-gradient(135deg, #FF1493, #00BFFF);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow: 0 0 20px rgba(0, 191, 255, 0.2);
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
+            background-color: var(--bg-base);
+            color: var(--text-main);
             line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 20, 147, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 191, 255, 0.05), transparent 25%);
+            background-attachment: fixed;
+            overflow-x: hidden;
         }
 
-        /* Navigation Bar */
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            margin-top: 0;
+        }
+
+        /* Glassmorphism Navigation */
         nav {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            align-items: center;
             gap: 2rem;
             margin: 0;
             padding: 0;
+            align-items: center;
         }
 
         nav ul li a {
-            color: var(--text-light);
+            color: var(--text-main);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
         }
 
         nav ul li a:hover, nav ul li a.active {
-            background-color: var(--accent-color);
-            color: white;
+            opacity: 1;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav ul li a.cv-link {
-            background-color: transparent;
-            border: 2px solid var(--accent-color);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            opacity: 1;
+            -webkit-text-fill-color: initial;
+            background: transparent;
         }
 
         nav ul li a.cv-link:hover {
-            background-color: var(--accent-color);
-            color: white;
+            background: var(--text-main);
+            color: var(--bg-base);
         }
 
         /* Main Container */
         .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 2rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 8rem auto 4rem auto;
+            padding: 0 2rem;
         }
 
-        /* Profile Image Styling */
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            margin: 0 auto 1.5rem auto;
-            display: block;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
+        /* Hero / Bio Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            animation: fadeUp 0.8s ease-out;
         }
 
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Sections */
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h1, h2, h3 {
-            color: var(--primary-color);
-            margin-top: 0;
+        .profile-img-wrapper {
+            position: relative;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(120%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background: var(--accent-gradient);
+            z-index: 1;
+            opacity: 0.6;
         }
 
         .header-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
         }
 
         /* Social Icons */
         .social-icons {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-icons a {
-            color: var(--primary-color);
-            font-size: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        /* Cards for Projects & Pubs */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
 
+        .social-icons a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .social-icons a:hover {
+            opacity: 1;
+            transform: translateY(-3px) scale(1.1);
+            color: #00BFFF;
+        }
+
+        /* Research Themes Tags */
+        .research-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 2rem 0;
+        }
+
+        .research-interests span {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Sections Toggle */
+        .section {
+            display: none;
+            animation: fadeUp 0.6s ease-out;
+        }
+        .section.active { display: block; }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+        }
+
+        /* Projects Grid - Lab Style */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
         .card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--accent-color);
-            transition: transform 0.3s ease;
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            border-color: rgba(0, 191, 255, 0.5);
+            box-shadow: var(--glow);
+        }
+
+        /* Project Live Image Styling */
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--glass-border);
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            position: relative;
+            background: var(--bg-surface); 
+            z-index: 2;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tag-group {
+            margin-bottom: 1rem;
         }
 
         .tag {
             display: inline-block;
-            background: var(--secondary-color);
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            margin-bottom: 10px;
+            background: rgba(255, 20, 147, 0.1);
+            color: #FF1493;
+            padding: 0.2rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 6px;
+            margin-bottom: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 20, 147, 0.2);
         }
 
-        .research-interests {
-            background: #f4f7f9;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .research-interests ul {
-            list-style-type: none;
-            padding-left: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .research-interests ul li {
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            color: var(--primary-color);
-        }
-
-        /* Links and Buttons */
         a.custom-link {
-            color: var(--accent-color);
+            color: #00BFFF;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        a.custom-link:hover { text-decoration: underline; }
+
+        /* =========================================================
+           CSS SCANNER ANIMATION (FOR PHORENSICS)
+           ========================================================= */
+        .scanner-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #050505;
+            overflow: hidden;
+            border-bottom: 1px solid var(--glass-border);
+            font-family: 'Space Grotesk', monospace;
         }
         
-        a.custom-link:hover {
-            text-decoration: underline;
+        .base-target {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            filter: grayscale(100%) contrast(120%);
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background 0.3s ease;
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 20, 147, 0.9);
+            box-shadow: 0 0 15px rgba(255, 20, 147, 1), 0 0 30px rgba(255, 20, 147, 0.5);
+            animation: scan 3s ease-in-out infinite;
+            z-index: 10;
         }
 
-        .btn:hover {
-            background: #e55a5a;
+        @keyframes scan {
+            0% { top: -10%; }
+            50% { top: 105%; }
+            100% { top: -10%; }
         }
 
-        /* ================= CHATBOT STYLES ================= */
+        .grid-overlay {
+            position: absolute;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0,191,255,0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,191,255,0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 5;
+        }
+
+        .hud-text {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: #00BFFF;
+            font-size: 0.75rem;
+            z-index: 20;
+            text-shadow: 0 0 5px rgba(0,191,255,0.5);
+            font-weight: 600;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        .hud-alert {
+            color: #FF1493;
+            margin-top: 5px;
+            animation: pulse 1.5s infinite;
+            text-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* =========================================================
+           AI TERMINAL / CHATBOT WIDGET
+           ========================================================= */
         .chat-widget {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            right: 30px;
             z-index: 9999;
         }
 
         .chat-button {
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            font-size: 1.5rem;
-            border: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            background: var(--bg-surface);
+            border: 1px solid rgba(0, 191, 255, 0.5);
+            color: #00BFFF;
+            font-size: 1.8rem;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: var(--glow);
+            backdrop-filter: blur(10px);
         }
 
-        .chat-button:hover {
-            transform: scale(1.1);
-        }
+        .chat-button:hover { transform: scale(1.1) rotate(5deg); }
 
         .chat-window {
             display: none;
-            width: 330px;
-            height: 450px;
-            background-color: var(--chat-bg);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 360px;
+            height: 500px;
+            background: rgba(10, 10, 12, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 191, 255, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             position: absolute;
-            bottom: 80px;
+            bottom: 85px;
             right: 0;
             flex-direction: column;
             overflow: hidden;
-            border: 1px solid #ddd;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .chat-window.open {
             display: flex;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .chat-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: bold;
+            border-bottom: 1px solid var(--glass-border);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
         .chat-close {
             background: none;
             border: none;
-            color: white;
+            color: var(--text-muted);
             font-size: 1.2rem;
             cursor: pointer;
         }
+        .chat-close:hover { color: var(--mit-red); }
 
         .chat-messages {
             flex: 1;
-            padding: 1rem;
+            padding: 1.5rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
         .message {
             max-width: 85%;
-            padding: 0.6rem 1rem;
-            border-radius: 15px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
             font-size: 0.9rem;
-            line-height: 1.4;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
         }
 
         .bot-msg {
-            background-color: var(--chat-bot);
+            background: rgba(0, 191, 255, 0.1);
+            color: #e0f7fa;
+            border: 1px solid rgba(0, 191, 255, 0.2);
             align-self: flex-start;
             border-bottom-left-radius: 2px;
         }
 
         .user-msg {
-            background-color: var(--chat-user);
+            background: rgba(255, 20, 147, 0.1);
+            color: #ffe4e1;
+            border: 1px solid rgba(255, 20, 147, 0.2);
             align-self: flex-end;
             border-bottom-right-radius: 2px;
         }
 
-        /* Quick Reply Buttons inside Chat */
         .quick-replies {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 5px;
+            margin-top: 10px;
         }
 
         .quick-replies button {
-            background: #fff;
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-weight: 600;
+            transition: all 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .quick-replies button:hover {
-            background: var(--primary-color);
-            color: white;
+            background: rgba(0, 191, 255, 0.2);
+            border-color: #00BFFF;
         }
 
         .chat-input-area {
             display: flex;
-            border-top: 1px solid #eee;
-            padding: 0.5rem;
-            background: #fff;
+            padding: 1rem;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(0,0,0,0.3);
         }
 
         .chat-input {
             flex: 1;
+            background: transparent;
             border: none;
-            padding: 0.5rem;
+            color: white;
             outline: none;
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
         }
+        
+        .chat-input::placeholder { color: var(--text-muted); }
 
         .chat-send {
-            background: var(--accent-color);
-            color: white;
+            background: none;
+            color: #00BFFF;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s ease;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
         }
+        .chat-send:hover { transform: scale(1.2); }
 
-        .chat-send:hover {
-            background: #e55a5a;
+        /* Media Queries */
+        @media(max-width: 768px) {
+            .hero-section { flex-direction: column; text-align: center; }
+            .profile-img-wrapper::after { display: none; }
+            .header-title { font-size: 2.8rem; }
+            .social-icons { justify-content: center; }
+            .research-interests { justify-content: center; }
+            nav { width: 90%; padding: 0.8rem 1rem; }
+            nav ul { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .chat-window { width: 300px; height: 400px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
+    <!-- Floating Glass Navigation -->
     <nav>
         <ul>
-            <li><a onclick="showSection('home')" id="nav-home" class="active">Home</a></li>
-            <li><a onclick="showSection('projects')" id="nav-projects">Projects</a></li>
-            <li><a onclick="showSection('publications')" id="nav-publications">Publications</a></li>
-            <li><a href="CV-anuran.pdf" target="_blank" class="cv-link">Open CV</a></li>
+            <li><a onclick="showSection('home')" id="nav-home" class="active">Bio</a></li>
+            <li><a onclick="showSection('projects')" id="nav-projects">Research</a></li>
+            <li><a onclick="showSection('publications')" id="nav-publications">Papers</a></li>
+            <li><a href="CV-anuran.pdf" target="_blank" class="cv-link">View CV</a></li>
         </ul>
     </nav>
 
@@ -408,149 +560,171 @@
         
         <!-- HOME / BIO SECTION -->
         <section id="home" class="section active">
-            
-            <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img">
-            
-            <h1 class="header-title">Anuran Bhattacharya</h1>
-            
-            <!-- Clickable Social Icons -->
-            <div class="social-icons">
-                <a href="mailto:bhattacharyaanuran45@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com/anuran44" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/anuran-bhattacharya-6641b7275" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://orcid.org/0009-0000-6533-6574" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
-            </div>
-            
-            <div class="card" style="border-top: 4px solid var(--primary-color);">
-                <h2>About Me</h2>
-                <p>Hi, I am Anuran! I am an M.Tech. student in Computer Science & Engineering at the University of Calcutta, where I am advised by <a href="https://caluniv.irins.org/profile/122113" target="_blank" class="custom-link">Dr. Sanjit Kumar Setua</a>. My academic journey is driven by a deep commitment to advancing the frontiers of artificial intelligence. I am passionate about pioneering fundamental and applied research, transforming complex theoretical mathematics into robust, trustworthy computational systems.</p>
-                
-                <div class="research-interests">
-                    <h3 style="margin-top: 0; font-size: 1.2rem;">Core Research Interests</h3>
-                    <ul>
-                        <li><i class="fas fa-brain"></i> Computer Vision</li>
-                        <li><i class="fas fa-language"></i> Natural Language Processing (NLP)</li>
-                        <li><i class="fas fa-atom"></i> Physics-based AI</li>
-                        <li><i class="fas fa-shield-alt"></i> Verifiable Machine Learning</li>
-                        <li><i class="fas fa-project-diagram"></i> Representation Learning</li>
-                    </ul>
+            <div class="hero-section">
+                <div class="profile-img-wrapper">
+                    <!-- Ensure 'self-img.jpeg' is in the same folder as this HTML file -->
+                    <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'">
                 </div>
+                
+                <div class="hero-text">
+                    <h1 class="header-title">Anuran Bhattacharya</h1>
+                    <p>M.Tech. Candidate in Computer Science & Engineering @ University of Calcutta. <br>Advised by <a href="https://caluniv.irins.org/profile/122113" target="_blank" class="custom-link">Dr. Sanjit Kumar Setua</a>.</p>
+                    
+                    <p style="color: #d0d0d5;">My research bridges theoretical mathematical foundations with high-stakes, real-world AI deployment. I focus on engineering deterministic, physically-grounded algorithmic architectures—such as integrating Partial Differential Equations (PDEs) into neural topologies—bypassing heavy abstractions to build robust, verifiable systems.</p>
 
-                <p>My research bridges theoretical mathematical foundations with high-stakes, real-world AI deployment. I am particularly passionate about engineering deterministic, physically-grounded algorithmic architectures—such as integrating Partial Differential Equations (PDEs) into neural topologies—and bypassing heavy framework abstractions to build robust, trustworthy systems. For my M.Tech. dissertation, I developed <strong>PHORENSICS</strong>, a physics-informed computational forensics framework designed for synthetic media detection and Generative AI security.</p>
-                
-                <p>Previously, I earned my M.Sc. in Computer Science from the University of Calcutta, advised by <a href="https://caluniv.irins.org/profile/122069" target="_blank" class="custom-link">Dr. Rajat Kumar Pal</a>, where I focused on engineering resource-scarce neural networks for computational linguistics.</p>
-                
-                <p>Before my master's, I completed my B.Sc. in Computer Science at The Bhawanipur Education Society College. During my undergraduate career, I was fortunate to be mentored by and collaborate with a distinguished group of researchers, including <a href="https://thebges.edu.in/faculty/mr-sanjib-halder/" target="_blank" class="custom-link">Prof. Sanjib Halder</a>, <a href="https://scholar.google.com/citations?user=9jo9h04AAAAJ&hl=en" target="_blank" class="custom-link">Prof. Priyanka Banerjee</a>, <a href="https://research.ibm.com/people/ritajit-majumdar--1" target="_blank" class="custom-link">Dr. Ritajit Majumdar</a> (IBM Research), and <a href="https://scholar.google.com/citations?user=yq8kVm0AAAAJ&hl=en" target="_blank" class="custom-link">Dr. Debasmita Bhoumik</a> (Indian Statistical Institute). These foundational collaborations shaped my research trajectory, enabling me to develop data-efficient machine learning techniques for predictive analytics and highly robust recommendation systems.</p>
-                
-                <div style="text-align: center;">
-                    <a href="CV-anuran.pdf" target="_blank" class="btn">View / Download Full CV</a>
+                    <div class="research-interests">
+                        <span><i class="fas fa-atom"></i> Physics-Informed AI</span>
+                        <span><i class="fas fa-brain"></i> Neuro-Symbolic LLMs</span>
+                        <span><i class="fas fa-eye"></i> Computer Vision</span>
+                        <span><i class="fas fa-shield-alt"></i> Verifiable ML</span>
+                        <span><i class="fas fa-project-diagram"></i> Representation Learning</span>
+                    </div>
+
+                    <div class="social-icons">
+                        <a href="mailto:bhattacharyaanuran45@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/anuran44" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/anuran-bhattacharya-6641b7275" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://orcid.org/0009-0000-6533-6574" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROJECTS SECTION -->
+        <!-- RESEARCH / PROJECTS SECTION -->
         <section id="projects" class="section">
-            <h1 class="header-title">Advanced Research & Projects</h1>
+            <h2 class="section-title">Selected Research & Systems</h2>
             <div class="grid">
                 
-                <!-- UPGRADED PROJECT: Axiom Engine -> Neuro-Symbolic Mini-LLM -->
+                <!-- PROJECT 1: PHORENSICS (WITH LIVE ANIMATED SCANNER) -->
                 <div class="card">
-                    <h3>Axiom Engine: Neuro-Symbolic Mini-LLM</h3>
-                    <span class="tag">PyTorch</span> <span class="tag">Transformers</span> <span class="tag">Neuro-Symbolic AI</span>
-                    <p>Engineered a "Tabula Rasa" custom Sequence-to-Sequence (Seq2Seq) Transformer from scratch in PyTorch to parse and resolve complex Ordinary Differential Equations (ODEs). Designed a dual-system neuro-symbolic architecture that routes neural structural pattern recognition directly into a deterministic algebraic kernel (SymPy) for hallucination-free, mathematically verified step-by-step integration.</p>
-                    <p style="margin-top: 15px;">
-                        <a href="https://axiom-engine-1d445f.gitlab.io/" target="_blank" class="custom-link">
-                            <i class="fas fa-external-link-alt"></i> Check live working here
+                    <!-- The Animated Deepfake Scanner HTML -->
+                    <div class="scanner-container">
+                        <!-- Target Image for the scanner -->
+                        <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80" class="base-target" alt="Detection Target">
+                        <div class="grid-overlay"></div>
+                        <div class="scan-line"></div>
+                        <div class="hud-text">
+                            <div>> INIT: GLOBAL SPECTRAL ANALYSIS</div>
+                            <div>> PDE KERNEL: ACTIVE</div>
+                            <div class="hud-alert">[!] SYNTHETIC MEDIA DETECTED: 98.7%</div>
+                        </div>
+                    </div>
+                    <!-- End Animated Scanner -->
+                    
+                    <div class="card-content">
+                        <h3>PHORENSICS Engine</h3>
+                        <div class="tag-group">
+                            <span class="tag">PDEs</span>
+                            <span class="tag">Physics-Informed AI</span>
+                            <span class="tag">Synthetic Media</span>
+                        </div>
+                        <p>A physically-grounded computational framework for Generative AI security. Integrates Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published to PyPI with pure Python routines for deterministic execution.</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: Axiom Engine -->
+                <div class="card">
+                    <!-- Standard Image Placeholder for Axiom Engine -->
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="Axiom Engine Logic" class="card-img">
+                    <div class="card-content">
+                        <h3>Axiom: Neuro-Symbolic Mini-LLM</h3>
+                        <div class="tag-group">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Seq2Seq</span>
+                            <span class="tag">Neuro-Symbolic</span>
+                        </div>
+                        <p>Engineered a "Tabula Rasa" Seq2Seq Transformer from scratch to parse complex ODEs. Designed a dual-system architecture routing neural structural pattern recognition into a deterministic algebraic kernel (SymPy) for hallucination-free, verified step-by-step integration.</p>
+                        <a href="https://axiom-engine-1d445f.gitlab.io/" target="_blank" class="custom-link" style="margin-top: 10px;">
+                            <i class="fas fa-external-link-alt"></i> Run Live Demo
                         </a>
-                    </p>
+                    </div>
                 </div>
 
+                <!-- PROJECT 3: Fact Verification -->
                 <div class="card">
-                    <h3>PHORENSICS: Physics Forensics Engine (M.Tech Dissertation)</h3>
-                    <span class="tag">Physics-Informed AI</span> <span class="tag">PDEs</span> <span class="tag">Computer Vision</span>
-                    <p>Engineered a robust, physically-grounded computational framework for Generative AI security and synthetic media detection. Successfully integrated Partial Differential Equations (PDEs) and Global Spectral Analysis to mathematically isolate Generative AI origins far beyond standard semantic AI limits. Published the core framework to PyPI, architecting pure Python routines to guarantee deterministic, reproducible computational outcomes.</p>
+                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80" alt="Fact Verification LLM" class="card-img">
+                    <div class="card-content">
+                        <h3>Fact Verification Framework</h3>
+                        <div class="tag-group">
+                            <span class="tag">Gemma3 LLM</span>
+                            <span class="tag">RAG</span>
+                            <span class="tag">Semantics</span>
+                        </div>
+                        <p>Developed a hybrid verification framework combining local Gemma3 LLM reasoning, semantic tracking, and iterative self-improvement loops to validate factual claims against dynamically retrieved documents.</p>
+                    </div>
                 </div>
 
+                <!-- PROJECT 4: TxtVis -->
                 <div class="card">
-                    <h3>AI-Powered Fact Verification System</h3>
-                    <span class="tag">Python</span> <span class="tag">LLMs</span> <span class="tag">Sentence Transformers</span>
-                    <p>Developed a hybrid verification framework combining local Gemma3 LLM reasoning, semantic tracking, and iterative self-improvement loops to validate factual claims against dynamically retrieved documents.</p>
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="TxtVis Embeddings" class="card-img">
+                    <div class="card-content">
+                        <h3>TxtVis: Latent Space Geometry</h3>
+                        <div class="tag-group">
+                            <span class="tag">Metric Learning</span>
+                            <span class="tag">Siamese Nets</span>
+                        </div>
+                        <p>Engineered a dual-path PyTorch research pipeline for extracting and visualizing high-dimensional embeddings. Designed a custom Convolutional Siamese Network utilizing Contrastive Loss to analyze representation geometry.</p>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>TxtVis: Multimodal Latent Space Representation</h3>
-                    <span class="tag">PyTorch</span> <span class="tag">Metric Learning</span> <span class="tag">Computer Vision</span>
-                    <p>Engineered a "Tabula Rasa" dual-path PyTorch research pipeline for extracting and visualizing high-dimensional embeddings. Designed a custom Convolutional Siamese Network utilizing Contrastive Loss.</p>
-                </div>
-
-                <div class="card">
-                    <h3>End-to-End Autonomous Vehicle Navigation</h3>
-                    <span class="tag">Python</span> <span class="tag">OpenCV</span> <span class="tag">Flask</span>
-                    <p>Engineered an end-to-end behavioral cloning architecture based on the NVIDIA DAVE-2 CNN to learn complex perception-to-control mapping. Developed robust data preprocessing and augmentation engines.</p>
-                </div>
-                
-                <div class="card">
-                    <h3>Accommodation Rent Prediction</h3>
-                    <span class="tag">CatBoost</span> <span class="tag">Scikit-Learn</span>
-                    <p>Modeled highly nonlinear relationships within structured real-estate datasets using specialized CatBoost regression, mitigating overfitting through ordered boosting for regional micro-economic variance.</p>
-                </div>
             </div>
         </section>
 
         <!-- PUBLICATIONS SECTION -->
         <section id="publications" class="section">
-            <h1 class="header-title">Peer-Reviewed Publications</h1>
+            <h2 class="section-title">Peer-Reviewed Publications</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
-                    <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
-                    <p><strong>Published in:</strong> Applied Computing for Software and Smart Systems (Proceedings of ACSS 2024). Springer LNNS.</p>
+                    <div class="card-content">
+                        <h3>BEN-RS-ANN: Revealing Emotion from Bengali Text</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (ACSS 2024). Springer LNNS.</p>
+                        <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>A User Independent Recommendation System for Web Series</h3>
-                    <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
-                    <p><strong>Published in:</strong> Emerging Technologies in Data Mining and Information Security (Proceedings of IEMIS 2022). Springer LNNS.</p>
+                    <div class="card-content">
+                        <h3>User Independent Recommendation System for Web Series</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (IEMIS 2022). Springer LNNS.</p>
+                        <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </div>
 
-    <!-- ================= CHATBOT WIDGET ================= -->
+    <!-- AI TERMINAL / CHATBOT WIDGET -->
     <div class="chat-widget">
         <div class="chat-window" id="chat-window">
             <div class="chat-header">
-                <span>🤖 AB.jr</span>
+                <span><i class="fas fa-terminal" style="color:#00BFFF; margin-right:8px;"></i> AB.OS v2.0</span>
                 <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
             </div>
             <div class="chat-messages" id="chat-messages">
-                <div class="message bot-msg">Hi there! My name is AB.jr... how may I help you today?</div>
+                <div class="message bot-msg">System initialized. I am the interactive abstract for Anuran's research portfolio. Query me on methodology, projects, or contact info.</div>
                 
-                <!-- Quick Reply Buttons -->
                 <div class="quick-replies" id="quick-replies-box">
-                    <button onclick="sendQuickReply('Education')">🎓 Education</button>
-                    <button onclick="sendQuickReply('Projects')">💼 Projects</button>
-                    <button onclick="sendQuickReply('Skills')">🛠️ Skills</button>
-                    <button onclick="sendQuickReply('Contact')">📬 Contact</button>
+                    <button onclick="sendQuickReply('Explain PHORENSICS')">/explain_phorensics</button>
+                    <button onclick="sendQuickReply('Tech Stack')">/tech_stack</button>
+                    <button onclick="sendQuickReply('Contact')">/contact_info</button>
                 </div>
             </div>
             
             <div class="chat-input-area">
-                <input type="text" id="chat-input" class="chat-input" placeholder="Type a question..." onkeypress="handleEnter(event)">
-                <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                <input type="text" id="chat-input" class="chat-input" placeholder="Execute command..." onkeypress="handleEnter(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
         
-        <!-- Floating Chat Icon -->
         <button class="chat-button" onclick="toggleChat()">
-            <i class="fas fa-robot"></i>
+            <i class="fas fa-fingerprint"></i>
         </button>
     </div>
 
     <!-- JavaScript -->
     <script>
-        // Section Navigation Logic
+        // Smooth Section Navigation
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => section.classList.remove('active'));
@@ -563,7 +737,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ================= CHATBOT LOGIC =================
+        // Chatbot / Interactive Terminal Logic
         function toggleChat() {
             const chatWindow = document.getElementById('chat-window');
             chatWindow.classList.toggle('open');
@@ -575,17 +749,11 @@
             }
         }
 
-        // Function for the clickable quick reply buttons
         function sendQuickReply(text) {
             const inputField = document.getElementById('chat-input');
             inputField.value = text;
-            
-            // Hide the buttons after the first click to keep chat clean
             const quickRepliesBox = document.getElementById('quick-replies-box');
-            if (quickRepliesBox) {
-                quickRepliesBox.style.display = 'none';
-            }
-            
+            if (quickRepliesBox) quickRepliesBox.style.display = 'none';
             sendMessage();
         }
 
@@ -597,11 +765,10 @@
             addMessage(userText, 'user-msg');
             inputField.value = '';
 
-            // Simulate slight delay before bot responds
             setTimeout(() => {
                 const botResponse = generateBotResponse(userText.toLowerCase());
                 addMessage(botResponse, 'bot-msg');
-            }, 500);
+            }, 600);
         }
 
         function addMessage(text, className) {
@@ -610,28 +777,24 @@
             msgDiv.className = `message ${className}`;
             msgDiv.innerText = text;
             chatBox.appendChild(msgDiv);
-            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
+            chatBox.scrollTop = chatBox.scrollHeight; 
         }
 
-        // Basic AI Logic for the FAQ Chatbot
         function generateBotResponse(text) {
-            if (text.includes('education') || text.includes('degree') || text.includes('university') || text.includes('college')) {
-                return "Anuran holds a Master of Technology (M.Tech) and Master of Science (M.Sc) in Computer Science from the University of Calcutta, and a B.Sc from The Bhawanipur Education Society College.";
+            if (text.includes('phorensics') || text.includes('pde')) {
+                return "PHORENSICS is Anuran's M.Tech dissertation. It maps Partial Differential Equations (PDEs) and spectral anomalies to detect Generative AI synthetics deterministically. No black-box hallucination, pure math.";
             } 
-            else if (text.includes('skill') || text.includes('tech') || text.includes('programming') || text.includes('languages') || text.includes('nlp') || text.includes('vision')) {
-                return "His core research interests include Computer Vision, NLP, and Physics-Informed AI. He is highly proficient in Python, C++, PyTorch, TensorFlow, OpenCV, and custom neural architectures.";
+            else if (text.includes('stack') || text.includes('tech') || text.includes('skills')) {
+                return "Core architecture: PyTorch, TensorFlow, OpenCV, C++, Python. Specialty: Building neuro-symbolic logic gates from scratch (like the Axiom Engine) rather than relying on abstract frameworks.";
             } 
-            else if (text.includes('project') || text.includes('research') || text.includes('work') || text.includes('phorensics') || text.includes('ode') || text.includes('axiom')) {
-                return "Anuran has engineered advanced systems like Axiom Engine (a custom-built Neuro-Symbolic Mini-LLM in PyTorch), PHORENSICS (PDE-based Deepfake Detection), and Multimodal Latent Space representations. You can view them in the 'Projects' tab!";
+            else if (text.includes('contact') || text.includes('email')) {
+                return "Establish connection via bhattacharyaanuran45@gmail.com. Always open for interdisciplinary research discussions.";
             } 
-            else if (text.includes('contact') || text.includes('email') || text.includes('reach') || text.includes('hire') || text.includes('collaborate')) {
-                return "You can reach Anuran directly via email at bhattacharyaanuran45@gmail.com, or click the email/LinkedIn icons at the top of the Home page. He is always open to discussing innovative research and collaborations!";
-            } 
-            else if (text.includes('hi') || text.includes('hello') || text.includes('hey')) {
-                return "Hello! Feel free to ask me about Anuran's skills, projects, or academic background.";
+            else if (text.includes('axiom')) {
+                return "Axiom Engine bridges a custom PyTorch Seq2Seq transformer with a SymPy symbolic kernel to mathematically verify differential equations step-by-step. It's a localized, hallucination-free mini-LLM.";
             }
             else {
-                return "I'm just a simple mini-bot, so I might not understand that! You can ask me things like 'What are your research interests?', 'Tell me about your projects', or 'How can I contact you?'.";
+                return "Command recognized but out of scope. Please query about my research in Physics-Informed AI, Neuro-Symbolic LLMs, or contact me directly via the bio section.";
             }
         }
     </script>
