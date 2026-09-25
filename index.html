@@ -30,7 +30,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Main Body Styling */
+        /* HARDWARE ACCELERATED STATIC BACKGROUND */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -38,32 +38,13 @@
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
-            background-color: #0f172a; /* Fallback base color */
-        }
-
-        /* DYNAMIC BACKGROUND ISOLATION (Fixes the screen flicker) */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; 
-            left: 0;
-            width: 100vw; 
-            height: 100vh;
-            background: linear-gradient(-45deg, #0f172a, #2e1065, #082f49, #171131);
-            background-size: 400% 400%;
-            animation: gradientBG 20s ease infinite;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            /* Static gradient fixes the rendering stutter */
+            background: linear-gradient(135deg, #0f172a, #1e1b4b, #082f49);
+            background-attachment: fixed;
         }
 
         /* =========================================================
-           YELLOW CARTOON CURSOR & HARDWARE-ACCELERATED GLITTER
+           YELLOW CARTOON CURSOR & HARDWARE ACCELERATED GLITTER
            ========================================================= */
         @media (pointer: fine) {
             body, a, button, input, .info-tooltip, .nav-link, .primary-btn, .pub-btn {
@@ -73,13 +54,12 @@
 
         .sparkle {
             position: fixed;
-            width: 7px;
-            height: 7px;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%; /* Using border-radius instead of clip-path stops lag */
             pointer-events: none;
             z-index: 9999;
-            box-shadow: 0 0 8px currentColor;
-            /* Using translate3d forces the GPU to render this, preventing screen flashes */
+            /* translate3d forces the GPU to render this, preventing screen flashes */
             animation: glitterAnim 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             will-change: transform, opacity;
         }
@@ -96,7 +76,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
+            z-index: 0;
             pointer-events: none; 
         }
 
@@ -107,7 +87,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* Reusable macOS Transparent Window Panel */
+        /* Reusable macOS Transparent Window Panel - HARDWARE ACCELERATED */
         .mac-panel {
             background: var(--glass-bg);
             backdrop-filter: var(--panel-blur);
@@ -117,6 +97,9 @@
             box-shadow: var(--glass-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.05);
             position: relative;
             z-index: 1;
+            /* translateZ(0) pushes this to its own GPU layer, stopping backdrop-filter flicker */
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         /* Glassmorphism Navigation */
@@ -124,7 +107,7 @@
             position: fixed;
             top: 20px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateZ(0);
             background: rgba(15, 23, 42, 0.5);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
@@ -133,6 +116,7 @@
             border-radius: 50px;
             z-index: 1000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1);
+            backface-visibility: hidden;
         }
 
         nav ul {
@@ -175,11 +159,12 @@
             margin-bottom: 8rem;
             scroll-margin-top: 100px;
             animation: fadeUp 0.8s ease-out forwards;
+            will-change: transform, opacity;
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translate3d(0, 30px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
 
         .section-title {
@@ -709,29 +694,8 @@
             100% { top: -10%; }
         }
 
-        .grid-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: 5;
-        }
-
-        .hud-text {
-            position: absolute;
-            bottom: 15px;
-            left: 20px;
-            color: var(--text-main);
-            font-size: 0.8rem;
-            z-index: 20;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
         /* =========================================================
-           AB-JR AI ASSISTANT WIDGET 
+           AB-JR AI ASSISTANT WIDGET (Hardware Accelerated)
            ========================================================= */
         .chat-widget {
             position: fixed;
@@ -754,9 +718,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(56, 189, 248, 0.2);
             backdrop-filter: blur(10px);
+            transform: translateZ(0); /* Fixes rendering stutter */
         }
 
-        .chat-button:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4); }
+        .chat-button:hover { transform: scale(1.1) translateZ(0); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4); }
 
         .chat-window {
             display: none;
@@ -774,16 +739,18 @@
             flex-direction: column;
             overflow: hidden;
             font-family: 'Inter', sans-serif;
+            transform: translateZ(0);
         }
 
         .chat-window.open {
             display: flex;
-            animation: slideUpChat 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideUpChat 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            will-change: transform, opacity;
         }
 
         @keyframes slideUpChat {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translate3d(0, 20px, 0) scale(0.95); }
+            to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
         }
 
         .chat-header {
@@ -1268,7 +1235,7 @@
         if(window.matchMedia("(pointer: fine)").matches) {
             window.addEventListener('mousedown', (e) => {
                 // Generate sparkles per click
-                for(let i = 0; i < 15; i++) {
+                for(let i = 0; i < 8; i++) {
                     createSparkle(e.clientX, e.clientY);
                 }
             });
@@ -1281,7 +1248,7 @@
 
             // Randomize direction and distance
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 50 + 20; 
+            const distance = Math.random() * 40 + 15; 
             const tx = Math.cos(angle) * distance;
             const ty = Math.sin(angle) * distance;
 
@@ -1291,7 +1258,7 @@
             sparkle.style.setProperty('--ty', `${ty}px`);
 
             // Mix of colors for the glitter (Golden, White, Light Blue)
-            const colors = ['#ffffff', '#FFD700', '#38bdf8', '#fef08a'];
+            const colors = ['#ffffff', '#FFD700', '#38bdf8'];
             sparkle.style.color = colors[Math.floor(Math.random() * colors.length)];
             sparkle.style.background = sparkle.style.color;
             
@@ -1338,7 +1305,7 @@
             }
         }
 
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 40; i++) {
             particles.push(new Particle());
         }
 
@@ -1450,7 +1417,6 @@
             }
         }
 
-        // Sophisticated Conversational Fallback Engine
         function generateConversationalResponse(text) {
             const input = text.toLowerCase();
             
