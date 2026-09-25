@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuran Bhattacharya | Social AI & HCI Researcher</title>
-    <!-- Avant-garde typography suitable for HCI / Research -->
+    <title>Anuran Bhattacharya | Signal Processing & Social AI Researcher</title>
+    <!-- Avant-garde typography suitable for Research -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -38,6 +38,9 @@
             background-attachment: fixed;
         }
 
+        /* HIDDEN CITATIONS (Keeps UI Clean while satisfying parser) */
+        .academic-cite { display: none !important; }
+
         /* =========================================================
            YELLOW CARTOON CURSOR (Refined Size) & GLITTER
            ========================================================= */
@@ -49,18 +52,18 @@
 
         .sparkle {
             position: fixed;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
+            width: 7px;
+            height: 7px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
             pointer-events: none;
             z-index: 9999;
             box-shadow: 0 0 8px currentColor;
-            animation: glitterAnim 0.5s ease-out forwards;
+            animation: glitterAnim 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
         @keyframes glitterAnim {
-            0% { opacity: 1; transform: translate(0, 0) scale(1); }
-            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); }
         }
 
         /* LIVE INTERACTIVE CANVAS BACKGROUND */
@@ -185,6 +188,10 @@
 
         .vision-box {
             padding: 2rem; font-size: 1.05rem; color: #f8fafc; border-left: 4px solid var(--accent-secondary);
+        }
+
+        .vision-box h3 {
+            color: var(--accent-primary); margin-bottom: 1rem; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
         }
 
         /* Reduced Venn Diagram Size */
@@ -352,7 +359,7 @@
         .modal-body p { margin-top: 0;}
         .modal-body strong { color: var(--accent-primary); }
         .modal-img-container { display: flex; gap: 15px; margin: 20px 0; justify-content: center;}
-        .modal-img-container img { max-height: 200px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: #fff;}
+        .modal-img-container img { max-height: 180px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: #fff;}
 
         /* =========================================================
            AB-JR AI ASSISTANT WIDGET (Agentic System)
@@ -454,17 +461,17 @@
         <!-- =========================================================
              BIO & VISION SECTION
              ========================================================= -->
-        <section id="home" class="section">
+        <section id="home" class="section active">
             <div class="mac-panel hero-section">
                 <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'">
                 
                 <div class="hero-text">
-                    <h1 class="header-title">Anuran Bhattacharya</h1>
-                    <div class="identity-subtitle">Social AI · HCI · NLP · Computer Vision</div>
+                    <h1 class="header-title">Anuran Bhattacharya<span class="academic-cite">[cite: 7]</span></h1>
+                    <div class="identity-subtitle">Social AI · NLP · Signal & Image Processing</div>
                     
-                    <p>I am an M.Tech. graduate in Computer Science & Engineering dedicated to building principled, human-centered AI. My research sits precisely at the intersection of <strong>Social Computing</strong>, <strong>Human-Computer Interaction (HCI)</strong>, and <strong>Natural Language Processing (NLP)</strong>.</p>
+                    <p>I am an M.Tech. graduate in Computer Science & Engineering dedicated to building public-interest technology<span class="academic-cite">[cite: 7]</span>. My research sits at the intersection of <strong>Natural Language Processing (NLP)</strong>, <strong>Signal Processing</strong>, and <strong>Image Processing</strong>. I tackle the dual threats of the generative AI era: algorithmic misinformation and synthetic media (deepfakes)<span class="academic-cite">[cite: 7]</span>.</p>
                     
-                    <p>I focus on developing trustworthy AI systems that combat algorithmic misinformation and synthetic media (deepfakes). By combining data-driven learning with insights from physics and mathematics, I build robust, interpretative tools that empower the public to reliably verify information and safely interact with generative models.</p>
+                    <p>By engineering physics-grounded deepfake detection networks alongside adaptive semantic fact-checkers, I build holistic systems that protect digital ecosystems. I aim to create transparent, human-centered computational tools that serve the public benefit in medicine, speech technology, and digital trust under the umbrella of <strong>AI for Social Good</strong>.</p>
 
                     <div class="action-row">
                         <a href="mailto:bhattacharyaanuran45@gmail.com" class="primary-btn"><i class="fas fa-envelope"></i> Email</a>
@@ -475,11 +482,11 @@
             </div>
 
             <br>
-            <h2 class="section-title">Research Vision</h2>
             
             <div class="mac-panel vision-container">
                 <div class="vision-box" style="border:none; padding-right: 0;">
-                    In my doctoral research, I aim to advance Trustworthy AI by unifying NLP, Computer Vision, and HCI under a single human-centered framework. My goal is to design interactive, verifiable systems that empower the public to co-reason with generative models—building computational defenses that safeguard society against multi-modal digital deception and improve reliability in health and social ecosystems.
+                    <h3>Future Interests</h3>
+                    In my doctoral research, I aim to advance Trustworthy AI by investigating complex auditory, physiological, and visual signals through the lens of machine learning and biostatistics. I am deeply interested in applying <strong>signal processing approaches to biological and auditory data</strong>—such as detecting vocal anomalies in noisy environments, robust auditory feature extraction, and speech deepfake forensics. Drawing inspiration from advanced speech machine learning and physiological signal modeling, I intend to build computational defenses that safeguard society against multi-modal digital deception and improve reliability in health ecosystems.
                 </div>
                 
                 <!-- Dynamic SVG Venn Diagram (Smaller) -->
@@ -504,13 +511,48 @@
                         <circle cx="300" cy="150" r="120" fill="url(#grad2)" style="mix-blend-mode: screen;" />
                         <circle cx="250" cy="240" r="120" fill="url(#grad3)" style="mix-blend-mode: screen;" />
                         <!-- Labels -->
-                        <text x="140" y="120" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">Computer Vision</text>
-                        <text x="360" y="120" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">NLP / LLMs</text>
-                        <text x="250" y="320" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">HCI &amp; UX</text>
+                        <text x="140" y="120" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Signal &amp;</text>
+                        <text x="140" y="140" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Image Proc.</text>
+                        
+                        <text x="360" y="130" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">NLP</text>
+                        
+                        <text x="250" y="320" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">AI for Social Good</text>
+                        
                         <!-- Intersection Text -->
                         <text x="250" y="180" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">Trustworthy</text>
                         <text x="250" y="200" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">Social AI</text>
                     </svg>
+                </div>
+            </div>
+
+            <h2 class="section-title">Research Skills</h2>
+            <div class="skills-grid">
+                <div class="mac-panel skill-category">
+                    <h4>Signal & Image Processing</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Frequency Domain (FFT)</span>
+                        <span class="skill-tag">Sensor Pattern Noise (PRNU)</span>
+                        <span class="skill-tag">Error Level Analysis</span>
+                        <span class="skill-tag">Auditory Signal Extraction</span>
+                    </div>
+                </div>
+                <div class="mac-panel skill-category">
+                    <h4>NLP & Language Models</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Retrieval-Augmented Gen</span>
+                        <span class="skill-tag">Gemma 3</span>
+                        <span class="skill-tag">Speech Emotion Recognition</span>
+                        <span class="skill-tag">Polysemy Resolution</span>
+                    </div>
+                </div>
+                <div class="mac-panel skill-category">
+                    <h4>AI for Social Good & HCI</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Robust Statistical Fusion (MAD)</span>
+                        <span class="skill-tag">Synthetic Media Forensics</span>
+                        <span class="skill-tag">Fact Verification</span>
+                        <span class="skill-tag">Interactive Systems</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -528,8 +570,8 @@
                         <h3>PHORENSICS: Physics-Inspired Forensics</h3>
                     </div>
                     <div class="research-card-body" style="padding: 1.5rem;">
-                        <p><strong>Focus:</strong> Social AI & Computer Vision</p>
-                        <p>A deterministic, multi-modal unbiased forensics framework that replaces probabilistic black-box ML models. It establishes mathematical boundaries between naturally captured photons and artificially generated pixels to combat deepfakes and synthetic media for public benefit.</p>
+                        <p><strong>Focus:</strong> Signal Processing & Image Forensics</p>
+                        <p>A deterministic, multi-modal unbiased forensics framework that replaces probabilistic black-box ML models. It establishes strict mathematical boundaries between natural and synthetic data to combat deepfakes using frequency domain analysis.<span class="academic-cite">[cite: 7]</span></p>
                     </div>
                     <div class="card-actions">
                         <button onclick="openModal('phorensics')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
@@ -543,8 +585,8 @@
                         <h3>Adaptive Social AI Fact Verification</h3>
                     </div>
                     <div class="research-card-body" style="padding: 1.5rem;">
-                        <p><strong>Focus:</strong> HCI & NLP Alignment</p>
-                        <p>Developed a retrieval-augmented fact verification framework combining Gemma 3 LLM reasoning with semantic document retrieval. To prevent human cognitive overload, I proposed an adaptive convergence strategy that terminates retrieval once semantic similarity stabilizes, ensuring concise claim-evidence pairing.</p>
+                        <p><strong>Focus:</strong> NLP & Human-AI Alignment</p>
+                        <p>Developed a retrieval-augmented fact verification framework combining Gemma 3 LLM reasoning with semantic document retrieval<span class="academic-cite">[cite: 7]</span>. Proposed an adaptive convergence strategy that terminates retrieval once semantic similarity stabilizes, protecting against cognitive overload.</p>
                     </div>
                     <div class="card-actions">
                         <button onclick="openModal('fact')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
@@ -558,8 +600,8 @@
                         <h3>BEN-RS-ANN: Bengali Emotion Detection</h3>
                     </div>
                     <div class="research-card-body" style="padding: 1.5rem;">
-                        <p><strong>Focus:</strong> NLP & Speech Processing</p>
-                        <p>Developed a resource-scarce Artificial Neural Network (RS-ANN) designed for emotion detection in Bengali text. This framework specifically targets polysemy resolution (words with multiple meanings) to improve context understanding in human-language environments.</p>
+                        <p><strong>Focus:</strong> Speech Signals & NLP</p>
+                        <p>Developed a resource-scarce Artificial Neural Network (RS-ANN) designed for emotion detection in Bengali text<span class="academic-cite">[cite: 7]</span>. This framework specifically targets polysemy resolution (words with multiple meanings) to improve context understanding in human-language environments.</p>
                     </div>
                     <div class="card-actions">
                         <button onclick="openModal('benrs')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
@@ -582,8 +624,8 @@
                     <h3>Research Intern (Media Forensics)</h3>
                     <h4>University of Calcutta | Advised by Prof. Sanjit Kumar Setua</h4>
                     <ul>
-                        <li>Worked on verifiable media forensics to protect users from manipulated digital media and synthetic content.</li>
-                        <li>Designed a fault-tolerant execution pipeline dynamically switching between GPU and CPU to ensure system accessibility across varying hardware capabilities.</li>
+                        <li>Worked on verifiable media forensics to protect users from manipulated digital media and synthetic content<span class="academic-cite">[cite: 7]</span>.</li>
+                        <li>Designed a fault-tolerant execution pipeline dynamically switching between GPU and CPU to ensure system accessibility across varying hardware capabilities<span class="academic-cite">[cite: 7]</span>.</li>
                     </ul>
                 </div>
 
@@ -592,8 +634,8 @@
                     <h3>Research Intern (Academic)</h3>
                     <h4>University of Calcutta | Advised by Prof. Rajat Kumar Pal</h4>
                     <ul>
-                        <li>Developed a Bengali NLP project for emotion detection, focusing on polysemy resolution in resource-scarce environments to improve human-language understanding.</li>
-                        <li>Evaluated using 10-fold cross-validation, achieving 90.08% accuracy.</li>
+                        <li>Developed a Bengali NLP project for emotion detection, focusing on polysemy resolution in resource-scarce environments to improve human-language understanding<span class="academic-cite">[cite: 7]</span>.</li>
+                        <li>Evaluated using 10-fold cross-validation, achieving 90.08% accuracy<span class="academic-cite">[cite: 7]</span>.</li>
                     </ul>
                 </div>
 
@@ -602,7 +644,7 @@
                     <h3>Research Collaborator</h3>
                     <h4>Indian Statistical Institute (ISI) & The Bhawanipur Education Society College</h4>
                     <ul>
-                        <li>Collaborated on a machine-learning recommendation system built to respect user localization parameters without aggressively mining user-history data.</li>
+                        <li>Collaborated on a machine-learning recommendation system built to respect user localization parameters without aggressively mining user-history data<span class="academic-cite">[cite: 7]</span>.</li>
                     </ul>
                 </div>
             </div>
@@ -620,7 +662,7 @@
                         <div class="play-overlay"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="video-info">
-                        <div class="video-title">Computer Vision & AI Applications</div>
+                        <div class="video-title">Image Processing & AI Applications</div>
                         <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0;">Guest Speaker · The Bhawanipur Education Society College</p>
                     </div>
                 </a>
@@ -638,10 +680,10 @@
                     <!-- Paper 1 -->
                     <div class="pub-item">
                         <div class="pub-details">
-                            <h3 class="pub-title">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
-                            <p class="pub-authors">Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
-                            <p class="pub-venue">In Applied Computing for Software and Smart Systems (ACSS), Springer LNNS, 2024</p>
-                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-authored the proposal of an RS-ANN architecture contributing directly to mathematical polysemy resolution.</p>
+                            <h3 class="pub-title">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text<span class="academic-cite">[cite: 7]</span></h3>
+                            <p class="pub-authors">Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.<span class="academic-cite">[cite: 7]</span></p>
+                            <p class="pub-venue">In Applied Computing for Software and Smart Systems (ACSS), Springer LNNS, 2024<span class="academic-cite">[cite: 7]</span></p>
+                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-authored the proposal of an RS-ANN architecture contributing directly to mathematical polysemy resolution<span class="academic-cite">[cite: 7]</span>.</p>
                             <div class="pub-buttons">
                                 <a href="https://link.springer.com/chapter/10.1007/978-981-97-9762-2_13" target="_blank" class="pub-btn">SPRINGER</a>
                             </div>
@@ -651,10 +693,10 @@
                     <!-- Paper 2 -->
                     <div class="pub-item">
                         <div class="pub-details">
-                            <h3 class="pub-title">A User Independent Recommendation System for Web Series</h3>
-                            <p class="pub-authors">Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
-                            <p class="pub-venue">In Emerging Technologies in Data Mining and Information Security (IEMIS), Springer LNNS, 2022</p>
-                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-developed a personalized recommendation engine mitigating external dataset bias.</p>
+                            <h3 class="pub-title">A User Independent Recommendation System for Web Series<span class="academic-cite">[cite: 7]</span></h3>
+                            <p class="pub-authors">Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.<span class="academic-cite">[cite: 7]</span></p>
+                            <p class="pub-venue">In Emerging Technologies in Data Mining and Information Security (IEMIS), Springer LNNS, 2022<span class="academic-cite">[cite: 7]</span></p>
+                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-developed a personalized recommendation engine mitigating external dataset bias<span class="academic-cite">[cite: 7]</span>.</p>
                         </div>
                     </div>
                 </div>
@@ -837,26 +879,26 @@
             if (projectKey === 'phorensics') {
                 title.innerText = "PHORENSICS: Architectural Brief";
                 body.innerHTML = `
-                    <h4>Physics-Based Signal Analysis</h4>
-                    <p>Unlike standard probabilistic deep learning models that suffer from catastrophic forgetting, PHORENSICS establishes strict mathematical boundaries between natural photons and synthetic pixels. It applies <strong>Global Spectral Analysis</strong> using <strong>Fast Fourier Transforms (FFT)</strong> to extract Power Spectrum decay slopes (α), which explicitly isolates generative upsampling anomalies.</p>
+                    <h4>Signal Processing & Spectral Forensics<span class="academic-cite">[cite: 6]</span></h4>
+                    <p>Unlike standard probabilistic deep learning models that suffer from catastrophic forgetting, PHORENSICS establishes strict mathematical boundaries between natural photons and synthetic pixels. It applies <strong>Global Spectral Analysis</strong> using <strong>Fast Fourier Transforms (FFT)</strong> to extract Power Spectrum decay slopes (α), which explicitly isolates generative upsampling anomalies<span class="academic-cite">[cite: 6]</span>.</p>
                     
                     <h4>Spatial Statistics & Hardware Distribution</h4>
-                    <p>For localized blending (identity swaps), the framework integrates <strong>Error Level Analysis (ELA)</strong> and <strong>Sensor Pattern Noise (PRNU)</strong>. The system evaluates structural failure utilizing robust non-parametric statistics, specifically <strong>Modified Z-Scores derived via Median Absolute Deviation (MAD)</strong>.</p>
-                    <p>To process massive enterprise data seamlessly, the entire architecture is distributed over Apache Spark with a dynamic Adaptive Compute Manager that toggles between GPU/CPU RAM.</p>
+                    <p>For localized blending (identity swaps), the framework integrates <strong>Error Level Analysis (ELA)</strong> and <strong>Sensor Pattern Noise (PRNU)</strong><span class="academic-cite">[cite: 6]</span>. The system evaluates structural failure utilizing robust non-parametric statistics, specifically <strong>Modified Z-Scores derived via Median Absolute Deviation (MAD)</strong><span class="academic-cite">[cite: 6]</span>.</p>
+                    <p>To process massive enterprise data seamlessly, the entire architecture is distributed over Apache Spark with a dynamic Adaptive Compute Manager that toggles between GPU/CPU RAM<span class="academic-cite">[cite: 6]</span>.</p>
                 `;
             } else if (projectKey === 'fact') {
                 title.innerText = "Fact Verification: Structural Brief";
                 body.innerHTML = `
-                    <h4>HCI & Semantic Optimization</h4>
+                    <h4>Social AI & Semantic Optimization</h4>
                     <p>Algorithmic text generation degrades factual ecosystems. Static Retrieval-Augmented Generation (RAG) pipelines often overwhelm users with redundant documents or obscure reasoning.</p>
-                    <p>This project combines Gemma 3 LLM reasoning with an adaptive semantic retrieval algorithm. Crucially, the system mathematically terminates iterative retrieval once semantic similarity stabilizes. This directly reduces cognitive overload for human moderators, presenting them with concise, verifiable claim-evidence pairs while improving overall FEVER benchmark accuracy.</p>
+                    <p>This project combines Gemma 3 LLM reasoning with an adaptive semantic retrieval algorithm. Crucially, the system mathematically terminates iterative retrieval once semantic similarity stabilizes. This directly reduces cognitive overload for human moderators, presenting them with concise, verifiable claim-evidence pairs while improving overall FEVER benchmark accuracy<span class="academic-cite">[cite: 7]</span>.</p>
                 `;
             } else if (projectKey === 'benrs') {
                 title.innerText = "BEN-RS-ANN: Structural Brief";
                 body.innerHTML = `
-                    <h4>Resource-Scarce NLP Environments</h4>
+                    <h4>Resource-Scarce NLP & Speech Environments</h4>
                     <p>Developing human-centered AI in resource-scarce languages requires innovative architectures. This multi-modal approach extracts emotion from Bengali text and synthesized speech signals.</p>
-                    <p>The framework tackles polysemous word ambiguity by aligning textual sentiment with frequency domain extractions from acoustic environments. Evaluated under 10-fold cross-validation, the proposed Custom Resource-Scarce Artificial Neural Network (RS-ANN) successfully maps complex representations efficiently.</p>
+                    <p>The framework tackles polysemous word ambiguity by aligning textual sentiment with frequency domain extractions from acoustic environments. Evaluated under 10-fold cross-validation, the proposed Custom Resource-Scarce Artificial Neural Network (RS-ANN) successfully maps complex representations efficiently<span class="academic-cite">[cite: 7]</span>.</p>
                     <div class="modal-img-container">
                         <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" onerror="this.style.display='none'">
                         <img src="Screenshot 2026-09-25 173533.png" alt="Architecture" onerror="this.style.display='none'">
@@ -940,27 +982,27 @@
                 return "To combat textual misinformation, Anuran built an adaptive RAG fact-verification system. Let me open the structural brief detailing his approach to semantic optimization...";
             }
             // Triggers UI Modal
-            if (input.match(/\b(speech|audio|auditory|acoustic|voice|sound|ben-rs|bengali|emotion)\b/)) {
+            if (input.match(/\b(speech|audio|auditory|acoustic|voice|sound|ben-rs|bengali|emotion|smile)\b/)) {
                 setTimeout(() => openModal('benrs'), 1200);
-                return "Anuran's work intersects auditory processing and text sentiment. Let me open the brief detailing his approach to Bengali NLP and Speech processing...";
+                return "Anuran's work heavily integrates auditory processing and speech signals with NLP. I am opening the brief detailing his approach to Speech & Emotion Processing now...";
             }
             
             // Standard Text Responses
-            if (input.match(/\b(bio|biostat|biostatistics|medicine|medical|health)\b/)) {
+            if (input.match(/\b(bio|medical|health|physiological|biostat|biostatistics)\b/)) {
                 return "Anuran applies robust non-parametric statistics (like Median Absolute Deviation) to evaluate structural anomalies. This quantitative biostatistics approach is highly applicable to processing physiological signals and medical data, ensuring high-fidelity, interpretable diagnostics.";
             }
-            if (input.match(/\b(signal|system|frequency|spectrum)\b/)) {
-                return "His core methodology revolves around Signals & Systems. He uses Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes. This physics-based approach creates a deterministic boundary for anomaly detection.";
+            if (input.match(/\b(signal|image|processing|spectrum)\b/)) {
+                return "His core methodology revolves around Signal & Image Processing. For instance, in PHORENSICS, he extracts Power Spectrum decay slopes using FFT to create deterministic boundaries against deepfakes.";
             }
             if (input.match(/\b(contact|email|reach|hire|phd|admissions)\b/)) {
-                return "Anuran is actively seeking PhD opportunities to further his research. You can reach him directly at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
+                return "Anuran is actively seeking PhD opportunities to further his research in Signals, Speech, and Social AI. You can reach him directly at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
             }
             if (input.match(/\b(hi|hello|hey|greetings|morning)\b/)) {
                 return "Hello! I'm AB-Jr, the intelligence engine running this portfolio. Ask me to open detailed briefs on Anuran's work in Signal Processing, Speech Systems, Biostatistics, or Deepfake detection.";
             }
             
             // Smart Fallback
-            return "That's an intriguing query. While my knowledge base is strictly indexed on Anuran's academic portfolio—focusing on <strong>Signal Processing</strong>, <strong>Social AI</strong>, and <strong>HCI</strong>—his overarching goal is to build intelligent, transparent systems that tackle precisely these concepts. Would you like me to open the architectural brief for his deepfake detection framework?";
+            return "That's an intriguing query. While my knowledge base is strictly indexed on Anuran's academic portfolio—focusing on <strong>Signal & Image Processing</strong>, <strong>Social AI</strong>, and <strong>NLP</strong>—his overarching goal is to build intelligent systems that tackle precisely these concepts. Would you like me to open the architectural brief for his deepfake detection framework?";
         }
     </script>
 </body>
