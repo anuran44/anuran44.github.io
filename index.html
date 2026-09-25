@@ -30,7 +30,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Dynamic Animated Mesh Gradient Background */
+        /* Main Body Styling */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -38,9 +38,22 @@
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
+            background-color: #0f172a; /* Fallback base color */
+        }
+
+        /* DYNAMIC BACKGROUND ISOLATION (Fixes the screen flicker) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; 
+            left: 0;
+            width: 100vw; 
+            height: 100vh;
             background: linear-gradient(-45deg, #0f172a, #2e1065, #082f49, #171131);
             background-size: 400% 400%;
             animation: gradientBG 20s ease infinite;
+            z-index: -2;
+            pointer-events: none;
         }
 
         @keyframes gradientBG {
@@ -50,11 +63,10 @@
         }
 
         /* =========================================================
-           YELLOW CARTOON CURSOR (Refined Size) & GLITTER
+           YELLOW CARTOON CURSOR & HARDWARE-ACCELERATED GLITTER
            ========================================================= */
         @media (pointer: fine) {
             body, a, button, input, .info-tooltip, .nav-link, .primary-btn, .pub-btn {
-                /* Cursor reduced in size from 28x34 to 18x22 for nimbleness */
                 cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='22' viewBox='0 0 24 30'%3E%3Cpath d='M2,2 L2,26 L7,20 L12,29 L16,27 L11,18 L19,18 Z' fill='%23FFD700' stroke='%23000000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E"), auto !important;
             }
         }
@@ -67,12 +79,14 @@
             pointer-events: none;
             z-index: 9999;
             box-shadow: 0 0 8px currentColor;
+            /* Using translate3d forces the GPU to render this, preventing screen flashes */
             animation: glitterAnim 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            will-change: transform, opacity;
         }
 
         @keyframes glitterAnim {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); }
+            0% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); }
+            100% { opacity: 0; transform: translate3d(calc(-50% + var(--tx)), calc(-50% + var(--ty)), 0) scale(0); }
         }
 
         /* LIVE INTERACTIVE CANVAS BACKGROUND */
@@ -82,7 +96,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: 0;
+            z-index: -1;
             pointer-events: none; 
         }
 
@@ -717,7 +731,7 @@
         }
 
         /* =========================================================
-           AB-JR AI ASSISTANT WIDGET (Advanced UI)
+           AB-JR AI ASSISTANT WIDGET 
            ========================================================= */
         .chat-widget {
             position: fixed;
@@ -1108,7 +1122,7 @@
         </section>
 
         <!-- =========================================================
-             EXPERIENCE SECTION
+             EXPERIENCE SECTION (Vertical Timeline)
              ========================================================= -->
         <section id="experience" class="section">
             <h2 class="section-title">Research Experience</h2>
@@ -1179,7 +1193,7 @@
                     
                     <!-- Paper 1 -->
                     <div class="pub-item">
-                        <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" class="pub-thumb">
+                        <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" class="pub-thumb" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80'">
                         <div class="pub-details">
                             <h3 class="pub-title">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
                             <p class="pub-authors">Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
@@ -1249,7 +1263,7 @@
     <!-- JavaScript -->
     <script>
         /* =========================================================
-           CUSTOM GLITTER LOGIC (Triggered on Click)
+           CUSTOM GLITTER LOGIC (Hardware Accelerated)
            ========================================================= */
         if(window.matchMedia("(pointer: fine)").matches) {
             window.addEventListener('mousedown', (e) => {
@@ -1278,7 +1292,8 @@
 
             // Mix of colors for the glitter (Golden, White, Light Blue)
             const colors = ['#ffffff', '#FFD700', '#38bdf8', '#fef08a'];
-            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.color = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.background = sparkle.style.color;
             
             setTimeout(() => sparkle.remove(), 600);
         }
@@ -1385,7 +1400,6 @@
         }
 
         function triggerSmartIntent(intent) {
-            // Remove the action container from view
             const actionContainer = document.getElementById('chat-action-container');
             if(actionContainer) actionContainer.style.display = 'none';
 
@@ -1408,7 +1422,6 @@
             addMessage(userText, 'user-msg');
             inputField.value = '';
 
-            // Hide action buttons if user decides to type instead
             const actionContainer = document.getElementById('chat-action-container');
             if(actionContainer) actionContainer.style.display = 'none';
 
@@ -1421,12 +1434,11 @@
             const chatBox = document.getElementById('chat-messages');
             const msgDiv = document.createElement('div');
             msgDiv.className = `message ${className}`;
-            msgDiv.innerHTML = text; // Allow rich text formatting
+            msgDiv.innerHTML = text; 
             chatBox.appendChild(msgDiv);
             chatBox.scrollTop = chatBox.scrollHeight; 
         }
 
-        // Dedicated Intent Handler for initial buttons
         function processSmartIntent(intent) {
             switch(intent) {
                 case 'phorensics':
@@ -1442,7 +1454,6 @@
         function generateConversationalResponse(text) {
             const input = text.toLowerCase();
             
-            // Context matching engine
             if (input.match(/\b(hi|hello|hey|greetings)\b/)) {
                 return "Hello there! I'm AB-Jr. I'm equipped to discuss Anuran's work in Human-Centered AI, NLP, and Deepfake detection. How can I help?";
             }
@@ -1465,7 +1476,6 @@
                 return "He's currently open to PhD opportunities! The best way to reach him is at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
             }
             
-            // Smart Fallback
             return "That's an insightful perspective. While my primary programming focuses on Anuran's specific academic portfolio—such as his work in <strong>Trustworthy AI</strong> and <strong>Social Computing</strong>—his overarching research goal is to build AI systems capable of intelligently interacting with those exact types of complex concepts. Is there a specific project of his you'd like me to detail?";
         }
     </script>
