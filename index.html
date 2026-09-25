@@ -43,6 +43,52 @@
             animation: gradientBG 20s ease infinite;
         }
 
+        /* CUSTOM CURSOR STYLING (Only applies for mouse pointer devices) */
+        @media (pointer: fine) {
+            body {
+                cursor: none;
+            }
+            a, button, input {
+                cursor: none;
+            }
+            .cursor-dot {
+                width: 8px;
+                height: 8px;
+                background-color: var(--accent-primary);
+                position: fixed;
+                top: 0; left: 0;
+                border-radius: 50%;
+                z-index: 9999;
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+                box-shadow: 0 0 10px var(--accent-primary);
+            }
+            .cursor-outline {
+                width: 40px;
+                height: 40px;
+                border: 2px solid var(--accent-secondary);
+                position: fixed;
+                top: 0; left: 0;
+                border-radius: 50%;
+                z-index: 9998;
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+                transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+            }
+            body.cursor-hover .cursor-outline {
+                width: 60px;
+                height: 60px;
+                background-color: rgba(244, 114, 182, 0.2);
+                border-color: transparent;
+            }
+            body.cursor-click .cursor-outline {
+                width: 20px;
+                height: 20px;
+                background-color: rgba(56, 189, 248, 0.6);
+                border-color: transparent;
+            }
+        }
+
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -110,7 +156,6 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.7;
@@ -131,10 +176,10 @@
             z-index: 1;
         }
 
-        /* All sections stack on top of each other now */
+        /* Sections stack on top of each other */
         .section {
             margin-bottom: 8rem;
-            scroll-margin-top: 100px; /* Prevents nav from covering title */
+            scroll-margin-top: 100px;
             animation: fadeUp 0.8s ease-out forwards;
         }
 
@@ -227,6 +272,63 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
+        /* Glowing Pulse Animation for Live Run Button */
+        .pulse-btn {
+            animation: pulse-border 2s infinite;
+            border-color: var(--accent-primary);
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
+        /* Interactive Info Tooltip */
+        .info-tooltip {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            margin-left: auto;
+            cursor: none;
+        }
+
+        .info-icon {
+            color: var(--accent-secondary);
+            font-size: 1.3rem;
+            animation: bounce-x 2s infinite;
+        }
+
+        @keyframes bounce-x {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: rgba(15, 23, 42, 0.95);
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px 14px;
+            position: absolute;
+            z-index: 10;
+            bottom: 150%;
+            right: 0;
+            border: 1px solid var(--accent-secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
         /* =========================================================
            VISION & SKILLS 
            ========================================================= */
@@ -272,7 +374,7 @@
         }
 
         /* =========================================================
-           SELECTED RESEARCH SECTION (Cards)
+           SELECTED RESEARCH SECTION
            ========================================================= */
         .research-grid {
             display: flex;
@@ -344,6 +446,7 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         /* =========================================================
@@ -401,7 +504,7 @@
         }
 
         /* =========================================================
-           PUBLICATIONS SECTION (Mimicking Requested Screenshot layout)
+           PUBLICATIONS SECTION
            ========================================================= */
         .pub-list {
             display: flex;
@@ -600,10 +703,16 @@
             nav ul { gap: 1rem; }
             .pub-item { flex-direction: column; align-items: flex-start; }
             .pub-thumb { width: 100%; height: auto; max-height: 200px; object-fit: contain; }
+            .info-tooltip { margin-left: 0; margin-top: 10px; }
+            .tooltip-text { left: 0; margin-left: 0; right: auto; }
         }
     </style>
 </head>
 <body>
+
+    <!-- CUSTOM CURSOR DOM ELEMENTS -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
     <!-- LIVE CS ANIMATED BACKGROUND -->
     <canvas id="bg-canvas"></canvas>
@@ -690,7 +799,7 @@
             <h2 class="section-title">Selected Research</h2>
             <div class="research-grid">
                 
-                <!-- RESEARCH 1 -->
+                <!-- RESEARCH 1: PHORENSICS -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>PHORENSICS: Deepfake Detection for Public Benefit</h3>
@@ -713,16 +822,26 @@
                         </div>
                         <div class="research-section">
                             <h5>Method & Public Application</h5>
-                            <p>Developed an open-source Python framework that surfaces mathematical anomalies (FFT, Error Level Analysis, PRNU) directly to the user via a clean UX interface. As a public-benefit application, it translates complex generative AI artifacts into verifiable, physics-based visual evidence, ensuring users aren't forced to blindly trust an AI's classification.</p>
+                            <p>Developed an open-source Python framework that surfaces mathematical anomalies directly to the user via a clean UX interface. As a public-benefit application, it translates complex generative AI artifacts into verifiable, physics-based visual evidence, ensuring users aren't forced to blindly trust an AI's classification.</p>
                         </div>
                     </div>
                     <div class="card-actions">
-                        <a href="CV-ANURAN.pdf" target="_blank" class="primary-btn"><i class="fas fa-file-pdf"></i> Read Thesis Abstract</a>
-                        <a href="https://github.com/anuran44" target="_blank" class="primary-btn"><i class="fab fa-github"></i> Repository</a>
+                        <a href="https://github.com/anuran44/PHORENSICS-Deepfake-Detection" target="_blank" class="primary-btn">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                        <a href="https://phorensics-deepfake-detection-cyobx6rmmgfh3emamceoty.streamlit.app/" target="_blank" class="primary-btn pulse-btn">
+                            <i class="fas fa-globe"></i> Want to do live run?
+                        </a>
+                        
+                        <!-- Interactive Tooltip -->
+                        <div class="info-tooltip">
+                            <i class="fas fa-info-circle info-icon"></i>
+                            <span class="tooltip-text">System analyzes Frequency Domain (FFT), Error Level Analysis (ELA), and Sensor Pattern Noise (PRNU) to output verifiable physics-based metrics.</span>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- RESEARCH 2 -->
+                <!-- RESEARCH 2: FACT VERIFICATION -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>AI Fact Verification: Combating Textual Misinformation</h3>
@@ -743,7 +862,7 @@
                     </div>
                 </div>
 
-                <!-- RESEARCH 3 -->
+                <!-- RESEARCH 3: TxtVis -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>TxtVis: Visualizing Multimodal Latent Spaces</h3>
@@ -826,7 +945,7 @@
         </section>
 
         <!-- =========================================================
-             PUBLICATIONS SECTION (Redesigned List View)
+             PUBLICATIONS SECTION 
              ========================================================= -->
         <section id="publications" class="section">
             <h2 class="section-title">Peer-Reviewed Publications</h2>
@@ -872,6 +991,47 @@
 
     <!-- JavaScript -->
     <script>
+        /* =========================================================
+           CUSTOM CURSOR LOGIC
+           ========================================================= */
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        // Only run if the cursors actually exist (meaning pointer: fine media query is met or DOM elements loaded)
+        if(cursorDot && cursorOutline) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Slight delay for the outline
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            window.addEventListener('mousedown', () => {
+                document.body.classList.add('cursor-click');
+            });
+            window.addEventListener('mouseup', () => {
+                document.body.classList.remove('cursor-click');
+            });
+
+            // Add hover effects for all links, buttons, and tooltips
+            const clickables = document.querySelectorAll('a, button, .info-tooltip');
+            clickables.forEach((el) => {
+                el.addEventListener('mouseenter', () => {
+                    document.body.classList.add('cursor-hover');
+                });
+                el.addEventListener('mouseleave', () => {
+                    document.body.classList.remove('cursor-hover');
+                });
+            });
+        }
+
         /* =========================================================
            BACKGROUND CANVAS NEURAL NETWORK ANIMATION
            ========================================================= */
