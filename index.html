@@ -43,56 +43,74 @@
             animation: gradientBG 20s ease infinite;
         }
 
-        /* CUSTOM CURSOR STYLING (Only applies for mouse pointer devices) */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* =========================================================
+           CUSTOM CURSOR & GLITTER EFFECTS
+           ========================================================= */
         @media (pointer: fine) {
-            body {
-                cursor: none;
-            }
-            a, button, input {
-                cursor: none;
+            body, a, button, input {
+                cursor: none; /* Hide default cursor */
             }
             .cursor-dot {
-                width: 8px;
-                height: 8px;
-                background-color: var(--accent-primary);
+                width: 12px;
+                height: 12px;
+                background-color: #ffffff;
+                /* Making it pointed (Diamond shape) */
+                clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+                position: fixed;
+                top: 0; left: 0;
+                z-index: 10000;
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            }
+            .cursor-outline {
+                width: 35px;
+                height: 35px;
+                border: 1.5px solid rgba(255, 255, 255, 0.5);
                 position: fixed;
                 top: 0; left: 0;
                 border-radius: 50%;
                 z-index: 9999;
                 pointer-events: none;
                 transform: translate(-50%, -50%);
-                box-shadow: 0 0 10px var(--accent-primary);
-            }
-            .cursor-outline {
-                width: 40px;
-                height: 40px;
-                border: 2px solid var(--accent-secondary);
-                position: fixed;
-                top: 0; left: 0;
-                border-radius: 50%;
-                z-index: 9998;
-                pointer-events: none;
-                transform: translate(-50%, -50%);
                 transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
             }
             body.cursor-hover .cursor-outline {
-                width: 60px;
-                height: 60px;
-                background-color: rgba(244, 114, 182, 0.2);
+                width: 50px;
+                height: 50px;
+                background-color: rgba(255, 255, 255, 0.1);
                 border-color: transparent;
             }
             body.cursor-click .cursor-outline {
                 width: 20px;
                 height: 20px;
-                background-color: rgba(56, 189, 248, 0.6);
+                background-color: rgba(255, 255, 255, 0.8);
                 border-color: transparent;
             }
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Glitter Particle Animation */
+        .sparkle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            pointer-events: none;
+            z-index: 9998;
+            box-shadow: 0 0 10px #ffffff, 0 0 20px var(--accent-primary);
+            animation: glitterAnim 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes glitterAnim {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); }
         }
 
         /* LIVE INTERACTIVE CANVAS BACKGROUND */
@@ -156,6 +174,7 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
             opacity: 0.7;
@@ -276,6 +295,7 @@
         .pulse-btn {
             animation: pulse-border 2s infinite;
             border-color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.1);
         }
 
         @keyframes pulse-border {
@@ -290,7 +310,6 @@
             display: inline-flex;
             align-items: center;
             margin-left: auto;
-            cursor: none;
         }
 
         .info-icon {
@@ -450,7 +469,7 @@
         }
 
         /* =========================================================
-           EXPERIENCE SECTION (Timeline)
+           EXPERIENCE SECTION 
            ========================================================= */
         .timeline-container {
             padding: 1rem 0;
@@ -504,7 +523,7 @@
         }
 
         /* =========================================================
-           PUBLICATIONS SECTION
+           PUBLICATIONS SECTION 
            ========================================================= */
         .pub-list {
             display: flex;
@@ -695,6 +714,161 @@
             100% { top: -10%; }
         }
 
+        /* =========================================================
+           AB-JR AI ASSISTANT WIDGET (Glassmorphism)
+           ========================================================= */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+
+        .chat-button {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            color: var(--accent-primary);
+            font-size: 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(56, 189, 248, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-window {
+            display: none;
+            width: 360px;
+            height: 500px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            position: absolute;
+            bottom: 85px;
+            right: 0;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .chat-window.open {
+            display: flex;
+            animation: slideUpChat 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideUpChat {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .chat-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bot-msg {
+            background: rgba(56, 189, 248, 0.15);
+            color: #e0f2fe;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .user-msg {
+            background: rgba(244, 114, 182, 0.15);
+            color: #fce7f3;
+            border: 1px solid rgba(244, 114, 182, 0.3);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-replies button {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .quick-replies button:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--accent-primary);
+        }
+
+        .chat-input-area {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .chat-input::placeholder { color: var(--text-muted); }
+
+        .chat-send {
+            background: none;
+            color: var(--accent-primary);
+            border: none;
+            font-size: 1.2rem;
+        }
+
         /* Media Queries */
         @media(max-width: 768px) {
             .hero-section { flex-direction: column; text-align: left; padding: 2rem; }
@@ -705,6 +879,7 @@
             .pub-thumb { width: 100%; height: auto; max-height: 200px; object-fit: contain; }
             .info-tooltip { margin-left: 0; margin-top: 10px; }
             .tooltip-text { left: 0; margin-left: 0; right: auto; }
+            .chat-window { width: 300px; height: 400px; }
         }
     </style>
 </head>
@@ -799,7 +974,7 @@
             <h2 class="section-title">Selected Research</h2>
             <div class="research-grid">
                 
-                <!-- RESEARCH 1: PHORENSICS -->
+                <!-- RESEARCH 1 -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>PHORENSICS: Deepfake Detection for Public Benefit</h3>
@@ -841,7 +1016,7 @@
                     </div>
                 </div>
                 
-                <!-- RESEARCH 2: FACT VERIFICATION -->
+                <!-- RESEARCH 2 -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>AI Fact Verification: Combating Textual Misinformation</h3>
@@ -862,7 +1037,7 @@
                     </div>
                 </div>
 
-                <!-- RESEARCH 3: TxtVis -->
+                <!-- RESEARCH 3 -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>TxtVis: Visualizing Multimodal Latent Spaces</h3>
@@ -989,15 +1164,45 @@
 
     </div>
 
+    <!-- =========================================================
+         AB-JR AI ASSISTANT WIDGET
+         ========================================================= -->
+    <div class="chat-widget">
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <span><i class="fas fa-robot" style="color:var(--accent-primary); margin-right:8px;"></i> AB-Jr Assistant</span>
+                <button class="chat-close" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-msg">Hi! I am AB-Jr, Anuran's AI assistant. I can guide you through his work in Social AI, Deepfake Forensics, and HCI. What would you like to know?</div>
+                
+                <div class="quick-replies" id="quick-replies-box">
+                    <button onclick="sendQuickReply('Explain PHORENSICS')">/explain_phorensics</button>
+                    <button onclick="sendQuickReply('UX & HCI Approach')">/ux_approach</button>
+                    <button onclick="sendQuickReply('Contact Info')">/contact</button>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Type a question..." onkeypress="handleEnter(event)">
+                <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        
+        <button class="chat-button" onclick="toggleChat()">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
     <!-- JavaScript -->
     <script>
         /* =========================================================
-           CUSTOM CURSOR LOGIC
+           CUSTOM CURSOR & GLITTER LOGIC
            ========================================================= */
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
 
-        // Only run if the cursors actually exist (meaning pointer: fine media query is met or DOM elements loaded)
+        // Only run if the cursors actually exist (meaning pointer: fine media query is met)
         if(cursorDot && cursorOutline) {
             window.addEventListener('mousemove', (e) => {
                 const posX = e.clientX;
@@ -1013,6 +1218,7 @@
                 }, { duration: 500, fill: "forwards" });
             });
 
+            // Click effect for cursor ring
             window.addEventListener('mousedown', () => {
                 document.body.classList.add('cursor-click');
             });
@@ -1020,16 +1226,41 @@
                 document.body.classList.remove('cursor-click');
             });
 
-            // Add hover effects for all links, buttons, and tooltips
-            const clickables = document.querySelectorAll('a, button, .info-tooltip');
+            // Hover effects
+            const clickables = document.querySelectorAll('a, button, .info-tooltip, input');
             clickables.forEach((el) => {
-                el.addEventListener('mouseenter', () => {
-                    document.body.classList.add('cursor-hover');
-                });
-                el.addEventListener('mouseleave', () => {
-                    document.body.classList.remove('cursor-hover');
-                });
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
             });
+
+            // Sparkle (Glitter) Particle Generator on Click
+            window.addEventListener('mousedown', (e) => {
+                for(let i = 0; i < 8; i++) {
+                    createSparkle(e.clientX, e.clientY);
+                }
+            });
+        }
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            document.body.appendChild(sparkle);
+
+            // Randomize direction and distance
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 40 + 10;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            sparkle.style.setProperty('--tx', `${tx}px`);
+            sparkle.style.setProperty('--ty', `${ty}px`);
+
+            // Clean up DOM after animation
+            setTimeout(() => {
+                sparkle.remove();
+            }, 600);
         }
 
         /* =========================================================
@@ -1107,7 +1338,6 @@
 
         /* =========================================================
            SCROLL SPY NAVIGATION
-           Highlights nav links based on scroll position
            ========================================================= */
         document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.section');
@@ -1122,9 +1352,7 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Remove active class from all links
                         navLinks.forEach(link => link.classList.remove('active'));
-                        // Add active class to corresponding link
                         const id = entry.target.getAttribute('id');
                         const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
                         if (correspondingLink) {
@@ -1136,6 +1364,66 @@
 
             sections.forEach(section => observer.observe(section));
         });
+
+        /* =========================================================
+           AB-JR AI ASSISTANT LOGIC
+           ========================================================= */
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.classList.toggle('open');
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function sendQuickReply(text) {
+            const inputField = document.getElementById('chat-input');
+            inputField.value = text;
+            const quickRepliesBox = document.getElementById('quick-replies-box');
+            if (quickRepliesBox) quickRepliesBox.style.display = 'none';
+            sendMessage();
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById('chat-input');
+            const userText = inputField.value.trim();
+            if (userText === "") return;
+
+            addMessage(userText, 'user-msg');
+            inputField.value = '';
+
+            setTimeout(() => {
+                const botResponse = generateBotResponse(userText.toLowerCase());
+                addMessage(botResponse, 'bot-msg');
+            }, 600);
+        }
+
+        function addMessage(text, className) {
+            const chatBox = document.getElementById('chat-messages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${className}`;
+            msgDiv.innerText = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; 
+        }
+
+        function generateBotResponse(text) {
+            if (text.includes('phorensics') || text.includes('deepfake')) {
+                return "PHORENSICS is Anuran's verifiable deepfake detection framework. It surfaces FFT and PRNU noise directly to users, making forensic AI transparent rather than a black box.";
+            } 
+            else if (text.includes('ux') || text.includes('hci') || text.includes('approach')) {
+                return "Anuran focuses on the intersection of AI and HCI. He builds interactive front-ends (like Streamlit UIs for TxtVis and RAG systems) so non-experts can intuitively interpret complex multimodal algorithms.";
+            } 
+            else if (text.includes('contact') || text.includes('email')) {
+                return "You can reach Anuran directly at bhattacharyaanuran45@gmail.com, or via the GitHub/LinkedIn links in his bio above.";
+            } 
+            else {
+                return "I am AB-Jr! You can ask me about Anuran's work in Social Computing, his UX/HCI approaches, or his systems for combating misinformation.";
+            }
+        }
     </script>
 </body>
 </html>
