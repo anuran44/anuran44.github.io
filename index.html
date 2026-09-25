@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuran Bhattacharya | Signals, Systems & Social AI Researcher</title>
+    <title>Anuran Bhattacharya | Social AI & HCI Researcher</title>
     <!-- Avant-garde typography suitable for HCI / Research -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -27,7 +27,6 @@
 
         html { scroll-behavior: smooth; }
 
-        /* FLICKER FIX: Deep static gradient replaces the heavy animation */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -48,7 +47,6 @@
             }
         }
 
-        /* FLICKER FIX: Simplified Sparkle Rendering */
         .sparkle {
             position: fixed;
             width: 6px;
@@ -144,7 +142,7 @@
         }
 
         .profile-img {
-            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
             border: 2px solid rgba(255, 255, 255, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.4); flex-shrink: 0;
         }
 
@@ -170,7 +168,7 @@
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-main); padding: 0.6rem 1.2rem; border-radius: 8px;
             font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem;
-            text-decoration: none; transition: all 0.3s ease;
+            text-decoration: none; transition: all 0.3s ease; cursor: pointer;
         }
 
         .primary-btn:hover {
@@ -178,37 +176,22 @@
             border-color: var(--accent-primary); box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
-        .pulse-btn {
-            animation: pulse-border 2s infinite; border-color: var(--accent-primary);
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
-        }
-
-        .machine-btn {
-            background: rgba(15, 23, 42, 0.9); border: 1px solid var(--accent-secondary);
-            color: var(--accent-secondary); font-family: monospace; font-size: 0.85rem; letter-spacing: 1px;
-        }
-        .machine-btn:hover { background: var(--accent-secondary); color: #fff; }
-
         /* =========================================================
            VISION & SKILLS
            ========================================================= */
         .vision-container {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;
+            display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; margin-bottom: 3rem; align-items: center;
         }
 
         .vision-box {
             padding: 2rem; font-size: 1.05rem; color: #f8fafc; border-left: 4px solid var(--accent-secondary);
         }
 
+        /* Reduced Venn Diagram Size */
         .vision-venn-container {
             display: flex; justify-content: center; align-items: center; padding: 1rem;
             background: rgba(0, 0, 0, 0.2); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 300px; margin: 0 auto;
         }
 
         .skills-grid {
@@ -230,184 +213,130 @@
         }
 
         /* =========================================================
-           SELECTED RESEARCH SECTION
+           SELECTED RESEARCH SECTION (Concise with "Read More")
            ========================================================= */
         .research-grid {
-            display: flex; flex-direction: column; gap: 3rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
         }
 
         .research-card {
-            overflow: hidden; display: flex; flex-direction: column;
+            overflow: hidden; display: flex; flex-direction: column; background: rgba(0, 0, 0, 0.3);
         }
 
         .research-card-header {
-            padding: 1.5rem 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2);
-            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2);
         }
 
-        .research-card-header h3 { font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-main); }
-        .research-question { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; color: var(--accent-primary); font-weight: 500; font-style: italic; }
-
+        .research-card-header h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main); }
+        
         .research-card-body {
-            padding: 2rem; display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+            padding: 1.5rem; flex-grow: 1;
         }
 
-        .research-section h5 {
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-secondary); margin-bottom: 0.5rem;
+        .research-card-body p {
+            font-size: 0.95rem; color: var(--text-muted); margin: 0 0 1.5rem 0; line-height: 1.6;
         }
-
-        .research-section p, .research-section ul {
-            font-size: 1rem; color: var(--text-muted); margin: 0; line-height: 1.6;
-        }
-
-        .research-section ul { list-style-type: square; padding-left: 1.2rem; }
-        .research-section ul li { margin-bottom: 0.4rem; }
 
         .card-actions {
-            padding: 1rem 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.1);
-            display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
-        }
-
-        /* CSS SCANNER ANIMATION */
-        .scanner-visual {
-            position: relative; width: 100%; height: 220px; background: #000; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 1.5rem; font-family: 'Space Grotesk', monospace;
-        }
-        
-        .base-target {
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.5; filter: grayscale(80%) contrast(120%);
-        }
-
-        .scan-line {
-            position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-            background: var(--accent-primary); box-shadow: 0 0 15px var(--accent-primary), 0 0 30px rgba(56, 189, 248, 0.6);
-            animation: scan 3s ease-in-out infinite; z-index: 10;
-        }
-
-        @keyframes scan { 0% { top: -10%; } 50% { top: 105%; } 100% { top: -10%; } }
-
-        .grid-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 20px 20px; z-index: 5;
-        }
-
-        .hud-text {
-            position: absolute; bottom: 15px; left: 20px; color: var(--text-main); font-size: 0.8rem; z-index: 20; font-weight: 600;
+            padding: 1rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.1);
+            display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between;
         }
 
         /* =========================================================
-           SMART AI ASSISTANT WIDGET (Agentic UI)
+           EXPERIENCE SECTION (Timeline)
            ========================================================= */
-        .chat-widget {
-            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+        .timeline-container {
+            padding: 1rem 0;
         }
 
-        .chat-button {
-            width: 65px; height: 65px; border-radius: 50%; background: rgba(15, 23, 42, 0.9);
-            border: 2px solid var(--accent-primary); color: var(--accent-primary); font-size: 1.8rem;
-            display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(56, 189, 248, 0.2); backdrop-filter: blur(10px);
-        }
-
-        .chat-button:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.5); }
-
-        .chat-window {
-            display: none; width: 380px; height: 550px; background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: absolute; bottom: 85px; right: 0;
-            flex-direction: column; overflow: hidden; font-family: 'Inter', sans-serif;
-        }
-
-        .chat-window.open {
-            display: flex; animation: slideUpChat 0.3s ease-out forwards;
-        }
-
-        @keyframes slideUpChat {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .chat-header {
-            background: rgba(0, 0, 0, 0.6); padding: 1.2rem; display: flex; justify-content: space-between;
-            align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);
+        .timeline-item {
+            border-left: 2px solid var(--accent-secondary);
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
         
-        .chat-header-title {
-            font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 8px;
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-item::before {
+            content: ''; position: absolute; left: -8px; top: 0; width: 14px; height: 14px;
+            background: var(--accent-secondary); border-radius: 50%; box-shadow: 0 0 10px var(--accent-secondary);
         }
 
-        .chat-close { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
-
-        .chat-messages {
-            flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; scroll-behavior: smooth;
+        .timeline-date {
+            color: var(--accent-primary); font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+            margin-bottom: 0.5rem; font-weight: 600; letter-spacing: 1px;
         }
 
-        .message {
-            max-width: 85%; padding: 1rem; border-radius: 12px; font-size: 0.95rem; line-height: 1.5; position: relative;
-        }
-
-        .bot-msg {
-            background: rgba(56, 189, 248, 0.1); color: #f1f5f9; border: 1px solid rgba(56, 189, 248, 0.2);
-            align-self: flex-start; border-bottom-left-radius: 2px;
-        }
-
-        .user-msg {
-            background: rgba(244, 114, 182, 0.15); color: #fce7f3; border: 1px solid rgba(244, 114, 182, 0.3);
-            align-self: flex-end; border-bottom-right-radius: 2px;
-        }
-
-        /* Typing indicator */
-        .typing-indicator {
-            display: none; align-self: flex-start; background: rgba(56, 189, 248, 0.1); padding: 12px 16px;
-            border-radius: 12px; border-bottom-left-radius: 2px; border: 1px solid rgba(56, 189, 248, 0.2);
-        }
-        .typing-indicator span {
-            display: inline-block; width: 6px; height: 6px; background-color: var(--accent-primary);
-            border-radius: 50%; margin: 0 2px; animation: typing 1.4s infinite both;
-        }
-        .typing-indicator span:nth-child(1) { animation-delay: 0s; }
-        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typing { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-5px); } }
-
-        .chat-input-area {
-            display: flex; padding: 1rem; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.6);
-        }
-
-        .chat-input {
-            flex: 1; background: transparent; border: none; color: white; outline: none; font-family: 'Inter', sans-serif; font-size: 0.95rem;
-        }
-
-        .chat-send {
-            background: none; color: var(--accent-primary); border: none; font-size: 1.2rem; transition: transform 0.2s ease; cursor: pointer;
-        }
-        .chat-send:hover { transform: scale(1.1); color: #fff;}
+        .timeline-item h3 { margin-bottom: 0.2rem; font-size: 1.4rem; }
+        .timeline-item h4 { color: var(--text-darker); font-weight: 400; font-size: 1rem; margin-bottom: 1rem; }
+        .timeline-item ul { padding-left: 1.2rem; color: var(--text-muted); }
 
         /* =========================================================
-           POPUP MODAL (For Smart AI "Lab Fit" Windows)
+           TALKS & PUBLICATIONS SECTIONS (Separated)
+           ========================================================= */
+        .talks-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
+        }
+
+        .video-card {
+            display: block; text-decoration: none; color: inherit; overflow: hidden; transition: transform 0.3s ease;
+        }
+
+        .video-card:hover { transform: translateY(-5px); }
+
+        .video-thumbnail-container {
+            position: relative; width: 100%; height: 180px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .video-thumbnail { width: 100%; height: 100%; object-fit: cover; }
+
+        .play-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.6); border-radius: 50%; width: 50px; height: 50px;
+            display: flex; justify-content: center; align-items: center; font-size: 1.2rem; color: #fff;
+            border: 2px solid rgba(255,255,255,0.5); transition: all 0.3s ease;
+        }
+
+        .video-card:hover .play-overlay {
+            background: rgba(255, 0, 0, 0.8); border-color: #ff0000; transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info { padding: 1.5rem; }
+        .video-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+
+        /* Publications */
+        .pub-list { display: flex; flex-direction: column; gap: 2rem; }
+        .pub-item { display: flex; align-items: flex-start; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .pub-details { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+        .pub-title { font-size: 1.2rem; color: #ffffff; margin: 0; font-family: 'Inter', sans-serif; }
+        .pub-authors { color: var(--text-muted); font-size: 1rem; margin: 0; }
+        .pub-venue { color: var(--accent-primary); font-style: italic; font-size: 0.95rem; margin: 0 0 1rem 0; }
+
+        /* =========================================================
+           POPUP MODAL (For Smart AI "Read More" Windows)
            ========================================================= */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 10000;
-            justify-content: center; align-items: center;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 10000;
+            justify-content: center; align-items: center; padding: 20px;
         }
 
         .modal-overlay.open { display: flex; animation: fadeIn 0.3s ease forwards; }
-
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .modal-window {
             background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px; width: 90%; max-width: 600px; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            overflow: hidden; transform: scale(0.95); transition: transform 0.3s ease;
+            border-radius: 12px; width: 100%; max-width: 700px; max-height: 85vh; overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6); transform: scale(0.95); transition: transform 0.3s ease;
         }
 
         .modal-overlay.open .modal-window { transform: scale(1); }
 
         .modal-header {
             background: rgba(0,0,0,0.5); padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: sticky; top: 0; z-index: 10;
         }
 
         .mac-dots { display: flex; gap: 8px; margin-right: 15px; }
@@ -418,8 +347,79 @@
 
         .modal-title { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin: 0;}
 
-        .modal-body { padding: 2rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+        .modal-body { padding: 2rem; color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+        .modal-body h4 { color: var(--accent-secondary); font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;}
+        .modal-body p { margin-top: 0;}
         .modal-body strong { color: var(--accent-primary); }
+        .modal-img-container { display: flex; gap: 15px; margin: 20px 0; justify-content: center;}
+        .modal-img-container img { max-height: 200px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: #fff;}
+
+        /* =========================================================
+           AB-JR AI ASSISTANT WIDGET (Agentic System)
+           ========================================================= */
+        .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
+
+        .chat-button {
+            width: 60px; height: 60px; border-radius: 50%; background: rgba(15, 23, 42, 0.9);
+            border: 2px solid var(--accent-primary); color: var(--accent-primary); font-size: 1.5rem;
+            display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(56, 189, 248, 0.2); backdrop-filter: blur(10px);
+        }
+
+        .chat-button:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4); cursor: pointer;}
+
+        .chat-window {
+            display: none; width: 340px; height: 480px; background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: absolute; bottom: 80px; right: 0;
+            flex-direction: column; overflow: hidden; font-family: 'Inter', sans-serif;
+        }
+
+        .chat-window.open { display: flex; animation: slideUpChat 0.3s ease-out forwards; }
+        @keyframes slideUpChat { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .chat-header {
+            background: rgba(0, 0, 0, 0.6); padding: 1rem; display: flex; justify-content: space-between;
+            align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .chat-header-title {
+            font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: #fff; display: flex; align-items: center; gap: 8px;
+        }
+
+        .chat-close { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
+
+        .chat-messages {
+            flex: 1; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth;
+        }
+
+        .message {
+            max-width: 85%; padding: 0.8rem; border-radius: 12px; font-size: 0.9rem; line-height: 1.4; position: relative;
+        }
+
+        .bot-msg { background: rgba(56, 189, 248, 0.1); color: #f1f5f9; border: 1px solid rgba(56, 189, 248, 0.2); align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user-msg { background: rgba(244, 114, 182, 0.15); color: #fce7f3; border: 1px solid rgba(244, 114, 182, 0.3); align-self: flex-end; border-bottom-right-radius: 2px; }
+
+        /* Typing indicator */
+        .typing-indicator {
+            display: none; align-self: flex-start; background: rgba(56, 189, 248, 0.1); padding: 10px 14px;
+            border-radius: 12px; border-bottom-left-radius: 2px; border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+        .typing-indicator span {
+            display: inline-block; width: 5px; height: 5px; background-color: var(--accent-primary);
+            border-radius: 50%; margin: 0 2px; animation: typing 1.4s infinite both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: 0s; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-4px); } }
+
+        .chat-input-area { display: flex; padding: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.6); }
+        .chat-input { flex: 1; background: transparent; border: none; color: white; outline: none; font-family: 'Inter', sans-serif; font-size: 0.9rem; }
+        .chat-input::placeholder { color: var(--text-darker); }
+        .chat-send { background: none; color: var(--accent-primary); border: none; font-size: 1.1rem; transition: transform 0.2s ease; cursor: pointer; }
+        .chat-send:hover { transform: scale(1.1); color: #fff;}
 
         /* Media Queries */
         @media(max-width: 768px) {
@@ -427,8 +427,8 @@
             .header-title { font-size: 2.8rem; }
             nav { width: 95%; padding: 0.6rem; overflow-x: auto; white-space: nowrap;}
             .vision-container { grid-template-columns: 1fr; }
-            .chat-window { width: 320px; height: 450px; bottom: 80px; right: 10px;}
-            .research-card-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .chat-window { width: 300px; height: 400px; bottom: 80px; right: 10px;}
+            .modal-img-container { flex-direction: column; align-items: center;}
         }
     </style>
 </head>
@@ -443,6 +443,7 @@
             <li><a href="#home" class="nav-link active">Bio & Vision</a></li>
             <li><a href="#research" class="nav-link">Research</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#talks" class="nav-link">Talks</a></li>
             <li><a href="#publications" class="nav-link">Papers</a></li>
             <li><a href="CV-ANURAN.pdf" target="_blank" class="cv-link"><i class="fas fa-file-pdf"></i> CV</a></li>
         </ul>
@@ -459,11 +460,11 @@
                 
                 <div class="hero-text">
                     <h1 class="header-title">Anuran Bhattacharya</h1>
-                    <div class="identity-subtitle">Signals & Systems · Auditory/Speech Processing · Social AI · Quantitative Biostatistics</div>
+                    <div class="identity-subtitle">Social AI · HCI · NLP · Computer Vision</div>
                     
-                    <p>I am a researcher bridging the gap between theoretical signal processing, machine learning, and high-impact social computing. My work investigates how mathematical models of acoustics, optical physics, and complex data environments can be utilized to detect biological anomalies and combat digital deception.</p>
+                    <p>I am an M.Tech. graduate in Computer Science & Engineering dedicated to building principled, human-centered AI. My research sits precisely at the intersection of <strong>Social Computing</strong>, <strong>Human-Computer Interaction (HCI)</strong>, and <strong>Natural Language Processing (NLP)</strong>.</p>
                     
-                    <p>From developing frequency-domain frameworks for media forensics to engineering robust non-parametric statistics for multi-modal verification, I build principled AI systems. By deeply integrating <strong>quantitative biostatistics</strong> with <strong>signal processing</strong>, I aim to create transparent, human-centered computational tools that serve the public benefit in medicine, speech technology, and digital trust.</p>
+                    <p>I focus on developing trustworthy AI systems that combat algorithmic misinformation and synthetic media (deepfakes). By combining data-driven learning with insights from physics and mathematics, I build robust, interpretative tools that empower the public to reliably verify information and safely interact with generative models.</p>
 
                     <div class="action-row">
                         <a href="mailto:bhattacharyaanuran45@gmail.com" class="primary-btn"><i class="fas fa-envelope"></i> Email</a>
@@ -478,12 +479,12 @@
             
             <div class="mac-panel vision-container">
                 <div class="vision-box" style="border:none; padding-right: 0;">
-                    My doctoral ambition is to investigate complex auditory and visual signals through the lens of machine learning and biostatistics. I aim to build systems that analyze human-centric data—such as detecting vocal anomalies in speech environments or establishing physical boundaries against synthetic deepfakes—bridging the gap between physiological signals and trustworthy AI systems.
+                    In my doctoral research, I aim to advance Trustworthy AI by unifying NLP, Computer Vision, and HCI under a single human-centered framework. My goal is to design interactive, verifiable systems that empower the public to co-reason with generative models—building computational defenses that safeguard society against multi-modal digital deception and improve reliability in health and social ecosystems.
                 </div>
                 
-                <!-- Dynamic SVG Venn Diagram representing the Intersection -->
+                <!-- Dynamic SVG Venn Diagram (Smaller) -->
                 <div class="vision-venn-container">
-                    <svg width="100%" height="280" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="100%" height="200" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
                                 <stop offset="0%" stop-color="rgba(56, 189, 248, 0.7)"/>
@@ -503,55 +504,19 @@
                         <circle cx="300" cy="150" r="120" fill="url(#grad2)" style="mix-blend-mode: screen;" />
                         <circle cx="250" cy="240" r="120" fill="url(#grad3)" style="mix-blend-mode: screen;" />
                         <!-- Labels -->
-                        <text x="140" y="110" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">Signal &amp;</text>
-                        <text x="140" y="130" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">Systems</text>
-
-                        <text x="360" y="110" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">Speech &amp;</text>
-                        <text x="360" y="130" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">Auditory</text>
-
-                        <text x="250" y="320" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">Social AI &amp; HCI</text>
-
+                        <text x="140" y="120" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">Computer Vision</text>
+                        <text x="360" y="120" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">NLP / LLMs</text>
+                        <text x="250" y="320" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">HCI &amp; UX</text>
                         <!-- Intersection Text -->
-                        <text x="250" y="180" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="700" text-anchor="middle">Trustworthy</text>
-                        <text x="250" y="200" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="700" text-anchor="middle">Public Tech</text>
+                        <text x="250" y="180" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">Trustworthy</text>
+                        <text x="250" y="200" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">Social AI</text>
                     </svg>
-                </div>
-            </div>
-
-            <h2 class="section-title">Core Competencies</h2>
-            <div class="skills-grid">
-                <div class="mac-panel skill-category">
-                    <h4>Signals, Systems & Physics</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Frequency Domain (FFT)</span>
-                        <span class="skill-tag">Power Spectrum Decay</span>
-                        <span class="skill-tag">Signal Processing</span>
-                        <span class="skill-tag">Acoustic Environments</span>
-                    </div>
-                </div>
-                <div class="mac-panel skill-category">
-                    <h4>Auditory & NLP Computing</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Speech Emotion Recognition</span>
-                        <span class="skill-tag">Gemma 3</span>
-                        <span class="skill-tag">Retrieval-Augmented Gen</span>
-                        <span class="skill-tag">Multi-modal Embeddings</span>
-                    </div>
-                </div>
-                <div class="mac-panel skill-category">
-                    <h4>Biostatistics & Data</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag">Robust Statistical Fusion</span>
-                        <span class="skill-tag">Median Absolute Deviation (MAD)</span>
-                        <span class="skill-tag">Quantitative Biostatistics</span>
-                        <span class="skill-tag">Apache Spark Distribution</span>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- =========================================================
-             SELECTED RESEARCH SECTION
+             SELECTED RESEARCH SECTION (Concise with "Read More")
              ========================================================= -->
         <section id="research" class="section">
             <h2 class="section-title">Selected Research</h2>
@@ -560,80 +525,44 @@
                 <!-- RESEARCH 1: PHORENSICS -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
-                        <div>
-                            <h3>PHORENSICS: Physics-Inspired Forensics</h3>
-                            <div class="research-question">Combating Misinformation via Global Spectral Analysis & Sensor Noise</div>
-                        </div>
-                        <!-- AI Machine Link to trigger Modal -->
-                        <a href="javascript:void(0)" onclick="triggerSmartIntent('phorensics')" class="primary-btn machine-btn">INITIALIZE_ANALYSIS</a>
+                        <h3>PHORENSICS: Physics-Inspired Forensics</h3>
                     </div>
-                    <div class="research-card-body">
-                        <div class="scanner-visual">
-                            <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80" class="base-target" alt="Detection Target">
-                            <div class="grid-overlay"></div>
-                            <div class="scan-line"></div>
-                            <div class="hud-text" style="font-family:'Space Grotesk', monospace;">
-                                <div>> EXECUTING FFT ALGORITHM...</div>
-                                <div style="color: var(--accent-secondary);">> [!] POWER SPECTRUM DECAY ANOMALY DETECTED</div>
-                            </div>
-                        </div>
-
-                        <div class="research-section">
-                            <h5>Signal Processing & Statistical Formulation</h5>
-                            <p>To establish a deterministic boundary between authentic media and deepfakes, I formulated an Unbiased Physics Forensics Framework. Rather than relying on black-box neural networks, the system implements Global Spectral Analysis utilizing Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes (α), isolating generative upsampling anomalies.</p>
-                        </div>
-                        <div class="research-section">
-                            <h5>Method & Scalable Execution</h5>
-                            <p>For localized manipulations, the architecture processes Local Spatial Statistics, extracting Photo-Response Non-Uniformity (PRNU) and Error Level Analysis (ELA). The detection thresholds are modeled using robust non-parametric statistics, specifically Modified Z-Scores derived via Median Absolute Deviation (MAD). To handle high-resolution matrices without memory failure, I engineered a distributed compute engine using Apache Spark.</p>
-                        </div>
+                    <div class="research-card-body" style="padding: 1.5rem;">
+                        <p><strong>Focus:</strong> Social AI & Computer Vision</p>
+                        <p>A deterministic, multi-modal unbiased forensics framework that replaces probabilistic black-box ML models. It establishes mathematical boundaries between naturally captured photons and artificially generated pixels to combat deepfakes and synthetic media for public benefit.</p>
                     </div>
                     <div class="card-actions">
-                        <a href="https://github.com/anuran44/PHORENSICS-Deepfake-Detection" target="_blank" class="primary-btn">
-                            <i class="fab fa-github"></i> Repository
-                        </a>
-                        <a href="https://phorensics-deepfake-detection-cyobx6rmmgfh3emamceoty.streamlit.app/" target="_blank" class="primary-btn pulse-btn">
-                            <i class="fas fa-globe"></i> Want to do live run?
-                        </a>
+                        <button onclick="openModal('phorensics')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
+                        <a href="https://github.com/anuran44/PHORENSICS-Deepfake-Detection" target="_blank" class="primary-btn"><i class="fab fa-github"></i> Code</a>
                     </div>
                 </div>
                 
-                <!-- RESEARCH 2: BEN-RS-ANN -->
-                <div class="mac-panel research-card">
-                    <div class="research-card-header">
-                        <div>
-                            <h3>BEN-RS-ANN: Speech & Sentence Emotion</h3>
-                            <div class="research-question">Bridging NLP and Speech Signal Processing for Resource-Scarce Environments</div>
-                        </div>
-                        <!-- AI Machine Link to trigger Modal -->
-                        <a href="javascript:void(0)" onclick="triggerSmartIntent('speech')" class="primary-btn machine-btn">INITIALIZE_ANALYSIS</a>
-                    </div>
-                    <div class="research-card-body">
-                        <div class="research-section">
-                            <h5>Auditory & Textual Processing</h5>
-                            <p>Developing human-centered AI in resource-scarce languages requires innovative architectures. I contributed to the development of a multi-modal approach for revealing emotion from Bengali text and synthesized speech signals. The framework directly tackles polysemous word ambiguity by aligning textual sentiment with frequency domain extractions from acoustic environments.</p>
-                        </div>
-                        <div class="research-section">
-                            <h5>Methodology</h5>
-                            <p>By implementing a custom Resource-Scarce Artificial Neural Network (RS-ANN), the model maps complex speech and text representations efficiently. The framework was evaluated under rigorous 10-fold cross-validation, achieving robust classification accuracy while remaining highly lightweight for public deployment.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RESEARCH 3: FACT VERIFICATION -->
+                <!-- RESEARCH 2: FACT VERIFICATION -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>Adaptive Social AI Fact Verification</h3>
-                        <div class="research-question">Optimizing Retrieval-Augmented NLP Systems for Human Fact-Checkers</div>
                     </div>
-                    <div class="research-card-body">
-                        <div class="research-section">
-                            <h5>Problem & Motivation</h5>
-                            <p>Algorithmic text generation degrades factual ecosystems. Static RAG pipelines often overwhelm users with redundant documents. I addressed this critical human-AI interaction bottleneck by applying statistical thresholds to semantic retrieval.</p>
-                        </div>
-                        <div class="research-section">
-                            <h5>Method</h5>
-                            <p>Combining Gemma 3 LLM reasoning with an adaptive semantic algorithm, the system mathematically terminates iterative retrieval once semantic similarity stabilizes. This presents human moderators with concise, verifiable claim-evidence pairs, significantly reducing cognitive load.</p>
-                        </div>
+                    <div class="research-card-body" style="padding: 1.5rem;">
+                        <p><strong>Focus:</strong> HCI & NLP Alignment</p>
+                        <p>Developed a retrieval-augmented fact verification framework combining Gemma 3 LLM reasoning with semantic document retrieval. To prevent human cognitive overload, I proposed an adaptive convergence strategy that terminates retrieval once semantic similarity stabilizes, ensuring concise claim-evidence pairing.</p>
+                    </div>
+                    <div class="card-actions">
+                        <button onclick="openModal('fact')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
+                        <a href="https://github.com/anuran44" target="_blank" class="primary-btn"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+
+                <!-- RESEARCH 3: BEN-RS-ANN -->
+                <div class="mac-panel research-card">
+                    <div class="research-card-header">
+                        <h3>BEN-RS-ANN: Bengali Emotion Detection</h3>
+                    </div>
+                    <div class="research-card-body" style="padding: 1.5rem;">
+                        <p><strong>Focus:</strong> NLP & Speech Processing</p>
+                        <p>Developed a resource-scarce Artificial Neural Network (RS-ANN) designed for emotion detection in Bengali text. This framework specifically targets polysemy resolution (words with multiple meanings) to improve context understanding in human-language environments.</p>
+                    </div>
+                    <div class="card-actions">
+                        <button onclick="openModal('benrs')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
                     </div>
                 </div>
 
@@ -641,30 +570,73 @@
         </section>
 
         <!-- =========================================================
-             PUBLICATIONS & PRESENTATIONS SECTION 
+             EXPERIENCE SECTION 
              ========================================================= -->
-        <section id="publications" class="section">
-            <h2 class="section-title">Peer-Reviewed Publications & Talks</h2>
+        <section id="experience" class="section">
+            <h2 class="section-title">Research Experience</h2>
             
-            <div class="mac-panel" style="padding: 2.5rem;">
+            <div class="mac-panel timeline-container" style="padding: 2.5rem;">
                 
-                <!-- Talk / Webinar Highlight -->
-                <div style="margin-bottom: 3rem;">
-                    <h3 style="color: var(--accent-primary); margin-bottom: 1rem; font-family: 'Space Grotesk'; font-size: 1.4rem;">Invited Guest Talk</h3>
-                    <div style="display: flex; align-items: center; gap: 20px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                        <img src="image_8f8a61.jpg" alt="Webinar" style="width: 150px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
-                        <div>
-                            <h4 style="margin: 0 0 5px 0; font-size: 1.1rem; color: #fff;">Computer Vision & AI Applications</h4>
-                            <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: var(--text-muted);">The Bhawanipur Education Society College</p>
-                            <a href="https://youtu.be/dhIYjBsI0-g?si=LhLzNTrRnIeEQ-pv&t=569" target="_blank" style="color: var(--accent-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem;"><i class="fab fa-youtube" style="color:#ff0000;"></i> Watch on YouTube</a>
-                        </div>
-                    </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2025 – Feb 2026</div>
+                    <h3>Research Intern (Media Forensics)</h3>
+                    <h4>University of Calcutta | Advised by Prof. Sanjit Kumar Setua</h4>
+                    <ul>
+                        <li>Worked on verifiable media forensics to protect users from manipulated digital media and synthetic content.</li>
+                        <li>Designed a fault-tolerant execution pipeline dynamically switching between GPU and CPU to ensure system accessibility across varying hardware capabilities.</li>
+                    </ul>
                 </div>
 
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2023 – Jul 2024</div>
+                    <h3>Research Intern (Academic)</h3>
+                    <h4>University of Calcutta | Advised by Prof. Rajat Kumar Pal</h4>
+                    <ul>
+                        <li>Developed a Bengali NLP project for emotion detection, focusing on polysemy resolution in resource-scarce environments to improve human-language understanding.</li>
+                        <li>Evaluated using 10-fold cross-validation, achieving 90.08% accuracy.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Sep 2021 – Jan 2022</div>
+                    <h3>Research Collaborator</h3>
+                    <h4>Indian Statistical Institute (ISI) & The Bhawanipur Education Society College</h4>
+                    <ul>
+                        <li>Collaborated on a machine-learning recommendation system built to respect user localization parameters without aggressively mining user-history data.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             TALKS SECTION
+             ========================================================= -->
+        <section id="talks" class="section">
+            <h2 class="section-title">Invited Talks</h2>
+            <div class="talks-grid">
+                <a href="https://youtu.be/dhIYjBsI0-g?si=LhLzNTrRnIeEQ-pv&t=569" target="_blank" class="mac-panel video-card">
+                    <div class="video-thumbnail-container">
+                        <img src="image_8f8a61.jpg" alt="Computer Vision Webinar Thumbnail" class="video-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80'">
+                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">Computer Vision & AI Applications</div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0;">Guest Speaker · The Bhawanipur Education Society College</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             PUBLICATIONS SECTION 
+             ========================================================= -->
+        <section id="publications" class="section">
+            <h2 class="section-title">Peer-Reviewed Publications</h2>
+            
+            <div class="mac-panel" style="padding: 2.5rem;">
                 <div class="pub-list">
                     <!-- Paper 1 -->
                     <div class="pub-item">
-                        <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" class="pub-thumb" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80'">
                         <div class="pub-details">
                             <h3 class="pub-title">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
                             <p class="pub-authors">Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
@@ -672,29 +644,42 @@
                             <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-authored the proposal of an RS-ANN architecture contributing directly to mathematical polysemy resolution.</p>
                             <div class="pub-buttons">
                                 <a href="https://link.springer.com/chapter/10.1007/978-981-97-9762-2_13" target="_blank" class="pub-btn">SPRINGER</a>
-                                <a href="#" class="pub-btn">PDF</a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Paper 2 -->
                     <div class="pub-item">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Generic Paper Thumbnail" class="pub-thumb">
                         <div class="pub-details">
                             <h3 class="pub-title">A User Independent Recommendation System for Web Series</h3>
                             <p class="pub-authors">Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
                             <p class="pub-venue">In Emerging Technologies in Data Mining and Information Security (IEMIS), Springer LNNS, 2022</p>
                             <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-developed a personalized recommendation engine mitigating external dataset bias.</p>
-                            <div class="pub-buttons">
-                                <a href="#" class="pub-btn">SPRINGER</a>
-                                <a href="#" class="pub-btn">PDF</a>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+    </div>
+
+    <!-- =========================================================
+         POPUP MODAL (For "Read More" Content)
+         ========================================================= -->
+    <div class="modal-overlay" id="project-modal" onclick="closeModal(event)">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="mac-dots">
+                    <div class="mac-dot red" onclick="closeModalBtn()"></div>
+                    <div class="mac-dot yellow"></div>
+                    <div class="mac-dot green"></div>
+                </div>
+                <h3 class="modal-title" id="modal-title">Project Details</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content injected dynamically via JS -->
+            </div>
+        </div>
     </div>
 
     <!-- =========================================================
@@ -711,7 +696,7 @@
             
             <div class="chat-messages" id="chat-messages">
                 <div class="message bot-msg">
-                    Hi! I am AB-Jr, the dedicated AI assistant for Anuran's portfolio. You can ask me about his work in <strong>Signals & Systems</strong>, <strong>Speech Processing</strong>, <strong>Quantitative Biostatistics</strong>, or <strong>Deepfake Detection</strong>.
+                    Hi! I am AB-Jr, the AI assistant for Anuran's portfolio. I can summarize his methodologies or open detailed project briefs for you. What would you like to explore?
                 </div>
             </div>
             
@@ -730,29 +715,10 @@
         </button>
     </div>
 
-    <!-- =========================================================
-         POPUP MODAL (For Smart AI "Lab Fit" Windows)
-         ========================================================= -->
-    <div class="modal-overlay" id="lab-modal" onclick="closeModal(event)">
-        <div class="modal-window">
-            <div class="modal-header">
-                <div class="mac-dots">
-                    <div class="mac-dot red" onclick="closeModalBtn()"></div>
-                    <div class="mac-dot yellow"></div>
-                    <div class="mac-dot green"></div>
-                </div>
-                <h3 class="modal-title" id="modal-title">Research Brief</h3>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Content injected dynamically via JS -->
-            </div>
-        </div>
-    </div>
-
     <!-- JavaScript -->
     <script>
         /* =========================================================
-           CUSTOM GLITTER LOGIC (Hardware Accelerated)
+           CUSTOM GLITTER LOGIC 
            ========================================================= */
         if(window.matchMedia("(pointer: fine)").matches) {
             window.addEventListener('mousedown', (e) => {
@@ -861,6 +827,57 @@
         });
 
         /* =========================================================
+           MODAL (NEW WINDOW) LOGIC
+           ========================================================= */
+        function openModal(projectKey) {
+            const modal = document.getElementById('project-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+
+            if (projectKey === 'phorensics') {
+                title.innerText = "PHORENSICS: Architectural Brief";
+                body.innerHTML = `
+                    <h4>Physics-Based Signal Analysis</h4>
+                    <p>Unlike standard probabilistic deep learning models that suffer from catastrophic forgetting, PHORENSICS establishes strict mathematical boundaries between natural photons and synthetic pixels. It applies <strong>Global Spectral Analysis</strong> using <strong>Fast Fourier Transforms (FFT)</strong> to extract Power Spectrum decay slopes (α), which explicitly isolates generative upsampling anomalies.</p>
+                    
+                    <h4>Spatial Statistics & Hardware Distribution</h4>
+                    <p>For localized blending (identity swaps), the framework integrates <strong>Error Level Analysis (ELA)</strong> and <strong>Sensor Pattern Noise (PRNU)</strong>. The system evaluates structural failure utilizing robust non-parametric statistics, specifically <strong>Modified Z-Scores derived via Median Absolute Deviation (MAD)</strong>.</p>
+                    <p>To process massive enterprise data seamlessly, the entire architecture is distributed over Apache Spark with a dynamic Adaptive Compute Manager that toggles between GPU/CPU RAM.</p>
+                `;
+            } else if (projectKey === 'fact') {
+                title.innerText = "Fact Verification: Structural Brief";
+                body.innerHTML = `
+                    <h4>HCI & Semantic Optimization</h4>
+                    <p>Algorithmic text generation degrades factual ecosystems. Static Retrieval-Augmented Generation (RAG) pipelines often overwhelm users with redundant documents or obscure reasoning.</p>
+                    <p>This project combines Gemma 3 LLM reasoning with an adaptive semantic retrieval algorithm. Crucially, the system mathematically terminates iterative retrieval once semantic similarity stabilizes. This directly reduces cognitive overload for human moderators, presenting them with concise, verifiable claim-evidence pairs while improving overall FEVER benchmark accuracy.</p>
+                `;
+            } else if (projectKey === 'benrs') {
+                title.innerText = "BEN-RS-ANN: Structural Brief";
+                body.innerHTML = `
+                    <h4>Resource-Scarce NLP Environments</h4>
+                    <p>Developing human-centered AI in resource-scarce languages requires innovative architectures. This multi-modal approach extracts emotion from Bengali text and synthesized speech signals.</p>
+                    <p>The framework tackles polysemous word ambiguity by aligning textual sentiment with frequency domain extractions from acoustic environments. Evaluated under 10-fold cross-validation, the proposed Custom Resource-Scarce Artificial Neural Network (RS-ANN) successfully maps complex representations efficiently.</p>
+                    <div class="modal-img-container">
+                        <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" onerror="this.style.display='none'">
+                        <img src="Screenshot 2026-09-25 173533.png" alt="Architecture" onerror="this.style.display='none'">
+                    </div>
+                `;
+            }
+            
+            modal.classList.add('open');
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'project-modal') {
+                document.getElementById('project-modal').classList.remove('open');
+            }
+        }
+
+        function closeModalBtn() {
+            document.getElementById('project-modal').classList.remove('open');
+        }
+
+        /* =========================================================
            AGENTIC AI CHATBOT LOGIC (Controls UI & Modals)
            ========================================================= */
         function toggleChat() {
@@ -869,27 +886,6 @@
 
         function handleEnter(event) {
             if (event.key === 'Enter') sendMessage();
-        }
-
-        function triggerSmartIntent(intent) {
-            if (!document.getElementById('chat-window').classList.contains('open')) {
-                toggleChat();
-            }
-            
-            let fakeInput = "Tell me about the " + (intent === 'phorensics' ? "PHORENSICS project." : "Speech & Emotion project.");
-            addMessage(fakeInput, 'user-msg');
-            showTyping();
-
-            setTimeout(() => {
-                hideTyping();
-                if (intent === 'phorensics') {
-                    addMessage("Of course. Opening the Signals & Systems architectural brief for PHORENSICS now...", 'bot-msg');
-                    openLabModal('phorensics');
-                } else if (intent === 'speech') {
-                    addMessage("Absolutely. Opening the Auditory & NLP Processing brief for BEN-RS-ANN now...", 'bot-msg');
-                    openLabModal('speech');
-                }
-            }, 1000);
         }
 
         function sendMessage() {
@@ -905,7 +901,7 @@
                 hideTyping();
                 const response = generateConversationalResponse(userText);
                 addMessage(response, 'bot-msg');
-            }, 1200); 
+            }, 1000); 
         }
 
         function addMessage(text, className) {
@@ -929,77 +925,42 @@
             document.getElementById('typing-indicator').style.display = 'none';
         }
 
-        /* Smart AI Intent Engine */
+        /* Smart AI Intent Engine (Agentic Control) */
         function generateConversationalResponse(text) {
             const input = text.toLowerCase();
             
             // Triggers UI Modal
-            if (input.match(/\b(phorensics|deepfake|vision|fft|prnu)\b/)) {
-                setTimeout(() => openLabModal('phorensics'), 1500);
-                return "PHORENSICS is Anuran's flagship media forensics system based on physical signal anomalies. Let me open the detailed architectural brief for you in a new window...";
+            if (input.match(/\b(phorensics|deepfake|vision|fft|prnu|physics)\b/)) {
+                setTimeout(() => openModal('phorensics'), 1200);
+                return "PHORENSICS is Anuran's flagship media forensics system based on physical signal anomalies. I am opening the detailed architectural brief for you now...";
             }
             // Triggers UI Modal
-            if (input.match(/\b(speech|audio|auditory|acoustic|voice|sound|ben-rs)\b/)) {
-                setTimeout(() => openLabModal('speech'), 1500);
-                return "Anuran's work heavily intersects with auditory processing and text sentiment. Let me open the structural brief detailing his approach to Speech Signal Processing...";
+            if (input.match(/\b(fact|misinformation|nlp|llm|gemma|rag|text)\b/)) {
+                setTimeout(() => openModal('fact'), 1200);
+                return "To combat textual misinformation, Anuran built an adaptive RAG fact-verification system. Let me open the structural brief detailing his approach to semantic optimization...";
+            }
+            // Triggers UI Modal
+            if (input.match(/\b(speech|audio|auditory|acoustic|voice|sound|ben-rs|bengali|emotion)\b/)) {
+                setTimeout(() => openModal('benrs'), 1200);
+                return "Anuran's work intersects auditory processing and text sentiment. Let me open the brief detailing his approach to Bengali NLP and Speech processing...";
             }
             
             // Standard Text Responses
             if (input.match(/\b(bio|biostat|biostatistics|medicine|medical|health)\b/)) {
                 return "Anuran applies robust non-parametric statistics (like Median Absolute Deviation) to evaluate structural anomalies. This quantitative biostatistics approach is highly applicable to processing physiological signals and medical data, ensuring high-fidelity, interpretable diagnostics.";
             }
-            if (input.match(/\b(signal|system|physics|frequency|spectrum)\b/)) {
-                return "His core methodology revolves around Signals & Systems. He uses Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes, combined with sensor noise analysis. This physics-based approach creates a deterministic boundary for anomaly detection.";
-            }
-            if (input.match(/\b(nlp|text|fact|misinformation|fever|gemma|llm|rag)\b/)) {
-                return "To combat algorithmic misinformation, Anuran developed an adaptive, retrieval-augmented (RAG) fact verification system using the Gemma 3 LLM. It utilizes statistical convergence on semantic similarity to optimize context windows and reduce cognitive overload for human fact-checkers.";
+            if (input.match(/\b(signal|system|frequency|spectrum)\b/)) {
+                return "His core methodology revolves around Signals & Systems. He uses Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes. This physics-based approach creates a deterministic boundary for anomaly detection.";
             }
             if (input.match(/\b(contact|email|reach|hire|phd|admissions)\b/)) {
-                return "Anuran is actively seeking PhD opportunities to further his research in Signals, Speech, and Trustworthy AI. You can reach him directly at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
+                return "Anuran is actively seeking PhD opportunities to further his research. You can reach him directly at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
             }
             if (input.match(/\b(hi|hello|hey|greetings|morning)\b/)) {
-                return "Hello! I'm AB-Jr, the intelligence engine running this portfolio. I can open detailed briefs on Anuran's work in Signal Processing, Speech Systems, Biostatistics, and Deepfake detection. What would you like to see?";
+                return "Hello! I'm AB-Jr, the intelligence engine running this portfolio. Ask me to open detailed briefs on Anuran's work in Signal Processing, Speech Systems, Biostatistics, or Deepfake detection.";
             }
             
             // Smart Fallback
-            return "That's an intriguing query. While my knowledge base is specifically indexed on Anuran's academic portfolio—focusing on <strong>Signal Processing</strong>, <strong>Speech Analysis</strong>, and <strong>Quantitative Biostatistics</strong>—his overarching goal is to build human-centered AI systems that tackle precisely these types of complex questions. Would you like me to open the architectural brief for his Signals & Systems projects?";
-        }
-
-        /* =========================================================
-           MODAL (NEW WINDOW) LOGIC FOR LAB FIT
-           ========================================================= */
-        function openLabModal(type) {
-            const modal = document.getElementById('lab-modal');
-            const title = document.getElementById('modal-title');
-            const body = document.getElementById('modal-body');
-
-            if (type === 'phorensics') {
-                title.innerText = "PHORENSICS: Signal & Spectral Forensics";
-                body.innerHTML = `
-                    <p>Aligning with advanced <strong>Signals and Systems</strong> research, PHORENSICS models digital media forensics directly as a physical signal anomaly problem.</p>
-                    <p>By extracting <strong>Power Spectrum decay slopes (α)</strong> via Fast Fourier Transforms (FFT), it mathematically maps generative upsampling defects. To combat adversarial media, it employs robust quantitative biostatistics—specifically <strong>Median Absolute Deviation (MAD)</strong>—to establish deterministic boundaries.</p>
-                    <p>This methodology directly parallels acoustic and speech anomaly detection, where frequency-domain artifacts and high-frequency noise successfully expose synthetic generation.</p>
-                `;
-            } else if (type === 'speech') {
-                title.innerText = "BEN-RS-ANN: Auditory & Speech Processing";
-                body.innerHTML = `
-                    <p>Bridging Natural Language Processing with <strong>Auditory and Speech Signals</strong>, this framework focuses on extracting emotion from complex, resource-scarce environments.</p>
-                    <p>It processes synthesized speech signals alongside textual sentiment to rigorously resolve polysemous ambiguity. The underlying architecture applies non-parametric statistical fusion to map complex auditory representations.</p>
-                    <p>This demonstrates a highly robust foundation for advanced research in <strong>speech emotion recognition</strong> and human-machine acoustic interaction.</p>
-                `;
-            }
-            
-            modal.classList.add('open');
-        }
-
-        function closeModal(e) {
-            if (e.target.id === 'lab-modal') {
-                document.getElementById('lab-modal').classList.remove('open');
-            }
-        }
-
-        function closeModalBtn() {
-            document.getElementById('lab-modal').classList.remove('open');
+            return "That's an intriguing query. While my knowledge base is strictly indexed on Anuran's academic portfolio—focusing on <strong>Signal Processing</strong>, <strong>Social AI</strong>, and <strong>HCI</strong>—his overarching goal is to build intelligent, transparent systems that tackle precisely these concepts. Would you like me to open the architectural brief for his deepfake detection framework?";
         }
     </script>
 </body>
