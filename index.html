@@ -27,6 +27,7 @@
 
         html { scroll-behavior: smooth; }
 
+        /* FLICKER FIX: Deep static gradient replaces the heavy animation */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -34,15 +35,8 @@
             color: var(--text-main);
             line-height: 1.7;
             overflow-x: hidden;
-            background: linear-gradient(-45deg, #0f172a, #2e1065, #082f49, #171131);
-            background-size: 400% 400%;
-            animation: gradientBG 20s ease infinite;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #082f49 100%);
+            background-attachment: fixed;
         }
 
         /* =========================================================
@@ -50,25 +44,25 @@
            ========================================================= */
         @media (pointer: fine) {
             body, a, button, input, .info-tooltip, .nav-link, .primary-btn, .pub-btn {
-                /* Cursor reduced in size for nimbleness */
                 cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='18' viewBox='0 0 24 30'%3E%3Cpath d='M2,2 L2,26 L7,20 L12,29 L16,27 L11,18 L19,18 Z' fill='%23FFD700' stroke='%23000000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E"), auto !important;
             }
         }
 
+        /* FLICKER FIX: Simplified Sparkle Rendering */
         .sparkle {
             position: fixed;
-            width: 7px;
-            height: 7px;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             box-shadow: 0 0 8px currentColor;
-            animation: glitterAnim 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation: glitterAnim 0.5s ease-out forwards;
         }
 
         @keyframes glitterAnim {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); }
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
         }
 
         /* LIVE INTERACTIVE CANVAS BACKGROUND */
@@ -202,7 +196,7 @@
         .machine-btn:hover { background: var(--accent-secondary); color: #fff; }
 
         /* =========================================================
-           VISION & SKILLS (Signals & Systems Focus)
+           VISION & SKILLS
            ========================================================= */
         .vision-container {
             display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; align-items: center;
@@ -303,7 +297,7 @@
         }
 
         /* =========================================================
-           SMART AI ASSISTANT WIDGET (Apollo / Uni Style)
+           SMART AI ASSISTANT WIDGET (Agentic UI)
            ========================================================= */
         .chat-widget {
             position: fixed; bottom: 30px; right: 30px; z-index: 9999;
@@ -327,12 +321,12 @@
         }
 
         .chat-window.open {
-            display: flex; animation: slideUpChat 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; animation: slideUpChat 0.3s ease-out forwards;
         }
 
         @keyframes slideUpChat {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .chat-header {
@@ -344,7 +338,7 @@
             font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 8px;
         }
 
-        .chat-close { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; }
+        .chat-close { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
 
         .chat-messages {
             flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; scroll-behavior: smooth;
@@ -387,9 +381,45 @@
         }
 
         .chat-send {
-            background: none; color: var(--accent-primary); border: none; font-size: 1.2rem; transition: transform 0.2s ease;
+            background: none; color: var(--accent-primary); border: none; font-size: 1.2rem; transition: transform 0.2s ease; cursor: pointer;
         }
         .chat-send:hover { transform: scale(1.1); color: #fff;}
+
+        /* =========================================================
+           POPUP MODAL (For Smart AI "Lab Fit" Windows)
+           ========================================================= */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); z-index: 10000;
+            justify-content: center; align-items: center;
+        }
+
+        .modal-overlay.open { display: flex; animation: fadeIn 0.3s ease forwards; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal-window {
+            background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px; width: 90%; max-width: 600px; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            overflow: hidden; transform: scale(0.95); transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.open .modal-window { transform: scale(1); }
+
+        .modal-header {
+            background: rgba(0,0,0,0.5); padding: 12px 20px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mac-dots { display: flex; gap: 8px; margin-right: 15px; }
+        .mac-dot { width: 12px; height: 12px; border-radius: 50%; cursor: pointer;}
+        .mac-dot.red { background: #ff5f56; }
+        .mac-dot.yellow { background: #ffbd2e; }
+        .mac-dot.green { background: #27c93f; }
+
+        .modal-title { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin: 0;}
+
+        .modal-body { padding: 2rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+        .modal-body strong { color: var(--accent-primary); }
 
         /* Media Queries */
         @media(max-width: 768px) {
@@ -534,7 +564,7 @@
                             <h3>PHORENSICS: Physics-Inspired Forensics</h3>
                             <div class="research-question">Combating Misinformation via Global Spectral Analysis & Sensor Noise</div>
                         </div>
-                        <!-- AI Machine Link -->
+                        <!-- AI Machine Link to trigger Modal -->
                         <a href="javascript:void(0)" onclick="triggerSmartIntent('phorensics')" class="primary-btn machine-btn">INITIALIZE_ANALYSIS</a>
                     </div>
                     <div class="research-card-body">
@@ -550,11 +580,11 @@
 
                         <div class="research-section">
                             <h5>Signal Processing & Statistical Formulation</h5>
-                            <p>To establish a deterministic boundary between authentic media and deepfakes, I formulated an Unbiased Physics Forensics Framework[cite: 6]. Rather than relying on black-box neural networks, the system implements Global Spectral Analysis utilizing Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes (α), isolating generative upsampling anomalies[cite: 6].</p>
+                            <p>To establish a deterministic boundary between authentic media and deepfakes, I formulated an Unbiased Physics Forensics Framework. Rather than relying on black-box neural networks, the system implements Global Spectral Analysis utilizing Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes (α), isolating generative upsampling anomalies.</p>
                         </div>
                         <div class="research-section">
                             <h5>Method & Scalable Execution</h5>
-                            <p>For localized manipulations, the architecture processes Local Spatial Statistics, extracting Photo-Response Non-Uniformity (PRNU) and Error Level Analysis (ELA)[cite: 6]. The detection thresholds are modeled using robust non-parametric statistics, specifically Modified Z-Scores derived via Median Absolute Deviation (MAD)[cite: 6]. To handle high-resolution image matrices without memory failure, I engineered a distributed compute engine using Apache Spark and a Dynamic Adaptive Compute Manager[cite: 6].</p>
+                            <p>For localized manipulations, the architecture processes Local Spatial Statistics, extracting Photo-Response Non-Uniformity (PRNU) and Error Level Analysis (ELA). The detection thresholds are modeled using robust non-parametric statistics, specifically Modified Z-Scores derived via Median Absolute Deviation (MAD). To handle high-resolution matrices without memory failure, I engineered a distributed compute engine using Apache Spark.</p>
                         </div>
                     </div>
                     <div class="card-actions">
@@ -570,8 +600,12 @@
                 <!-- RESEARCH 2: BEN-RS-ANN -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
-                        <h3>BEN-RS-ANN: Bengali Sentence & Speech Emotion</h3>
-                        <div class="research-question">Bridging NLP and Speech Signal Processing for Resource-Scarce Environments</div>
+                        <div>
+                            <h3>BEN-RS-ANN: Speech & Sentence Emotion</h3>
+                            <div class="research-question">Bridging NLP and Speech Signal Processing for Resource-Scarce Environments</div>
+                        </div>
+                        <!-- AI Machine Link to trigger Modal -->
+                        <a href="javascript:void(0)" onclick="triggerSmartIntent('speech')" class="primary-btn machine-btn">INITIALIZE_ANALYSIS</a>
                     </div>
                     <div class="research-card-body">
                         <div class="research-section">
@@ -606,10 +640,65 @@
             </div>
         </section>
 
+        <!-- =========================================================
+             PUBLICATIONS & PRESENTATIONS SECTION 
+             ========================================================= -->
+        <section id="publications" class="section">
+            <h2 class="section-title">Peer-Reviewed Publications & Talks</h2>
+            
+            <div class="mac-panel" style="padding: 2.5rem;">
+                
+                <!-- Talk / Webinar Highlight -->
+                <div style="margin-bottom: 3rem;">
+                    <h3 style="color: var(--accent-primary); margin-bottom: 1rem; font-family: 'Space Grotesk'; font-size: 1.4rem;">Invited Guest Talk</h3>
+                    <div style="display: flex; align-items: center; gap: 20px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                        <img src="image_8f8a61.jpg" alt="Webinar" style="width: 150px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div>
+                            <h4 style="margin: 0 0 5px 0; font-size: 1.1rem; color: #fff;">Computer Vision & AI Applications</h4>
+                            <p style="margin: 0 0 10px 0; font-size: 0.9rem; color: var(--text-muted);">The Bhawanipur Education Society College</p>
+                            <a href="https://youtu.be/dhIYjBsI0-g?si=LhLzNTrRnIeEQ-pv&t=569" target="_blank" style="color: var(--accent-secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem;"><i class="fab fa-youtube" style="color:#ff0000;"></i> Watch on YouTube</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-list">
+                    <!-- Paper 1 -->
+                    <div class="pub-item">
+                        <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" class="pub-thumb" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80'">
+                        <div class="pub-details">
+                            <h3 class="pub-title">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
+                            <p class="pub-authors">Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
+                            <p class="pub-venue">In Applied Computing for Software and Smart Systems (ACSS), Springer LNNS, 2024</p>
+                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-authored the proposal of an RS-ANN architecture contributing directly to mathematical polysemy resolution.</p>
+                            <div class="pub-buttons">
+                                <a href="https://link.springer.com/chapter/10.1007/978-981-97-9762-2_13" target="_blank" class="pub-btn">SPRINGER</a>
+                                <a href="#" class="pub-btn">PDF</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paper 2 -->
+                    <div class="pub-item">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Generic Paper Thumbnail" class="pub-thumb">
+                        <div class="pub-details">
+                            <h3 class="pub-title">A User Independent Recommendation System for Web Series</h3>
+                            <p class="pub-authors">Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
+                            <p class="pub-venue">In Emerging Technologies in Data Mining and Information Security (IEMIS), Springer LNNS, 2022</p>
+                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-developed a personalized recommendation engine mitigating external dataset bias.</p>
+                            <div class="pub-buttons">
+                                <a href="#" class="pub-btn">SPRINGER</a>
+                                <a href="#" class="pub-btn">PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <!-- =========================================================
-         AB-JR AI ASSISTANT WIDGET (Apollo / Uni Style AI)
+         AB-JR AI ASSISTANT WIDGET (Agentic System)
          ========================================================= -->
     <div class="chat-widget">
         <div class="chat-window" id="chat-window">
@@ -622,17 +711,16 @@
             
             <div class="chat-messages" id="chat-messages">
                 <div class="message bot-msg">
-                    Hi! I am AB-Jr, the dedicated AI assistant for Anuran's portfolio. You can ask me about his work in <strong>Signals & Systems</strong>, <strong>Speech Processing</strong>, <strong>Quantitative Biostatistics</strong>, or <strong>Deepfake Detection</strong>. How can I help you today?
+                    Hi! I am AB-Jr, the dedicated AI assistant for Anuran's portfolio. You can ask me about his work in <strong>Signals & Systems</strong>, <strong>Speech Processing</strong>, <strong>Quantitative Biostatistics</strong>, or <strong>Deepfake Detection</strong>.
                 </div>
             </div>
             
-            <!-- Typing Indicator -->
             <div class="typing-indicator" id="typing-indicator">
                 <span></span><span></span><span></span>
             </div>
 
             <div class="chat-input-area">
-                <input type="text" id="chat-input" class="chat-input" placeholder="Ask me a question..." onkeypress="handleEnter(event)">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Command me..." onkeypress="handleEnter(event)">
                 <button class="chat-send" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
@@ -642,39 +730,54 @@
         </button>
     </div>
 
+    <!-- =========================================================
+         POPUP MODAL (For Smart AI "Lab Fit" Windows)
+         ========================================================= -->
+    <div class="modal-overlay" id="lab-modal" onclick="closeModal(event)">
+        <div class="modal-window">
+            <div class="modal-header">
+                <div class="mac-dots">
+                    <div class="mac-dot red" onclick="closeModalBtn()"></div>
+                    <div class="mac-dot yellow"></div>
+                    <div class="mac-dot green"></div>
+                </div>
+                <h3 class="modal-title" id="modal-title">Research Brief</h3>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content injected dynamically via JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
         /* =========================================================
-           CUSTOM GLITTER LOGIC
+           CUSTOM GLITTER LOGIC (Hardware Accelerated)
            ========================================================= */
         if(window.matchMedia("(pointer: fine)").matches) {
             window.addEventListener('mousedown', (e) => {
-                for(let i = 0; i < 15; i++) {
-                    createSparkle(e.clientX, e.clientY);
+                for(let i = 0; i < 12; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.classList.add('sparkle');
+                    document.body.appendChild(sparkle);
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 40 + 10; 
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+
+                    sparkle.style.left = `${e.clientX}px`;
+                    sparkle.style.top = `${e.clientY}px`;
+                    sparkle.style.setProperty('--tx', `${tx}px`);
+                    sparkle.style.setProperty('--ty', `${ty}px`);
+
+                    const colors = ['#ffffff', '#FFD700', '#38bdf8'];
+                    sparkle.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    sparkle.style.background = sparkle.style.color;
+                    
+                    setTimeout(() => sparkle.remove(), 600);
                 }
             });
-        }
-
-        function createSparkle(x, y) {
-            const sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            document.body.appendChild(sparkle);
-
-            const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 50 + 20; 
-            const tx = Math.cos(angle) * distance;
-            const ty = Math.sin(angle) * distance;
-
-            sparkle.style.left = `${x}px`;
-            sparkle.style.top = `${y}px`;
-            sparkle.style.setProperty('--tx', `${tx}px`);
-            sparkle.style.setProperty('--ty', `${ty}px`);
-
-            const colors = ['#ffffff', '#FFD700', '#38bdf8', '#fef08a'];
-            sparkle.style.color = colors[Math.floor(Math.random() * colors.length)];
-            sparkle.style.background = sparkle.style.color;
-            
-            setTimeout(() => sparkle.remove(), 600);
         }
 
         /* =========================================================
@@ -710,7 +813,7 @@
             }
         }
 
-        for (let i = 0; i < 50; i++) particles.push(new Particle());
+        for (let i = 0; i < 40; i++) particles.push(new Particle());
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
@@ -736,7 +839,29 @@
         animate();
 
         /* =========================================================
-           SMART AI CHATBOT LOGIC (AB-Jr)
+           SCROLL SPY NAVIGATION
+           ========================================================= */
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        const id = entry.target.getAttribute('id');
+                        const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                        if (correspondingLink) correspondingLink.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+        });
+
+        /* =========================================================
+           AGENTIC AI CHATBOT LOGIC (Controls UI & Modals)
            ========================================================= */
         function toggleChat() {
             document.getElementById('chat-window').classList.toggle('open');
@@ -750,14 +875,21 @@
             if (!document.getElementById('chat-window').classList.contains('open')) {
                 toggleChat();
             }
-            let fakeInput = "Tell me about " + intent + ".";
+            
+            let fakeInput = "Tell me about the " + (intent === 'phorensics' ? "PHORENSICS project." : "Speech & Emotion project.");
             addMessage(fakeInput, 'user-msg');
             showTyping();
 
             setTimeout(() => {
                 hideTyping();
-                addMessage(generateConversationalResponse(intent), 'bot-msg');
-            }, 1200);
+                if (intent === 'phorensics') {
+                    addMessage("Of course. Opening the Signals & Systems architectural brief for PHORENSICS now...", 'bot-msg');
+                    openLabModal('phorensics');
+                } else if (intent === 'speech') {
+                    addMessage("Absolutely. Opening the Auditory & NLP Processing brief for BEN-RS-ANN now...", 'bot-msg');
+                    openLabModal('speech');
+                }
+            }, 1000);
         }
 
         function sendMessage() {
@@ -767,13 +899,13 @@
 
             addMessage(userText, 'user-msg');
             inputField.value = '';
-            
             showTyping();
 
             setTimeout(() => {
                 hideTyping();
-                addMessage(generateConversationalResponse(userText), 'bot-msg');
-            }, 1500); // Simulate network/thinking delay
+                const response = generateConversationalResponse(userText);
+                addMessage(response, 'bot-msg');
+            }, 1200); 
         }
 
         function addMessage(text, className) {
@@ -789,7 +921,7 @@
             const typingIndicator = document.getElementById('typing-indicator');
             typingIndicator.style.display = 'flex';
             const chatBox = document.getElementById('chat-messages');
-            chatBox.appendChild(typingIndicator); // Move to bottom
+            chatBox.appendChild(typingIndicator); 
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
@@ -797,41 +929,77 @@
             document.getElementById('typing-indicator').style.display = 'none';
         }
 
-        /* Highly Capable Intent/Keyword Matching Engine */
+        /* Smart AI Intent Engine */
         function generateConversationalResponse(text) {
             const input = text.toLowerCase();
             
-            // Medical / Biostatistics
+            // Triggers UI Modal
+            if (input.match(/\b(phorensics|deepfake|vision|fft|prnu)\b/)) {
+                setTimeout(() => openLabModal('phorensics'), 1500);
+                return "PHORENSICS is Anuran's flagship media forensics system based on physical signal anomalies. Let me open the detailed architectural brief for you in a new window...";
+            }
+            // Triggers UI Modal
+            if (input.match(/\b(speech|audio|auditory|acoustic|voice|sound|ben-rs)\b/)) {
+                setTimeout(() => openLabModal('speech'), 1500);
+                return "Anuran's work heavily intersects with auditory processing and text sentiment. Let me open the structural brief detailing his approach to Speech Signal Processing...";
+            }
+            
+            // Standard Text Responses
             if (input.match(/\b(bio|biostat|biostatistics|medicine|medical|health)\b/)) {
-                return "Anuran applies robust non-parametric statistics (like Median Absolute Deviation) and frequency domain extractions not just to deepfakes, but to generalized signal anomalies. This quantitative biostatistics approach is highly applicable to processing physiological signals and medical data, ensuring high-fidelity, interpretable diagnostics.";
+                return "Anuran applies robust non-parametric statistics (like Median Absolute Deviation) to evaluate structural anomalies. This quantitative biostatistics approach is highly applicable to processing physiological signals and medical data, ensuring high-fidelity, interpretable diagnostics.";
             }
-            // Speech / Auditory
-            if (input.match(/\b(speech|audio|auditory|acoustic|voice|sound|hear)\b/)) {
-                return "Anuran's interest in auditory processing bridges the gap between text and sound. In the BEN-RS-ANN project, he explored extracting speech signals alongside textual sentiment for emotion recognition. He aims to expand his deepfake forensic algorithms to analyze acoustic environments and detect synthesized voices.";
+            if (input.match(/\b(signal|system|physics|frequency|spectrum)\b/)) {
+                return "His core methodology revolves around Signals & Systems. He uses Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes, combined with sensor noise analysis. This physics-based approach creates a deterministic boundary for anomaly detection.";
             }
-            // Signal & Systems / Physics
-            if (input.match(/\b(signal|system|physics|fft|prnu|ela|frequency|spectrum)\b/)) {
-                return "His core methodology revolves around Signals & Systems. In PHORENSICS, he uses Fast Fourier Transforms (FFT) to extract Power Spectrum decay slopes, combined with Photo-Response Non-Uniformity (PRNU) sensor noise analysis. This physics-based approach creates a deterministic boundary for anomaly detection.";
-            }
-            // PHORENSICS
-            if (input.match(/\b(phorensics|deepfake|forgery|fake)\b/)) {
-                return "<strong>PHORENSICS</strong> is his flagship framework. It abandons black-box semantic models in favor of verifiable physics and signal processing. It analyzes generative upsampling anomalies through power spectrum decay, protecting the public from multi-modal deepfakes. Check out the 'Live Run' button in the research section!";
-            }
-            // NLP / Fact verification
             if (input.match(/\b(nlp|text|fact|misinformation|fever|gemma|llm|rag)\b/)) {
                 return "To combat algorithmic misinformation, Anuran developed an adaptive, retrieval-augmented (RAG) fact verification system using the Gemma 3 LLM. It utilizes statistical convergence on semantic similarity to optimize context windows and reduce cognitive overload for human fact-checkers.";
             }
-            // Contact
             if (input.match(/\b(contact|email|reach|hire|phd|admissions)\b/)) {
                 return "Anuran is actively seeking PhD opportunities to further his research in Signals, Speech, and Trustworthy AI. You can reach him directly at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
             }
-            // Greetings
             if (input.match(/\b(hi|hello|hey|greetings|morning)\b/)) {
-                return "Hello there! I'm AB-Jr, the intelligence engine running this portfolio. I'm equipped to discuss Anuran's work in Signal Processing, Speech Systems, Biostatistics, and Deepfake detection. What would you like to explore?";
+                return "Hello! I'm AB-Jr, the intelligence engine running this portfolio. I can open detailed briefs on Anuran's work in Signal Processing, Speech Systems, Biostatistics, and Deepfake detection. What would you like to see?";
             }
             
             // Smart Fallback
-            return "That's an intriguing query. While my knowledge base is specifically indexed on Anuran's academic portfolio—focusing on <strong>Signal Processing</strong>, <strong>Speech Analysis</strong>, and <strong>Quantitative Biostatistics</strong>—his overarching goal is to build human-centered AI systems that tackle precisely these types of complex questions. Would you like to hear more about how he applies frequency-domain analysis to real-world problems?";
+            return "That's an intriguing query. While my knowledge base is specifically indexed on Anuran's academic portfolio—focusing on <strong>Signal Processing</strong>, <strong>Speech Analysis</strong>, and <strong>Quantitative Biostatistics</strong>—his overarching goal is to build human-centered AI systems that tackle precisely these types of complex questions. Would you like me to open the architectural brief for his Signals & Systems projects?";
+        }
+
+        /* =========================================================
+           MODAL (NEW WINDOW) LOGIC FOR LAB FIT
+           ========================================================= */
+        function openLabModal(type) {
+            const modal = document.getElementById('lab-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+
+            if (type === 'phorensics') {
+                title.innerText = "PHORENSICS: Signal & Spectral Forensics";
+                body.innerHTML = `
+                    <p>Aligning with advanced <strong>Signals and Systems</strong> research, PHORENSICS models digital media forensics directly as a physical signal anomaly problem.</p>
+                    <p>By extracting <strong>Power Spectrum decay slopes (α)</strong> via Fast Fourier Transforms (FFT), it mathematically maps generative upsampling defects. To combat adversarial media, it employs robust quantitative biostatistics—specifically <strong>Median Absolute Deviation (MAD)</strong>—to establish deterministic boundaries.</p>
+                    <p>This methodology directly parallels acoustic and speech anomaly detection, where frequency-domain artifacts and high-frequency noise successfully expose synthetic generation.</p>
+                `;
+            } else if (type === 'speech') {
+                title.innerText = "BEN-RS-ANN: Auditory & Speech Processing";
+                body.innerHTML = `
+                    <p>Bridging Natural Language Processing with <strong>Auditory and Speech Signals</strong>, this framework focuses on extracting emotion from complex, resource-scarce environments.</p>
+                    <p>It processes synthesized speech signals alongside textual sentiment to rigorously resolve polysemous ambiguity. The underlying architecture applies non-parametric statistical fusion to map complex auditory representations.</p>
+                    <p>This demonstrates a highly robust foundation for advanced research in <strong>speech emotion recognition</strong> and human-machine acoustic interaction.</p>
+                `;
+            }
+            
+            modal.classList.add('open');
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'lab-modal') {
+                document.getElementById('lab-modal').classList.remove('open');
+            }
+        }
+
+        function closeModalBtn() {
+            document.getElementById('lab-modal').classList.remove('open');
         }
     </script>
 </body>
