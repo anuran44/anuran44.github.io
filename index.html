@@ -20,9 +20,9 @@
             --accent-secondary: #f472b6;
             --accent-gradient: linear-gradient(135deg, #38bdf8, #c084fc);
             --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
             --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --panel-blur: blur(20px);
+            --panel-blur: blur(24px);
         }
 
         /* Smooth scrolling for single page layout */
@@ -50,61 +50,24 @@
         }
 
         /* =========================================================
-           CUSTOM CURSOR & GLITTER EFFECTS
+           YELLOW CARTOON CURSOR & GLITTER EFFECTS
            ========================================================= */
         @media (pointer: fine) {
-            body, a, button, input {
-                cursor: none; /* Hide default cursor */
-            }
-            .cursor-dot {
-                width: 12px;
-                height: 12px;
-                background-color: #ffffff;
-                /* Making it pointed (Diamond shape) */
-                clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-                position: fixed;
-                top: 0; left: 0;
-                z-index: 10000;
-                pointer-events: none;
-                transform: translate(-50%, -50%);
-                box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-            }
-            .cursor-outline {
-                width: 35px;
-                height: 35px;
-                border: 1.5px solid rgba(255, 255, 255, 0.5);
-                position: fixed;
-                top: 0; left: 0;
-                border-radius: 50%;
-                z-index: 9999;
-                pointer-events: none;
-                transform: translate(-50%, -50%);
-                transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
-            }
-            body.cursor-hover .cursor-outline {
-                width: 50px;
-                height: 50px;
-                background-color: rgba(255, 255, 255, 0.1);
-                border-color: transparent;
-            }
-            body.cursor-click .cursor-outline {
-                width: 20px;
-                height: 20px;
-                background-color: rgba(255, 255, 255, 0.8);
-                border-color: transparent;
+            /* Custom SVG Yellow Cartoon Cursor */
+            body, a, button, input, .info-tooltip, .nav-link, .primary-btn, .pub-btn {
+                cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='34' viewBox='0 0 24 30'%3E%3Cpath d='M2,2 L2,26 L7,20 L12,29 L16,27 L11,18 L19,18 Z' fill='%23FFD700' stroke='%23000000' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E"), auto !important;
             }
         }
 
         /* Glitter Particle Animation */
         .sparkle {
             position: fixed;
-            width: 6px;
-            height: 6px;
-            background: #ffffff;
+            width: 8px;
+            height: 8px;
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
             pointer-events: none;
-            z-index: 9998;
-            box-shadow: 0 0 10px #ffffff, 0 0 20px var(--accent-primary);
+            z-index: 9999;
+            box-shadow: 0 0 10px currentColor;
             animation: glitterAnim 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
@@ -138,7 +101,7 @@
             -webkit-backdrop-filter: var(--panel-blur);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            box-shadow: var(--glass-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            box-shadow: var(--glass-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.1);
             position: relative;
             z-index: 1;
         }
@@ -149,14 +112,14 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(15, 23, 42, 0.4);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.2);
         }
 
         nav ul {
@@ -174,32 +137,33 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.7;
+            opacity: 0.8;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         nav ul li a:hover, nav ul li a.active {
             opacity: 1;
             color: var(--accent-primary);
-            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         /* Main Container */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 8rem auto 4rem auto;
             padding: 0 2rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Sections stack on top of each other */
-        .section {
-            margin-bottom: 8rem;
-            scroll-margin-top: 100px;
-            animation: fadeUp 0.8s ease-out forwards;
+        /* Hero / Bio Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem;
+            animation: fadeUp 0.8s ease-out;
         }
 
         @keyframes fadeUp {
@@ -207,30 +171,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: inline-block;
-        }
-
-        /* =========================================================
-           HERO / BIO SECTION
-           ========================================================= */
-        .hero-section {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            padding: 3rem;
-        }
-
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             flex-shrink: 0;
         }
@@ -238,9 +184,11 @@
         .header-title {
             font-size: 3.5rem;
             line-height: 1.1;
-            margin-bottom: 0.5rem;
-            color: #fff;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 0.2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .identity-subtitle {
@@ -248,7 +196,7 @@
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--accent-primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             letter-spacing: 0.5px;
         }
 
@@ -257,13 +205,14 @@
             color: var(--text-muted);
             margin-bottom: 1.2rem;
             line-height: 1.8;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
 
         /* Action Row: Buttons & Socials */
         .action-row {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -272,7 +221,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-main);
             padding: 0.6rem 1.2rem;
@@ -282,12 +231,12 @@
             font-size: 0.9rem;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .primary-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            border-color: var(--accent-primary);
             box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
 
@@ -348,6 +297,22 @@
             opacity: 1;
         }
 
+        /* Sections Toggle */
+        .section {
+            display: none;
+            animation: fadeUp 0.6s ease-out;
+            margin-top: 4rem;
+        }
+        .section.active { display: block; }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: inline-block;
+        }
+
         /* =========================================================
            VISION & SKILLS 
            ========================================================= */
@@ -355,7 +320,7 @@
             padding: 2rem;
             margin-bottom: 3rem;
             font-size: 1.1rem;
-            color: #f8fafc;
+            color: #f1f5f9;
             border-left: 4px solid var(--accent-secondary);
         }
 
@@ -363,6 +328,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .skill-category {
@@ -384,16 +350,97 @@
         }
 
         .skill-tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255,255,255,0.15);
             padding: 0.4rem 0.9rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #e2e8f0;
         }
 
         /* =========================================================
-           SELECTED RESEARCH SECTION
+           INTERACTIVE EXPERIENCE TABS
+           ========================================================= */
+        .tab-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+            color: var(--accent-primary);
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeUp 0.4s ease-out;
+            padding: 2.5rem;
+        }
+
+        .tab-panel.active { display: block; }
+
+        .timeline-item {
+            border-left: 2px solid var(--accent-secondary);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-secondary);
+        }
+
+        .timeline-date {
+            color: var(--accent-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .timeline-item ul {
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+        }
+        
+        .timeline-item ul li { margin-bottom: 0.5rem; }
+
+        /* =========================================================
+           RIGOROUS ACADEMIC PROJECT CARDS
            ========================================================= */
         .research-grid {
             display: flex;
@@ -410,7 +457,7 @@
         .research-card-header {
             padding: 1.5rem 2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.15);
         }
 
         .research-card-header h3 {
@@ -469,143 +516,57 @@
         }
 
         /* =========================================================
-           EXPERIENCE SECTION 
+           ACADEMIC PAPER IMAGES 
            ========================================================= */
-        .timeline-container {
-            padding: 1rem 0;
+        .paper-visuals {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: center;
+            justify-content: flex-start;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
         }
 
-        .timeline-item {
-            border-left: 2px solid var(--accent-secondary);
-            padding-left: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .timeline-item:last-child { margin-bottom: 0; }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 0;
-            width: 14px;
-            height: 14px;
-            background: var(--accent-secondary);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-secondary);
-        }
-
-        .timeline-date {
-            color: var(--accent-primary);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .timeline-item h3 {
-            margin-bottom: 0.2rem;
-            font-size: 1.4rem;
-        }
-
-        .timeline-item h4 {
-            color: var(--text-darker);
-            font-weight: 400;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-item ul {
-            padding-left: 1.2rem;
-            color: var(--text-muted);
-        }
-
-        /* =========================================================
-           PUBLICATIONS SECTION 
-           ========================================================= */
-        .pub-list {
+        .paper-figure {
+            margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
-        }
-
-        .pub-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .pub-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .pub-thumb {
-            width: 140px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 4px;
-            background: #fff;
-            padding: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            flex-shrink: 0;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .pub-details {
+            align-items: center;
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            min-width: 250px;
         }
 
-        .pub-title {
-            font-size: 1.4rem;
-            color: #ffffff;
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 0;
+        .paper-figure img {
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #ffffff; 
+            padding: 8px;
+            object-fit: contain;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .pub-authors {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin: 0;
+        .flowchart-img {
+            max-height: 280px; 
+            width: auto;
+            max-width: 100%;
         }
 
-        .pub-venue {
-            color: var(--accent-primary);
-            font-style: italic;
-            font-size: 1.05rem;
-            margin: 0 0 1rem 0;
+        .arch-img {
+            max-height: 280px; 
+            width: auto;
         }
 
-        .pub-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .pub-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.8);
-            color: #ffffff;
-            padding: 0.4rem 1.2rem;
-            border-radius: 2px;
+        .paper-figure figcaption {
             font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            letter-spacing: 1px;
-        }
-
-        .pub-btn:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: #ffffff;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-align: center;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
         }
 
         /* =========================================================
@@ -674,9 +635,12 @@
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* CSS SCANNER ANIMATION */
+        /* =========================================================
+           CSS SCANNER ANIMATION
+           ========================================================= */
         .scanner-visual {
             position: relative;
             width: 100%;
@@ -686,6 +650,7 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px;
             margin-bottom: 1.5rem;
+            font-family: 'Space Grotesk', monospace;
         }
         
         .base-target {
@@ -714,6 +679,27 @@
             100% { top: -10%; }
         }
 
+        .grid-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 5;
+        }
+
+        .hud-text {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            color: var(--text-main);
+            font-size: 0.8rem;
+            z-index: 20;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
         /* =========================================================
            AB-JR AI ASSISTANT WIDGET (Glassmorphism)
            ========================================================= */
@@ -739,6 +725,8 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(56, 189, 248, 0.2);
             backdrop-filter: blur(10px);
         }
+
+        .chat-button:hover { transform: scale(1.1); }
 
         .chat-window {
             display: none;
@@ -875,8 +863,8 @@
             .header-title { font-size: 2.8rem; }
             nav { width: 95%; padding: 0.6rem; overflow-x: auto; white-space: nowrap;}
             nav ul { gap: 1rem; }
-            .pub-item { flex-direction: column; align-items: flex-start; }
-            .pub-thumb { width: 100%; height: auto; max-height: 200px; object-fit: contain; }
+            .paper-visuals { flex-direction: column; }
+            .flowchart-img, .arch-img { max-height: 200px; }
             .info-tooltip { margin-left: 0; margin-top: 10px; }
             .tooltip-text { left: 0; margin-left: 0; right: auto; }
             .chat-window { width: 300px; height: 400px; }
@@ -885,21 +873,17 @@
 </head>
 <body>
 
-    <!-- CUSTOM CURSOR DOM ELEMENTS -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
     <!-- LIVE CS ANIMATED BACKGROUND -->
     <canvas id="bg-canvas"></canvas>
 
     <!-- Smooth Scrolling Navigation -->
     <nav>
         <ul>
-            <li><a href="#home" class="nav-link active">Bio & Vision</a></li>
-            <li><a href="#research" class="nav-link">Research</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#talks" class="nav-link">Talks</a></li>
-            <li><a href="#publications" class="nav-link">Papers</a></li>
+            <li><a onclick="showSection('home')" id="nav-home" class="active">Bio & Vision</a></li>
+            <li><a onclick="showSection('research')" id="nav-research">Research</a></li>
+            <li><a onclick="showSection('experience')" id="nav-experience">Experience</a></li>
+            <li><a onclick="showSection('talks')" id="nav-talks">Talks</a></li>
+            <li><a onclick="showSection('publications')" id="nav-publications">Papers</a></li>
             <li><a href="CV-ANURAN.pdf" target="_blank" class="cv-link"><i class="fas fa-file-pdf"></i> CV</a></li>
         </ul>
     </nav>
@@ -909,7 +893,7 @@
         <!-- =========================================================
              BIO & VISION SECTION
              ========================================================= -->
-        <section id="home" class="section">
+        <section id="home" class="section active">
             <div class="mac-panel hero-section">
                 <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'">
                 
@@ -929,7 +913,6 @@
                 </div>
             </div>
 
-            <br>
             <h2 class="section-title">Research Vision</h2>
             <div class="mac-panel vision-box">
                 In my doctoral research, I aim to advance Trustworthy AI by unifying NLP and Computer Vision forensics under a single human-centered framework. My goal is to design interactive, verifiable systems that empower the public to co-reason with generative models—building computational defenses that safeguard society against multi-modal digital deception.
@@ -974,13 +957,14 @@
             <h2 class="section-title">Selected Research</h2>
             <div class="research-grid">
                 
-                <!-- RESEARCH 1 -->
+                <!-- RESEARCH 1: PHORENSICS -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>PHORENSICS: Deepfake Detection for Public Benefit</h3>
                         <div class="research-question">RQ: How can we protect the public from deepfakes through transparent, physics-grounded visual forensics at the intersection of HCI and Computer Vision?</div>
                     </div>
                     <div class="research-card-body">
+                        <!-- Abstract Visual representation -->
                         <div class="scanner-visual">
                             <img src="https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=800&q=80" class="base-target" alt="Detection Target">
                             <div class="grid-overlay"></div>
@@ -997,7 +981,7 @@
                         </div>
                         <div class="research-section">
                             <h5>Method & Public Application</h5>
-                            <p>Developed an open-source Python framework that surfaces mathematical anomalies directly to the user via a clean UX interface. As a public-benefit application, it translates complex generative AI artifacts into verifiable, physics-based visual evidence, ensuring users aren't forced to blindly trust an AI's classification.</p>
+                            <p>Developed an open-source Python framework that surfaces mathematical anomalies (FFT, Error Level Analysis, PRNU) directly to the user via a clean UX interface. As a public-benefit application, it translates complex generative AI artifacts into verifiable, physics-based visual evidence, ensuring users aren't forced to blindly trust an AI's classification.</p>
                         </div>
                     </div>
                     <div class="card-actions">
@@ -1016,7 +1000,7 @@
                     </div>
                 </div>
                 
-                <!-- RESEARCH 2 -->
+                <!-- RESEARCH 2: FACT VERIFICATION -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>AI Fact Verification: Combating Textual Misinformation</h3>
@@ -1037,7 +1021,7 @@
                     </div>
                 </div>
 
-                <!-- RESEARCH 3 -->
+                <!-- RESEARCH 3: TxtVis -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
                         <h3>TxtVis: Visualizing Multimodal Latent Spaces</h3>
@@ -1059,37 +1043,46 @@
         </section>
 
         <!-- =========================================================
-             EXPERIENCE SECTION (Vertical Timeline)
+             EXPERIENCE SECTION
              ========================================================= -->
         <section id="experience" class="section">
             <h2 class="section-title">Research Experience</h2>
             
-            <div class="mac-panel timeline-container" style="padding: 2.5rem;">
-                
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="switchTab('tab-mtech')">M.Tech Research</button>
+                <button class="tab-btn" onclick="switchTab('tab-msc')">M.Sc Research</button>
+                <button class="tab-btn" onclick="switchTab('tab-bsc')">Undergrad Research</button>
+            </div>
+
+            <div class="mac-panel tab-panel active" id="tab-mtech">
                 <div class="timeline-item">
                     <div class="timeline-date">Aug 2025 – Feb 2026</div>
                     <h3>Research Intern (Media Forensics)</h3>
-                    <h4>University of Calcutta | Advised by Prof. Sanjit Kumar Setua</h4>
+                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Sanjit Kumar Setua</p>
                     <ul>
                         <li>Worked on verifiable media forensics to protect users from manipulated digital media and synthetic content.</li>
                         <li>Designed a fault-tolerant execution pipeline dynamically switching between GPU and CPU to ensure system accessibility across varying hardware capabilities.</li>
                     </ul>
                 </div>
+            </div>
 
+            <div class="mac-panel tab-panel" id="tab-msc">
                 <div class="timeline-item">
                     <div class="timeline-date">Sep 2023 – Jul 2024</div>
                     <h3>Research Intern (Academic)</h3>
-                    <h4>University of Calcutta | Advised by Prof. Rajat Kumar Pal</h4>
+                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">University of Calcutta | Advised by Prof. Rajat Kumar Pal</p>
                     <ul>
                         <li>Developed a Bengali NLP project for emotion detection, focusing on polysemy resolution in resource-scarce environments to improve human-language understanding.</li>
                         <li>Achieved 90.08% accuracy under 10-fold cross-validation using a custom Resource-Scarce Artificial Neural Network (RS-ANN) model.</li>
                     </ul>
                 </div>
+            </div>
 
+            <div class="mac-panel tab-panel" id="tab-bsc">
                 <div class="timeline-item">
                     <div class="timeline-date">Sep 2021 – Jan 2022</div>
                     <h3>Research Collaborator</h3>
-                    <h4>Indian Statistical Institute (ISI) & The Bhawanipur Education Society College</h4>
+                    <p style="color: var(--accent-primary); margin-top: -5px; margin-bottom: 15px;">Indian Statistical Institute (ISI) & The Bhawanipur Education Society College</p>
                     <ul>
                         <li>Collaborated on a machine-learning recommendation system built to respect user localization parameters without aggressively mining user-history data.</li>
                     </ul>
@@ -1120,52 +1113,61 @@
         </section>
 
         <!-- =========================================================
-             PUBLICATIONS SECTION 
+             PUBLICATIONS / MANUSCRIPTS SECTION
              ========================================================= -->
         <section id="publications" class="section">
             <h2 class="section-title">Peer-Reviewed Publications</h2>
-            
-            <div class="mac-panel" style="padding: 2.5rem;">
-                <div class="pub-list">
-                    
-                    <!-- Paper 1 -->
-                    <div class="pub-item">
-                        <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" class="pub-thumb">
-                        <div class="pub-details">
-                            <h3 class="pub-title">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
-                            <p class="pub-authors">Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
-                            <p class="pub-venue">In Applied Computing for Software and Smart Systems (ACSS), Springer LNNS, 2024</p>
-                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-authored the proposal of an RS-ANN architecture contributing directly to mathematical polysemy resolution.</p>
-                            <div class="pub-buttons">
-                                <a href="https://link.springer.com/chapter/10.1007/978-981-97-9762-2_13" target="_blank" class="pub-btn">SPRINGER</a>
-                                <a href="#" class="pub-btn">PDF</a>
+            <div class="research-grid">
+                
+                <div class="mac-panel research-card">
+                    <div class="research-card-body">
+                        <div class="research-section">
+                            <h3 style="margin-bottom: 5px; color: var(--text-main);">BEN-RS-ANN: An Innovative Approach for Revealing Emotion from Bengali Text</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Applied Computing for Software and Smart Systems (Proceedings of ACSS 2024). Springer LNNS. [Scopus Indexed]</p>
+                            
+                            <!-- Constrained Paper Images Grid -->
+                            <div class="paper-visuals">
+                                <figure class="paper-figure">
+                                    <img src="Screenshot 2026-09-25 173600.png" alt="BEN-RS-ANN Flowchart" class="flowchart-img">
+                                    <figcaption>Methodology Flowchart</figcaption>
+                                </figure>
+                                <figure class="paper-figure">
+                                    <img src="Screenshot 2026-09-25 173533.png" alt="BEN-RS-ANN Architecture" class="arch-img">
+                                    <figcaption>RS-ANN Model Architecture</figcaption>
+                                </figure>
+                            </div>
+
+                            <p><strong>Authors:</strong> Seal, T., Bhattacharya, A., Das, S., Patra, S., Dawn, D. D., Khan, A., & Setua, S. K.</p>
+                            <p style="margin-top: 10px;"><strong>Contribution:</strong> Co-authored the proposal of an RS-ANN architecture contributing directly to mathematical polysemy resolution.</p>
+                            
+                            <!-- Springer Publication Button -->
+                            <div style="margin-top: 25px;">
+                                <a href="https://link.springer.com/chapter/10.1007/978-981-97-9762-2_13" target="_blank" class="primary-btn" style="background: var(--accent-gradient); color: #fff; border: none; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);">
+                                    <i class="fas fa-book-open"></i> Read on Springer
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Paper 2 -->
-                    <div class="pub-item">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Generic Paper Thumbnail" class="pub-thumb">
-                        <div class="pub-details">
-                            <h3 class="pub-title">A User Independent Recommendation System for Web Series</h3>
-                            <p class="pub-authors">Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
-                            <p class="pub-venue">In Emerging Technologies in Data Mining and Information Security (IEMIS), Springer LNNS, 2022</p>
-                            <p style="font-size: 0.9rem; color: var(--text-darker); margin-bottom: 1rem; margin-top: -0.5rem;">Co-developed a personalized recommendation engine mitigating external dataset bias.</p>
-                            <div class="pub-buttons">
-                                <a href="#" class="pub-btn">SPRINGER</a>
-                                <a href="#" class="pub-btn">PDF</a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="mac-panel research-card">
+                    <div class="research-card-body">
+                        <div class="research-section">
+                            <h3 style="margin-bottom: 5px; color: var(--text-main);">A User Independent Recommendation System for Web Series</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Emerging Technologies in Data Mining and Information Security (IEMIS 2022). Springer LNNS. [Scopus Indexed]</p>
+                            <p><strong>Authors:</strong> Bhattacharya, A., Singhania, A. V., Banerjee, P., Majumdar, R., & Bhoumik, D.</p>
+                            <p style="margin-top: 10px;"><strong>Contribution:</strong> Co-developed a personalized recommendation engine mitigating external dataset bias.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
     </div>
 
     <!-- =========================================================
-         AB-JR AI ASSISTANT WIDGET
+         AB-JR AI ASSISTANT WIDGET (Glassmorphism)
          ========================================================= -->
     <div class="chat-widget">
         <div class="chat-window" id="chat-window">
@@ -1197,45 +1199,12 @@
     <!-- JavaScript -->
     <script>
         /* =========================================================
-           CUSTOM CURSOR & GLITTER LOGIC
+           CUSTOM GLITTER LOGIC (Triggered on Click)
            ========================================================= */
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-
-        // Only run if the cursors actually exist (meaning pointer: fine media query is met)
-        if(cursorDot && cursorOutline) {
-            window.addEventListener('mousemove', (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-
-                // Slight delay for the outline
-                cursorOutline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
-            });
-
-            // Click effect for cursor ring
-            window.addEventListener('mousedown', () => {
-                document.body.classList.add('cursor-click');
-            });
-            window.addEventListener('mouseup', () => {
-                document.body.classList.remove('cursor-click');
-            });
-
-            // Hover effects
-            const clickables = document.querySelectorAll('a, button, .info-tooltip, input');
-            clickables.forEach((el) => {
-                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-            });
-
-            // Sparkle (Glitter) Particle Generator on Click
+        if(window.matchMedia("(pointer: fine)").matches) {
             window.addEventListener('mousedown', (e) => {
-                for(let i = 0; i < 8; i++) {
+                // Generate 12 sparkles per click for a rich glitter effect
+                for(let i = 0; i < 12; i++) {
                     createSparkle(e.clientX, e.clientY);
                 }
             });
@@ -1248,7 +1217,7 @@
 
             // Randomize direction and distance
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 40 + 10;
+            const distance = Math.random() * 50 + 20; 
             const tx = Math.cos(angle) * distance;
             const ty = Math.sin(angle) * distance;
 
@@ -1257,7 +1226,11 @@
             sparkle.style.setProperty('--tx', `${tx}px`);
             sparkle.style.setProperty('--ty', `${ty}px`);
 
-            // Clean up DOM after animation
+            // Mix of colors for the glitter
+            const colors = ['#ffffff', '#FFD700', '#38bdf8', '#f472b6'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.boxShadow = `0 0 10px ${sparkle.style.background}`;
+
             setTimeout(() => {
                 sparkle.remove();
             }, 600);
@@ -1300,7 +1273,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
                 ctx.fill();
             }
         }
@@ -1323,7 +1296,7 @@
 
                     if (distance < 160) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - distance / 160) * 0.3})`;
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - distance / 160) * 0.4})`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -1337,36 +1310,33 @@
         animate();
 
         /* =========================================================
-           SCROLL SPY NAVIGATION
+           NAVIGATION LOGIC
            ========================================================= */
-        document.addEventListener('DOMContentLoaded', () => {
+        function showSection(sectionId) {
             const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.nav-link');
+            sections.forEach(section => section.classList.remove('active'));
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '-20% 0px -60% 0px',
-                threshold: 0
-            };
+            const navLinks = document.querySelectorAll('nav ul li a:not(.cv-link)');
+            navLinks.forEach(link => link.classList.remove('active'));
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        const id = entry.target.getAttribute('id');
-                        const correspondingLink = document.querySelector(`.nav-link[href="#${id}"]`);
-                        if (correspondingLink) {
-                            correspondingLink.classList.add('active');
-                        }
-                    }
-                });
-            }, observerOptions);
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('nav-' + sectionId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            sections.forEach(section => observer.observe(section));
-        });
+        function switchTab(tabId) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.tab-panel');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            panels.forEach(panel => panel.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
 
         /* =========================================================
-           AB-JR AI ASSISTANT LOGIC
+           SMART AI CHATBOT LOGIC (AB-Jr)
            ========================================================= */
         function toggleChat() {
             const chatWindow = document.getElementById('chat-window');
@@ -1396,7 +1366,7 @@
             inputField.value = '';
 
             setTimeout(() => {
-                const botResponse = generateBotResponse(userText.toLowerCase());
+                const botResponse = generateBotResponse(userText);
                 addMessage(botResponse, 'bot-msg');
             }, 600);
         }
@@ -1411,18 +1381,42 @@
         }
 
         function generateBotResponse(text) {
-            if (text.includes('phorensics') || text.includes('deepfake')) {
-                return "PHORENSICS is Anuran's verifiable deepfake detection framework. It surfaces FFT and PRNU noise directly to users, making forensic AI transparent rather than a black box.";
-            } 
-            else if (text.includes('ux') || text.includes('hci') || text.includes('approach')) {
-                return "Anuran focuses on the intersection of AI and HCI. He builds interactive front-ends (like Streamlit UIs for TxtVis and RAG systems) so non-experts can intuitively interpret complex multimodal algorithms.";
-            } 
-            else if (text.includes('contact') || text.includes('email')) {
-                return "You can reach Anuran directly at bhattacharyaanuran45@gmail.com, or via the GitHub/LinkedIn links in his bio above.";
-            } 
-            else {
-                return "I am AB-Jr! You can ask me about Anuran's work in Social Computing, his UX/HCI approaches, or his systems for combating misinformation.";
+            const input = text.toLowerCase();
+            
+            // Greetings
+            if (input.match(/\b(hi|hello|hey|greetings|morning|afternoon)\b/)) {
+                return "Hello! I'm AB-Jr. I'd love to tell you about Anuran's HCI research, his models combating misinformation, or his media forensics work. What interests you?";
             }
+            // Identity
+            if (input.match(/\b(who are you|your name|what are you)\b/)) {
+                return "I am AB-Jr, an AI assistant built specifically for Anuran Bhattacharya's portfolio. My purpose is to guide you through his work in Trustworthy AI and Social Computing.";
+            }
+            // Deepfakes / Phorensics
+            if (input.match(/\b(deepfake|phorensics|vision|computer vision|image|fft|prnu)\b/)) {
+                return "Anuran's flagship computer vision project is PHORENSICS. It's a deepfake detection framework that moves away from black-box semantic guessing. Instead, it uses physics-grounded techniques like Fast Fourier Transforms (FFT) and Sensor Pattern Noise (PRNU) to give verifiable proof to human moderators.";
+            }
+            // NLP / Fact verification / Misinformation
+            if (input.match(/\b(nlp|text|fact|misinformation|fever|gemma|llm|rag)\b/)) {
+                return "To combat algorithmic misinformation, Anuran developed an adaptive, retrieval-augmented fact verification system using the Gemma 3 LLM. It intelligently terminates document retrieval when semantic similarity stabilizes, making it much more efficient for human fact-checkers.";
+            }
+            // HCI / UX / TxtVis
+            if (input.match(/\b(hci|ux|ui|interface|human|txtvis|interactive)\b/)) {
+                return "Anuran strongly believes AI must be human-centered. He pairs his models with intuitive UX design—like his TxtVis project, which uses interactive Streamlit front-ends to help non-experts visualize complex multimodal latent spaces in real-time.";
+            }
+            // Experience / Education
+            if (input.match(/\b(education|degree|calcutta|intern|experience|work)\b/)) {
+                return "Anuran is an M.Tech. graduate from the University of Calcutta. He has extensive research experience, including an internship in Media Forensics and academic research in Bengali NLP emotion detection.";
+            }
+            // Publications
+            if (input.match(/\b(paper|publish|publication|springer|acss|iemis)\b/)) {
+                return "Anuran has published peer-reviewed papers in Springer LNNS, including a novel Resource-Scarce Artificial Neural Network (RS-ANN) for Bengali text emotion detection, and a user-independent recommendation system.";
+            }
+            // Contact
+            if (input.match(/\b(contact|email|hire|github|linkedin|reach)\b/)) {
+                return "You can reach Anuran directly at bhattacharyaanuran45@gmail.com! Also, feel free to check out his GitHub (@anuran44) or connect with him on LinkedIn using the buttons on the main page.";
+            }
+            // Smart Fallback
+            return "That's an insightful point! While my current knowledge is specifically tuned to Anuran's academic portfolio—like his work in HCI, NLP, and Deepfakes—his overarching goal is to build Trustworthy AI systems that can tackle exactly these kinds of complex queries. Would you like me to highlight one of his research projects?";
         }
     </script>
 </body>
