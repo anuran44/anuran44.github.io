@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anuran Bhattacharya | Signal Processing & Social AI Researcher</title>
+    <title>Anuran Bhattacharya | AI for Social Good</title>
     <!-- Avant-garde typography suitable for Research -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -180,10 +180,10 @@
         }
 
         /* =========================================================
-           FUTURE PLANS & SKILLS (Biostats / Audio Focus)
+           FUTURE PLANS & SKILLS (AI for Social Good Focus)
            ========================================================= */
         .vision-container {
-            display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem;
+            display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; margin-bottom: 3rem; align-items: center;
         }
 
         .vision-box {
@@ -208,6 +208,13 @@
 
         .future-list strong { color: #fff; }
 
+        /* Reduced Venn Diagram Size */
+        .vision-venn-container {
+            display: flex; justify-content: center; align-items: center; padding: 1rem;
+            background: rgba(0, 0, 0, 0.2); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 300px; margin: 0 auto;
+        }
+
         .skills-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
         }
@@ -227,7 +234,7 @@
         }
 
         /* =========================================================
-           SELECTED RESEARCH SECTION
+           SELECTED RESEARCH SECTION (Concise with "Read More")
            ========================================================= */
         .research-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
@@ -256,13 +263,29 @@
             display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between;
         }
 
+        .pulse-btn {
+            animation: pulse-border 2s infinite; border-color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
         /* =========================================================
-           EXPERIENCE SECTION 
+           EXPERIENCE SECTION (Timeline)
            ========================================================= */
-        .timeline-container { padding: 1rem 0; }
+        .timeline-container {
+            padding: 1rem 0;
+        }
 
         .timeline-item {
-            border-left: 2px solid var(--accent-secondary); padding-left: 2rem; margin-bottom: 3rem; position: relative;
+            border-left: 2px solid var(--accent-secondary);
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
         }
         
         .timeline-item:last-child { margin-bottom: 0; }
@@ -282,7 +305,7 @@
         .timeline-item ul { padding-left: 1.2rem; color: var(--text-muted); }
 
         /* =========================================================
-           TALKS & PUBLICATIONS SECTIONS 
+           TALKS & PUBLICATIONS SECTIONS (Separated)
            ========================================================= */
         .talks-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
@@ -314,6 +337,7 @@
         .video-info { padding: 1.5rem; }
         .video-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
 
+        /* Publications */
         .pub-list { display: flex; flex-direction: column; gap: 2rem; }
         .pub-item { display: flex; align-items: flex-start; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -336,7 +360,7 @@
 
         .modal-window {
             background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px; width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto;
+            border-radius: 12px; width: 100%; max-width: 700px; max-height: 85vh; overflow-y: auto;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6); transform: scale(0.95); transition: transform 0.3s ease;
         }
 
@@ -466,12 +490,12 @@
                 <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'">
                 
                 <div class="hero-text">
-                    <h1 class="header-title">Anuran Bhattacharya</h1>
-                    <div class="identity-subtitle">Signal Processing · Biostatistics · NLP · AI for Social Good</div>
+                    <h1 class="header-title">Anuran Bhattacharya<span class="academic-cite">[cite: 7]</span></h1>
+                    <div class="identity-subtitle">AI for Social Good | Signal & Audio Analysis · Biostatistics · NLP</div>
                     
-                    <p>I am an M.Tech. graduate in Computer Science & Engineering whose work bridges two remarkably diverse worlds: the generative realm of <strong>creative writing and Natural Language Processing (NLP)</strong>, and the rigorous, physics-bound domain of <strong>Signal & Image Processing</strong><span class="academic-cite">[cite: 7]</span>.</p>
+                    <p>I am an M.Tech. graduate in Computer Science & Engineering dedicated to the broad domain of <strong>AI for Social Good</strong><span class="academic-cite">[cite: 7]</span>. My research bridges two remarkably diverse worlds: the generative realm of creative writing and Natural Language Processing (NLP)<span class="academic-cite">[cite: 7]</span>, and the rigorous, physics-bound domains of Signal Processing and Quantitative Biostatistics.</p>
                     
-                    <p>I am deeply passionate about <strong>quantitative biostatistics</strong> and extracting mathematical truth from complex audio waves and images<span class="academic-cite">[cite: 7]</span>. By engineering physics-grounded deepfake forensics alongside adaptive semantic fact-checkers, I build holistic systems that protect digital ecosystems. My overarching goal is to deploy these tools under the umbrella of <strong>AI for Social Good</strong>—creating transparent, verifiable technologies that serve public health, trust, and human-computer interaction.</p>
+                    <p>Whether I am engineering physics-grounded deepfake forensics to protect digital ecosystems or analyzing complex auditory signals and biomedical data, my goal remains the same: building transparent, verifiable technologies that serve public health, combat digital deception, and empower human-computer interaction<span class="academic-cite">[cite: 7]</span>.</p>
 
                     <div class="action-row">
                         <a href="mailto:bhattacharyaanuran45@gmail.com" class="primary-btn"><i class="fas fa-envelope"></i> Email</a>
@@ -485,20 +509,56 @@
             
             <div class="mac-panel vision-container">
                 <div class="vision-box" style="border:none; padding-right: 0;">
-                    <h3>Future Directions & AI for Social Good</h3>
+                    <h3>Future Directions</h3>
                     <ul class="future-list">
-                        <li><strong>Biostatistics & Medical Health:</strong> Applying robust non-parametric statistical fusion (like MAD) to model physiological and auditory signals, developing reliable AI diagnostics for medical applications.</li>
-                        <li><strong>Signal Processing in Complex Audio:</strong> Investigating intricate acoustic environments by deeply analyzing time-domain and frequency-domain audio waves to detect biological anomalies and vocal markers.</li>
-                        <li><strong>Speech Deepfakes & Emotion:</strong> Advancing multi-modal media forensics with a specific focus on speech synthesis detection, voice emotion recognition, and combating auditory/visual manipulation in social networks.</li>
-                        <li><strong>AI for Social Benefit:</strong> Unifying these rigorous, signal-based domains into verifiable, human-centered computational tools that explicitly protect digital ecosystems and empower everyday users.</li>
+                        <li><strong>AI for Social Good:</strong> Unifying rigorous computational methods into verifiable, human-centered tools that explicitly protect digital ecosystems and empower everyday users<span class="academic-cite">[cite: 7]</span>.</li>
+                        <li><strong>Quantitative Biostatistics:</strong> Applying robust non-parametric statistical fusion (like MAD) to model physiological and auditory signals, developing reliable AI diagnostics<span class="academic-cite">[cite: 6]</span>.</li>
+                        <li><strong>Signal & Audio Processing:</strong> Investigating complex acoustic environments and time-frequency domains (FFT) to detect biological anomalies, voice emotions, and synthetic speech<span class="academic-cite">[cite: 6, 7]</span>.</li>
+                        <li><strong>Media Forensics & Deepfakes:</strong> Advancing multi-modal threat detection with a specific focus on combating auditory/visual manipulation in social networks<span class="academic-cite">[cite: 6, 7]</span>.</li>
                     </ul>
+                </div>
+                
+                <!-- Dynamic SVG Venn Diagram (Smaller) -->
+                <div class="vision-venn-container">
+                    <svg width="100%" height="200" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="rgba(56, 189, 248, 0.7)"/>
+                                <stop offset="100%" stop-color="rgba(56, 189, 248, 0.05)"/>
+                            </radialGradient>
+                            <radialGradient id="grad2" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="rgba(244, 114, 182, 0.7)"/>
+                                <stop offset="100%" stop-color="rgba(244, 114, 182, 0.05)"/>
+                            </radialGradient>
+                            <radialGradient id="grad3" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="rgba(192, 132, 252, 0.7)"/>
+                                <stop offset="100%" stop-color="rgba(192, 132, 252, 0.05)"/>
+                            </radialGradient>
+                        </defs>
+                        <!-- Intersecting Domains -->
+                        <circle cx="200" cy="150" r="120" fill="url(#grad1)" style="mix-blend-mode: screen;" />
+                        <circle cx="300" cy="150" r="120" fill="url(#grad2)" style="mix-blend-mode: screen;" />
+                        <circle cx="250" cy="240" r="120" fill="url(#grad3)" style="mix-blend-mode: screen;" />
+                        <!-- Labels -->
+                        <text x="140" y="120" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Signal / Audio</text>
+                        <text x="140" y="140" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Analysis</text>
+                        
+                        <text x="360" y="120" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Quantitative</text>
+                        <text x="360" y="140" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Biostatistics</text>
+                        
+                        <text x="250" y="320" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">NLP &amp; Text</text>
+                        
+                        <!-- Intersection Text -->
+                        <text x="250" y="180" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">AI for</text>
+                        <text x="250" y="200" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">Social Good</text>
+                    </svg>
                 </div>
             </div>
 
             <h2 class="section-title">Research Skills</h2>
             <div class="skills-grid">
                 <div class="mac-panel skill-category">
-                    <h4>Signal & Image Processing</h4>
+                    <h4>Signal & Audio Processing</h4>
                     <div class="skill-list">
                         <span class="skill-tag">Time-Domain Signal Analysis</span>
                         <span class="skill-tag">Frequency Domain (FFT)</span>
@@ -507,11 +567,11 @@
                     </div>
                 </div>
                 <div class="mac-panel skill-category">
-                    <h4>NLP & Creative Generation</h4>
+                    <h4>NLP & Language Models</h4>
                     <div class="skill-list">
-                        <span class="skill-tag">Creative Prompt Synthesis</span>
                         <span class="skill-tag">Retrieval-Augmented Gen</span>
                         <span class="skill-tag">Gemma 3</span>
+                        <span class="skill-tag">Speech Emotion Recognition</span>
                         <span class="skill-tag">Polysemy Resolution</span>
                     </div>
                 </div>
@@ -520,7 +580,7 @@
                     <div class="skill-list">
                         <span class="skill-tag">Robust Statistical Fusion</span>
                         <span class="skill-tag">Median Absolute Deviation (MAD)</span>
-                        <span class="skill-tag">Speech Emotion Recognition</span>
+                        <span class="skill-tag">Error Level Analysis</span>
                         <span class="skill-tag">Synthetic Media Forensics</span>
                     </div>
                 </div>
@@ -540,22 +600,23 @@
                         <h3>PHORENSICS: Physics-Inspired Forensics</h3>
                     </div>
                     <div class="research-card-body">
-                        <p><strong>Focus:</strong> Signal Processing & Quantitative Biostatistics</p>
-                        <p>A deterministic, multi-modal unbiased forensics framework that replaces probabilistic black-box ML models. It leverages extensive time-domain signal analysis and frequency-domain statistics to establish strict mathematical boundaries between natural and synthetic data<span class="academic-cite">[cite: 7]</span>.</p>
+                        <p><strong>Sub-Domain:</strong> Signal Processing & Quantitative Biostatistics</p>
+                        <p>A deterministic, multi-modal unbiased forensics framework that replaces probabilistic black-box ML models. It leverages extensive time-domain signal analysis and frequency-domain statistics to establish strict mathematical boundaries against deepfakes.<span class="academic-cite">[cite: 7, 6]</span></p>
                     </div>
                     <div class="card-actions">
                         <button onclick="openModal('phorensics')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
                         <a href="https://github.com/anuran44/PHORENSICS-Deepfake-Detection" target="_blank" class="primary-btn"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://phorensics-deepfake-detection-cyobx6rmmgfh3emamceoty.streamlit.app/" target="_blank" class="primary-btn pulse-btn"><i class="fas fa-globe"></i> Live Run</a>
                     </div>
                 </div>
                 
                 <!-- RESEARCH 2: FACT VERIFICATION -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
-                        <h3>Adaptive Social AI Fact Verification</h3>
+                        <h3>Adaptive AI Fact Verification</h3>
                     </div>
                     <div class="research-card-body">
-                        <p><strong>Focus:</strong> NLP & Human-AI Alignment</p>
+                        <p><strong>Sub-Domain:</strong> NLP & Human-AI Alignment</p>
                         <p>Developed a retrieval-augmented fact verification framework combining Gemma 3 LLM reasoning with semantic document retrieval<span class="academic-cite">[cite: 7]</span>. Proposed an adaptive convergence strategy that terminates retrieval once semantic similarity stabilizes, protecting against cognitive overload.</p>
                     </div>
                     <div class="card-actions">
@@ -570,7 +631,7 @@
                         <h3>BEN-RS-ANN: Bengali Emotion & Speech</h3>
                     </div>
                     <div class="research-card-body">
-                        <p><strong>Focus:</strong> Auditory Signals & NLP</p>
+                        <p><strong>Sub-Domain:</strong> Auditory Signals & NLP</p>
                         <p>Developed a resource-scarce Artificial Neural Network (RS-ANN) designed for emotion detection in Bengali text and synthesized speech<span class="academic-cite">[cite: 7]</span>. This framework uniquely aligns creative writing sentiment with auditory cues to resolve complex polysemy.</p>
                     </div>
                     <div class="card-actions">
@@ -965,7 +1026,7 @@
                 return "Anuran applies robust non-parametric statistics (like Median Absolute Deviation) to evaluate structural anomalies. This quantitative biostatistics approach is highly applicable to processing physiological signals and medical data, ensuring high-fidelity, interpretable diagnostics.";
             }
             if (input.match(/\b(signal|image|processing|spectrum|time|domain)\b/)) {
-                return "His core methodology revolves around Signal & Image Processing. For instance, in PHORENSICS, he extracts Power Spectrum decay slopes using FFT in the frequency domain, alongside Laplacian filters in the time domain, to create deterministic boundaries against deepfakes.";
+                return "His core methodology revolves around Signal Processing. For instance, in PHORENSICS, he extracts Power Spectrum decay slopes using FFT in the frequency domain, alongside Laplacian filters in the time domain, to create deterministic boundaries against deepfakes.";
             }
             if (input.match(/\b(contact|email|reach|hire|phd|admissions)\b/)) {
                 return "Anuran is actively seeking PhD opportunities to further his research in Signals, Speech, and Social AI. You can reach him directly at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
