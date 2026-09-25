@@ -38,11 +38,11 @@
             background-attachment: fixed;
         }
 
-        /* HIDDEN CITATIONS (Keeps UI Clean while satisfying parser) */
+        /* INVISIBLE CITATIONS (Keeps UI Clean) */
         .academic-cite { display: none !important; }
 
         /* =========================================================
-           YELLOW CARTOON CURSOR (Refined Size) & GLITTER
+           YELLOW CARTOON CURSOR (Small) & GLITTER
            ========================================================= */
         @media (pointer: fine) {
             body, a, button, input, .info-tooltip, .nav-link, .primary-btn, .pub-btn {
@@ -180,26 +180,33 @@
         }
 
         /* =========================================================
-           VISION & SKILLS
+           FUTURE PLANS & SKILLS (Biostats / Audio Focus)
            ========================================================= */
         .vision-container {
-            display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; margin-bottom: 3rem; align-items: center;
+            display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem;
         }
 
         .vision-box {
-            padding: 2rem; font-size: 1.05rem; color: #f8fafc; border-left: 4px solid var(--accent-secondary);
+            padding: 2.5rem; font-size: 1.05rem; color: #f8fafc; border-left: 4px solid var(--accent-secondary);
         }
 
         .vision-box h3 {
-            color: var(--accent-primary); margin-bottom: 1rem; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--accent-primary); margin-bottom: 1.5rem; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* Reduced Venn Diagram Size */
-        .vision-venn-container {
-            display: flex; justify-content: center; align-items: center; padding: 1rem;
-            background: rgba(0, 0, 0, 0.2); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05);
-            max-width: 300px; margin: 0 auto;
+        .future-list {
+            list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.5rem;
         }
+
+        .future-list li {
+            position: relative; padding-left: 2rem; line-height: 1.6;
+        }
+
+        .future-list li::before {
+            content: '✦'; position: absolute; left: 0; top: 2px; color: var(--accent-secondary); font-size: 1.2rem;
+        }
+
+        .future-list strong { color: #fff; }
 
         .skills-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
@@ -220,7 +227,7 @@
         }
 
         /* =========================================================
-           SELECTED RESEARCH SECTION (Concise with "Read More")
+           SELECTED RESEARCH SECTION
            ========================================================= */
         .research-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
@@ -250,17 +257,12 @@
         }
 
         /* =========================================================
-           EXPERIENCE SECTION (Timeline)
+           EXPERIENCE SECTION 
            ========================================================= */
-        .timeline-container {
-            padding: 1rem 0;
-        }
+        .timeline-container { padding: 1rem 0; }
 
         .timeline-item {
-            border-left: 2px solid var(--accent-secondary);
-            padding-left: 2rem;
-            margin-bottom: 3rem;
-            position: relative;
+            border-left: 2px solid var(--accent-secondary); padding-left: 2rem; margin-bottom: 3rem; position: relative;
         }
         
         .timeline-item:last-child { margin-bottom: 0; }
@@ -280,7 +282,7 @@
         .timeline-item ul { padding-left: 1.2rem; color: var(--text-muted); }
 
         /* =========================================================
-           TALKS & PUBLICATIONS SECTIONS (Separated)
+           TALKS & PUBLICATIONS SECTIONS 
            ========================================================= */
         .talks-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
@@ -312,7 +314,6 @@
         .video-info { padding: 1.5rem; }
         .video-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
 
-        /* Publications */
         .pub-list { display: flex; flex-direction: column; gap: 2rem; }
         .pub-item { display: flex; align-items: flex-start; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
@@ -322,7 +323,7 @@
         .pub-venue { color: var(--accent-primary); font-style: italic; font-size: 0.95rem; margin: 0 0 1rem 0; }
 
         /* =========================================================
-           POPUP MODAL (For Smart AI "Read More" Windows)
+           POPUP MODAL (For "Read More" Content)
            ========================================================= */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -335,7 +336,7 @@
 
         .modal-window {
             background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px; width: 100%; max-width: 700px; max-height: 85vh; overflow-y: auto;
+            border-radius: 12px; width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6); transform: scale(0.95); transition: transform 0.3s ease;
         }
 
@@ -352,17 +353,17 @@
         .mac-dot.yellow { background: #ffbd2e; }
         .mac-dot.green { background: #27c93f; }
 
-        .modal-title { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin: 0;}
+        .modal-title { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0;}
 
-        .modal-body { padding: 2rem; color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
-        .modal-body h4 { color: var(--accent-secondary); font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;}
-        .modal-body p { margin-top: 0;}
+        .modal-body { padding: 2.5rem; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+        .modal-body h4 { color: var(--accent-secondary); font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;}
+        .modal-body p { margin-top: 0; margin-bottom: 1.5rem;}
         .modal-body strong { color: var(--accent-primary); }
         .modal-img-container { display: flex; gap: 15px; margin: 20px 0; justify-content: center;}
-        .modal-img-container img { max-height: 180px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: #fff;}
+        .modal-img-container img { max-height: 220px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: #fff;}
 
         /* =========================================================
-           AB-JR AI ASSISTANT WIDGET (Agentic System)
+           AB-JR AI ASSISTANT WIDGET 
            ========================================================= */
         .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
 
@@ -376,7 +377,7 @@
         .chat-button:hover { transform: scale(1.1); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4); cursor: pointer;}
 
         .chat-window {
-            display: none; width: 340px; height: 480px; background: rgba(15, 23, 42, 0.95);
+            display: none; width: 350px; height: 480px; background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.8); position: absolute; bottom: 80px; right: 0;
@@ -408,7 +409,6 @@
         .bot-msg { background: rgba(56, 189, 248, 0.1); color: #f1f5f9; border: 1px solid rgba(56, 189, 248, 0.2); align-self: flex-start; border-bottom-left-radius: 2px; }
         .user-msg { background: rgba(244, 114, 182, 0.15); color: #fce7f3; border: 1px solid rgba(244, 114, 182, 0.3); align-self: flex-end; border-bottom-right-radius: 2px; }
 
-        /* Typing indicator */
         .typing-indicator {
             display: none; align-self: flex-start; background: rgba(56, 189, 248, 0.1); padding: 10px 14px;
             border-radius: 12px; border-bottom-left-radius: 2px; border: 1px solid rgba(56, 189, 248, 0.2);
@@ -466,12 +466,12 @@
                 <img src="self=img.jpeg" alt="Anuran Bhattacharya" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80'">
                 
                 <div class="hero-text">
-                    <h1 class="header-title">Anuran Bhattacharya<span class="academic-cite">[cite: 7]</span></h1>
-                    <div class="identity-subtitle">Social AI · NLP · Signal & Image Processing</div>
+                    <h1 class="header-title">Anuran Bhattacharya</h1>
+                    <div class="identity-subtitle">Signal Processing · Biostatistics · NLP · AI for Social Good</div>
                     
-                    <p>I am an M.Tech. graduate in Computer Science & Engineering dedicated to building public-interest technology<span class="academic-cite">[cite: 7]</span>. My research sits at the intersection of <strong>Natural Language Processing (NLP)</strong>, <strong>Signal Processing</strong>, and <strong>Image Processing</strong>. I tackle the dual threats of the generative AI era: algorithmic misinformation and synthetic media (deepfakes)<span class="academic-cite">[cite: 7]</span>.</p>
+                    <p>I am an M.Tech. graduate in Computer Science & Engineering whose work bridges two remarkably diverse worlds: the generative realm of <strong>creative writing and Natural Language Processing (NLP)</strong>, and the rigorous, physics-bound domain of <strong>Signal & Image Processing</strong><span class="academic-cite">[cite: 7]</span>.</p>
                     
-                    <p>By engineering physics-grounded deepfake detection networks alongside adaptive semantic fact-checkers, I build holistic systems that protect digital ecosystems. I aim to create transparent, human-centered computational tools that serve the public benefit in medicine, speech technology, and digital trust under the umbrella of <strong>AI for Social Good</strong>.</p>
+                    <p>I am deeply passionate about <strong>quantitative biostatistics</strong> and extracting mathematical truth from complex audio waves and images<span class="academic-cite">[cite: 7]</span>. By engineering physics-grounded deepfake forensics alongside adaptive semantic fact-checkers, I build holistic systems that protect digital ecosystems. My overarching goal is to deploy these tools under the umbrella of <strong>AI for Social Good</strong>—creating transparent, verifiable technologies that serve public health, trust, and human-computer interaction.</p>
 
                     <div class="action-row">
                         <a href="mailto:bhattacharyaanuran45@gmail.com" class="primary-btn"><i class="fas fa-envelope"></i> Email</a>
@@ -485,43 +485,13 @@
             
             <div class="mac-panel vision-container">
                 <div class="vision-box" style="border:none; padding-right: 0;">
-                    <h3>Future Interests</h3>
-                    In my doctoral research, I aim to advance Trustworthy AI by investigating complex auditory, physiological, and visual signals through the lens of machine learning and biostatistics. I am deeply interested in applying <strong>signal processing approaches to biological and auditory data</strong>—such as detecting vocal anomalies in noisy environments, robust auditory feature extraction, and speech deepfake forensics. Drawing inspiration from advanced speech machine learning and physiological signal modeling, I intend to build computational defenses that safeguard society against multi-modal digital deception and improve reliability in health ecosystems.
-                </div>
-                
-                <!-- Dynamic SVG Venn Diagram (Smaller) -->
-                <div class="vision-venn-container">
-                    <svg width="100%" height="200" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="rgba(56, 189, 248, 0.7)"/>
-                                <stop offset="100%" stop-color="rgba(56, 189, 248, 0.05)"/>
-                            </radialGradient>
-                            <radialGradient id="grad2" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="rgba(244, 114, 182, 0.7)"/>
-                                <stop offset="100%" stop-color="rgba(244, 114, 182, 0.05)"/>
-                            </radialGradient>
-                            <radialGradient id="grad3" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="rgba(192, 132, 252, 0.7)"/>
-                                <stop offset="100%" stop-color="rgba(192, 132, 252, 0.05)"/>
-                            </radialGradient>
-                        </defs>
-                        <!-- Intersecting Domains -->
-                        <circle cx="200" cy="150" r="120" fill="url(#grad1)" style="mix-blend-mode: screen;" />
-                        <circle cx="300" cy="150" r="120" fill="url(#grad2)" style="mix-blend-mode: screen;" />
-                        <circle cx="250" cy="240" r="120" fill="url(#grad3)" style="mix-blend-mode: screen;" />
-                        <!-- Labels -->
-                        <text x="140" y="120" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Signal &amp;</text>
-                        <text x="140" y="140" fill="#fff" font-family="Space Grotesk" font-size="15" font-weight="600" text-anchor="middle">Image Proc.</text>
-                        
-                        <text x="360" y="130" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">NLP</text>
-                        
-                        <text x="250" y="320" fill="#fff" font-family="Space Grotesk" font-size="16" font-weight="600" text-anchor="middle">AI for Social Good</text>
-                        
-                        <!-- Intersection Text -->
-                        <text x="250" y="180" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">Trustworthy</text>
-                        <text x="250" y="200" fill="#fff" font-family="Space Grotesk" font-size="14" font-weight="700" text-anchor="middle">Social AI</text>
-                    </svg>
+                    <h3>Future Directions & AI for Social Good</h3>
+                    <ul class="future-list">
+                        <li><strong>Biostatistics & Medical Health:</strong> Applying robust non-parametric statistical fusion (like MAD) to model physiological and auditory signals, developing reliable AI diagnostics for medical applications.</li>
+                        <li><strong>Signal Processing in Complex Audio:</strong> Investigating intricate acoustic environments by deeply analyzing time-domain and frequency-domain audio waves to detect biological anomalies and vocal markers.</li>
+                        <li><strong>Speech Deepfakes & Emotion:</strong> Advancing multi-modal media forensics with a specific focus on speech synthesis detection, voice emotion recognition, and combating auditory/visual manipulation in social networks.</li>
+                        <li><strong>AI for Social Benefit:</strong> Unifying these rigorous, signal-based domains into verifiable, human-centered computational tools that explicitly protect digital ecosystems and empower everyday users.</li>
+                    </ul>
                 </div>
             </div>
 
@@ -530,28 +500,28 @@
                 <div class="mac-panel skill-category">
                     <h4>Signal & Image Processing</h4>
                     <div class="skill-list">
+                        <span class="skill-tag">Time-Domain Signal Analysis</span>
                         <span class="skill-tag">Frequency Domain (FFT)</span>
                         <span class="skill-tag">Sensor Pattern Noise (PRNU)</span>
-                        <span class="skill-tag">Error Level Analysis</span>
-                        <span class="skill-tag">Auditory Signal Extraction</span>
+                        <span class="skill-tag">Audio Wave Extraction</span>
                     </div>
                 </div>
                 <div class="mac-panel skill-category">
-                    <h4>NLP & Language Models</h4>
+                    <h4>NLP & Creative Generation</h4>
                     <div class="skill-list">
+                        <span class="skill-tag">Creative Prompt Synthesis</span>
                         <span class="skill-tag">Retrieval-Augmented Gen</span>
                         <span class="skill-tag">Gemma 3</span>
-                        <span class="skill-tag">Speech Emotion Recognition</span>
                         <span class="skill-tag">Polysemy Resolution</span>
                     </div>
                 </div>
                 <div class="mac-panel skill-category">
-                    <h4>AI for Social Good & HCI</h4>
+                    <h4>Biostatistics & Forensics</h4>
                     <div class="skill-list">
-                        <span class="skill-tag">Robust Statistical Fusion (MAD)</span>
+                        <span class="skill-tag">Robust Statistical Fusion</span>
+                        <span class="skill-tag">Median Absolute Deviation (MAD)</span>
+                        <span class="skill-tag">Speech Emotion Recognition</span>
                         <span class="skill-tag">Synthetic Media Forensics</span>
-                        <span class="skill-tag">Fact Verification</span>
-                        <span class="skill-tag">Interactive Systems</span>
                     </div>
                 </div>
             </div>
@@ -569,9 +539,9 @@
                     <div class="research-card-header">
                         <h3>PHORENSICS: Physics-Inspired Forensics</h3>
                     </div>
-                    <div class="research-card-body" style="padding: 1.5rem;">
-                        <p><strong>Focus:</strong> Signal Processing & Image Forensics</p>
-                        <p>A deterministic, multi-modal unbiased forensics framework that replaces probabilistic black-box ML models. It establishes strict mathematical boundaries between natural and synthetic data to combat deepfakes using frequency domain analysis.<span class="academic-cite">[cite: 7]</span></p>
+                    <div class="research-card-body">
+                        <p><strong>Focus:</strong> Signal Processing & Quantitative Biostatistics</p>
+                        <p>A deterministic, multi-modal unbiased forensics framework that replaces probabilistic black-box ML models. It leverages extensive time-domain signal analysis and frequency-domain statistics to establish strict mathematical boundaries between natural and synthetic data<span class="academic-cite">[cite: 7]</span>.</p>
                     </div>
                     <div class="card-actions">
                         <button onclick="openModal('phorensics')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
@@ -584,7 +554,7 @@
                     <div class="research-card-header">
                         <h3>Adaptive Social AI Fact Verification</h3>
                     </div>
-                    <div class="research-card-body" style="padding: 1.5rem;">
+                    <div class="research-card-body">
                         <p><strong>Focus:</strong> NLP & Human-AI Alignment</p>
                         <p>Developed a retrieval-augmented fact verification framework combining Gemma 3 LLM reasoning with semantic document retrieval<span class="academic-cite">[cite: 7]</span>. Proposed an adaptive convergence strategy that terminates retrieval once semantic similarity stabilizes, protecting against cognitive overload.</p>
                     </div>
@@ -597,11 +567,11 @@
                 <!-- RESEARCH 3: BEN-RS-ANN -->
                 <div class="mac-panel research-card">
                     <div class="research-card-header">
-                        <h3>BEN-RS-ANN: Bengali Emotion Detection</h3>
+                        <h3>BEN-RS-ANN: Bengali Emotion & Speech</h3>
                     </div>
-                    <div class="research-card-body" style="padding: 1.5rem;">
-                        <p><strong>Focus:</strong> Speech Signals & NLP</p>
-                        <p>Developed a resource-scarce Artificial Neural Network (RS-ANN) designed for emotion detection in Bengali text<span class="academic-cite">[cite: 7]</span>. This framework specifically targets polysemy resolution (words with multiple meanings) to improve context understanding in human-language environments.</p>
+                    <div class="research-card-body">
+                        <p><strong>Focus:</strong> Auditory Signals & NLP</p>
+                        <p>Developed a resource-scarce Artificial Neural Network (RS-ANN) designed for emotion detection in Bengali text and synthesized speech<span class="academic-cite">[cite: 7]</span>. This framework uniquely aligns creative writing sentiment with auditory cues to resolve complex polysemy.</p>
                     </div>
                     <div class="card-actions">
                         <button onclick="openModal('benrs')" class="primary-btn"><i class="fas fa-book-reader"></i> Read More</button>
@@ -624,7 +594,7 @@
                     <h3>Research Intern (Media Forensics)</h3>
                     <h4>University of Calcutta | Advised by Prof. Sanjit Kumar Setua</h4>
                     <ul>
-                        <li>Worked on verifiable media forensics to protect users from manipulated digital media and synthetic content<span class="academic-cite">[cite: 7]</span>.</li>
+                        <li>Worked on verifiable media forensics utilizing signal processing to protect users from manipulated digital media and synthetic content<span class="academic-cite">[cite: 7]</span>.</li>
                         <li>Designed a fault-tolerant execution pipeline dynamically switching between GPU and CPU to ensure system accessibility across varying hardware capabilities<span class="academic-cite">[cite: 7]</span>.</li>
                     </ul>
                 </div>
@@ -879,12 +849,15 @@
             if (projectKey === 'phorensics') {
                 title.innerText = "PHORENSICS: Architectural Brief";
                 body.innerHTML = `
-                    <h4>Signal Processing & Spectral Forensics<span class="academic-cite">[cite: 6]</span></h4>
-                    <p>Unlike standard probabilistic deep learning models that suffer from catastrophic forgetting, PHORENSICS establishes strict mathematical boundaries between natural photons and synthetic pixels. It applies <strong>Global Spectral Analysis</strong> using <strong>Fast Fourier Transforms (FFT)</strong> to extract Power Spectrum decay slopes (α), which explicitly isolates generative upsampling anomalies<span class="academic-cite">[cite: 6]</span>.</p>
+                    <h4>Frequency-Domain & Spectral Forensics<span class="academic-cite">[cite: 6]</span></h4>
+                    <p>Unlike standard probabilistic deep learning models, PHORENSICS establishes strict mathematical boundaries between natural signals and synthetic data. The system utilizes <strong>Global Spectral Analysis</strong> via <strong>Fast Fourier Transforms (FFT)</strong> to extract 1D radial Power Spectrum decay slopes (α), exposing the high-frequency spectral replicas left by generative upsampling algorithms<span class="academic-cite">[cite: 6]</span>.</p>
                     
-                    <h4>Spatial Statistics & Hardware Distribution</h4>
-                    <p>For localized blending (identity swaps), the framework integrates <strong>Error Level Analysis (ELA)</strong> and <strong>Sensor Pattern Noise (PRNU)</strong><span class="academic-cite">[cite: 6]</span>. The system evaluates structural failure utilizing robust non-parametric statistics, specifically <strong>Modified Z-Scores derived via Median Absolute Deviation (MAD)</strong><span class="academic-cite">[cite: 6]</span>.</p>
-                    <p>To process massive enterprise data seamlessly, the entire architecture is distributed over Apache Spark with a dynamic Adaptive Compute Manager that toggles between GPU/CPU RAM<span class="academic-cite">[cite: 6]</span>.</p>
+                    <h4>Time-Domain & Spatial Signal Analysis<span class="academic-cite">[cite: 6]</span></h4>
+                    <p>In the spatial and time domains, it evaluates localized digital splicing. By extracting <strong>Photo-Response Non-Uniformity (PRNU)</strong> using discrete Laplacian filters and tracking <strong>Error Level Analysis (ELA)</strong> anomalies, the framework maps exact manipulation boundaries<span class="academic-cite">[cite: 6]</span>.</p>
+                    
+                    <h4>Quantitative Biostatistics & Distributed Scalability<span class="academic-cite">[cite: 6]</span></h4>
+                    <p>Instead of probabilistic confidence scores, it uses robust non-parametric statistics. It calculates a Composite Forensic Score (CFS) via <strong>Modified Z-Scores derived from the Median Absolute Deviation (MAD)</strong>, ensuring mathematically provable explainability<span class="academic-cite">[cite: 6]</span>.</p>
+                    <p>To process massive enterprise-scale matrices, the entire architecture is orchestrated via Apache Spark and a Dynamic Adaptive Compute Manager (D-DACA) that actively routes loads between GPU and CPU RAM<span class="academic-cite">[cite: 6]</span>.</p>
                 `;
             } else if (projectKey === 'fact') {
                 title.innerText = "Fact Verification: Structural Brief";
@@ -991,8 +964,8 @@
             if (input.match(/\b(bio|medical|health|physiological|biostat|biostatistics)\b/)) {
                 return "Anuran applies robust non-parametric statistics (like Median Absolute Deviation) to evaluate structural anomalies. This quantitative biostatistics approach is highly applicable to processing physiological signals and medical data, ensuring high-fidelity, interpretable diagnostics.";
             }
-            if (input.match(/\b(signal|image|processing|spectrum)\b/)) {
-                return "His core methodology revolves around Signal & Image Processing. For instance, in PHORENSICS, he extracts Power Spectrum decay slopes using FFT to create deterministic boundaries against deepfakes.";
+            if (input.match(/\b(signal|image|processing|spectrum|time|domain)\b/)) {
+                return "His core methodology revolves around Signal & Image Processing. For instance, in PHORENSICS, he extracts Power Spectrum decay slopes using FFT in the frequency domain, alongside Laplacian filters in the time domain, to create deterministic boundaries against deepfakes.";
             }
             if (input.match(/\b(contact|email|reach|hire|phd|admissions)\b/)) {
                 return "Anuran is actively seeking PhD opportunities to further his research in Signals, Speech, and Social AI. You can reach him directly at <a href='mailto:bhattacharyaanuran45@gmail.com' style='color:var(--accent-primary)'>bhattacharyaanuran45@gmail.com</a>.";
@@ -1002,7 +975,7 @@
             }
             
             // Smart Fallback
-            return "That's an intriguing query. While my knowledge base is strictly indexed on Anuran's academic portfolio—focusing on <strong>Signal & Image Processing</strong>, <strong>Social AI</strong>, and <strong>NLP</strong>—his overarching goal is to build intelligent systems that tackle precisely these concepts. Would you like me to open the architectural brief for his deepfake detection framework?";
+            return "That's an intriguing query. While my knowledge base is strictly indexed on Anuran's academic portfolio—focusing on <strong>Signal & Image Processing</strong>, <strong>Social AI</strong>, and <strong>Biostatistics</strong>—his overarching goal is to build intelligent systems that tackle precisely these concepts. Would you like me to open the architectural brief for his deepfake detection framework?";
         }
     </script>
 </body>
